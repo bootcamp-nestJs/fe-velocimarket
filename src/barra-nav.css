@@ -1,0 +1,81 @@
+.sidebar {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  width: 20%;
+  height: inherit;
+  flex-direction: column;
+  align-items: center;
+  gap:48px;
+  flex-shrink: 0;
+  box-shadow: 4px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none
+}
+
+.logo{
+  margin-top: 60px;
+}
+
+.icon {
+  padding-right: 12px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.buttons-nav {
+  padding-left: 0;
+  margin-left: 32px;
+}
+
+.more {
+  padding-left: 0;
+  margin-left: 32px;
+}
+
+button {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  width: 160px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Helvetica;
+  border-radius: 30px;
+  border-style: none;
+  margin: 12px;
+}
+
+button.on {
+  color: #1d1d1d;
+  background-color: #ffffff;
+}
+
+button.off {
+  color: #1d1d1d;
+  background-color: #CECECE;
+}
+
+button:hover {
+  color: #1d1d1d;
+  background-color: #E9E9E9;
+}
+
+button:focus {
+  color: #1d1d1d;
+  background-color: #CECECE;
+  ;
+}
