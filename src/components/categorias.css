@@ -1,0 +1,37 @@
+.contenedor-categorias{
+    max-width: 1116px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-around;
+}
+.categorias {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.categoria {
+    position: relative;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 8px 0 0   ;
+}
+img {
+    width: 210px;
+    height: 270px;
+}
+p {
+     position:absolute; 
+}
+h1{
+    font-size: 30px;
+    max-width: 1116px;
+    margin: 0px auto;
+    display: flex;
+    justify-content:flex-start;
+}
+
+

@@ -1,0 +1,607 @@
+/* Fonts */
+@font-face {
+  font-family: 'Circular Spotify Text';
+  src: url('./fonts/CircularSpotifyText-Medium.otf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Circular Spotify Text';
+  src: url('./fonts/CircularSpotifyText-Bold.otf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./fonts/DMSans-VariableFont_opszwght.ttf');
+}
+
+*{
+  margin: 0;
+}
+/* Home CSS */
+.Home{
+  display: flex;
+  height: 100vh;
+}
+
+.Home aside{
+  flex-grow: 1;
+  height: 100%;
+  background-color: #d9d9d9;
+}
+.Home .login_section{
+  display: flex;
+  width: 67.3%;
+  height: 100%;
+  background-color: white;
+}
+
+.Home .login_section .container{ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 34rem;
+  max-width: 34rem;
+  margin-left: 9rem;
+}
+
+.Home .login_section h1{
+  color: #000;
+  font-family: 'Circular Spotify Text', sans-serif;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.684px;
+  padding-left: .625rem;
+}
+
+.Home .login_section form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Home .login_section form label{
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 16px */
+  letter-spacing: -0.304px;
+  margin-top: 1.25rem;
+  margin-bottom: .2rem;
+}
+
+.Home .login_section form input{
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+  padding: 0 1rem;
+}
+
+.Home .login_section form input[type="submit"]{
+  margin-top: 1.25rem;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--comp-white-comp-white-600, #DEDEE2);
+  background: var(--secundiario-celeste-secundiario-celeste-500, #578FFF);
+  color: #FFF;
+  font-family: 'DM Sans';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.Home .login_section form input[type="submit"]:hover{
+  background-color: #578fffc4;
+}
+
+.Home .login_section span{
+  margin-top: 1.25rem;
+  font-family: 'DM Sans';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.304px;
+  margin-bottom: .75rem;
+}
+
+.Home .login_section span a{
+  color: var(--comp-gray-comp-gray-700);
+}
+
+.Home .login_section .separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: .75rem 0;
+  position: relative;
+}
+
+.Home .login_section .separator hr {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.Home .login_section .separator span { 
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 5rem;
+  color: #727171;
+  font-family: 'Circular Spotify Text';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 16px */
+  letter-spacing: -0.304px;
+}
+
+.Home .login_section .login_buttons{
+  margin-top: 1.25rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 .375rem;
+  box-sizing: border-box;
+}
+
+.Home .login_section .login_buttons button{
+  border-radius: 8px;
+  border: 1px solid #666;
+  background: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 237px;
+  height: 45px;
+  gap: 1.25rem;
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Home .login_section .login_buttons button:hover{
+  background-color: #e9e9e9;
+}
+
+
+/* profile 1 */
+
+header{
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 60px;
+  padding-top: 20px;
+  gap: 40px;
+  background: #FFF;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+}
+header .logo{
+  padding: 0 2.28rem;
+}
+header .logo span{
+  color: var(--secundiario-azul-secundiario-azul-500, #002C66);
+  font-family: 'DM Sans';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 30px */
+  letter-spacing: -0.57px;
+}
+
+header .search{
+  border-radius: 2rem;
+  border: 1px solid #E6E7E8;
+  background: #F2F2F2;  
+  height: 34px;
+  width: 496px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 12px;
+}
+
+header .search input{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  flex-grow: 1;
+}
+
+header .buttons{
+  display: flex;
+  gap: 2px;
+}
+
+/* Profile Card */
+.ProfileCard{
+  display: flex;
+  width: 736px;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  flex-shrink: 0;
+  margin: 60px auto;
+}
+.ProfileCard .ProfileCard_header{
+  width: 100%;  
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-right: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+.ProfileCard .ProfileCard_header img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.ProfileCard .ProfileCard_header .details{
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+.ProfileCard .ProfileCard_header .details .rate{
+  display: flex;
+  gap: 4px;
+}
+.ProfileCard .ProfileCard_header .buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.ProfileCard .ProfileCard_header .details h1{
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.ProfileCard .ProfileCard_header .details span{
+  color: #000;
+font-family: 'DM Sans';
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-decoration:1px underline rgba(0, 0, 0, 0.715);
+}
+
+.ProfileCard .mid_text{
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ProfileCard .ProfileCard_footer{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ProfileCard .ProfileCard_footer .tag{
+  height: 74px;
+  width: 178px;
+  padding: 10px 0px;
+  display: flex;
+ 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  color: #000;
+  text-align: center;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.ProfileCard .ProfileCard_footer .tag big{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* products */
+.Profile .products{
+  max-width: 1116px;
+  margin: 20px auto;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 30px;  
+}
+/* H1 titulos secundarios */
+.titulosec{
+ font-size: 30px; 
+ margin-top: 40px;
+}
+.titulosec2{
+  font-size: 30px; 
+ }
+
+.Profile .products .Item{ 
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+.Profile .products .Item .img{
+  width: 100%;
+  height: 255px;
+  object-fit: cover;
+  position: relative;
+}
+.Profile .products .Item .img img{
+  width: 100%;
+}
+.Profile .products .Item .icons{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+}
+
+.Profile .products .Item .price{
+  color: #FFF;
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.342px;
+
+  display: flex;
+  padding: 10px;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin: 16px 0;
+  border-radius: 10px;
+  background: rgba(89, 89, 89, 0.60);
+}
+
+.Profile .products .Item .datoscard{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100% ;
+}
+.Profile .products .Item .nameloc{
+  display: flex;
+  flex-direction: column;
+}
+.Profile .products .Item .avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+.Profile .products .Item .nameloc .localizacion{
+ text-decoration: underline;
+}
+
+
+.Profile .products .Item .details{
+  color: #444;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+
+  padding: 17px 6px;
+}
+
+/* publicacion */
+.Publicacion .product{
+  max-width: 1116px;
+  margin: 40px auto 192px auto;
+  padding: 31px 70px;
+  box-sizing: border-box;
+}
+.Publicacion .product .title{
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.57px;
+  margin-bottom: 20px;
+}
+
+.Publicacion .product_content{
+  display: flex;
+  gap: 40px;
+}
+
+.Publicacion .product_content .product_peview{
+  padding: 10px 10px 29px 10px;
+  background-color: white;
+}
+
+.Publicacion .product_content .product_peview .product_img{
+  width: 380px;
+}
+
+.Publicacion .product_content .product_peview img{
+  width: 100%;
+}
+
+.Publicacion .product_content .product_peview .product_variants{  
+  display: flex;
+  width: 380px;
+  gap: 6px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.Publicacion .product_content .product_peview .product_variants .product_variant_img{
+  min-width: 100px;
+}
+
+.Publicacion .product_content form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Publicacion .product_content form label{
+  color: #212121;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.304px;
+  margin-top: 1.25rem;
+  margin-bottom: .2rem;
+}
+
+.Publicacion .product_content form input{
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.Publicacion .product_content form textarea{
+  height: 87px;
+  border-radius: 8px;
+  border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+  padding: 1rem;
+  margin-bottom: 20px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.Publicacion .product_content form .row{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.Publicacion .product_content form .row .col{
+    width: 50%;
+}
+
+.Publicacion .product .additional_info h2{
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21.24px;
+}
+
+.Publicacion .product .additional_info form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Publicacion .product .additional_info form label{
+  color: #212121;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.304px;
+  margin-top: 1.25rem;
+  margin-bottom: .4rem;;
+}
+
+.Publicacion .product .additional_info form input{
+  width: 180px;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* footer */
+
+.Footer{
+  border-radius: 20px 20px 0px 0px;
+  padding: 20px 0 40px 0 ;
+  background: #BCBCBC;
+}
+.Footer .footer_container{
+  display: flex;
+  width: 1100px;
+  height: 150px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 10px;
+}
+.Footer .footer_container .footer_col_1,
+.Footer .footer_container .footer_col_2,
+.Footer .footer_container .footer_col_3,
+.Footer .footer_container .footer_col_4{
+  width: 200px;
+  height: 100%;  
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.Footer .footer_container .footer_col_3{
+  flex-grow: 1;
+}
+.Footer .footer_container .footer_col_4{
+  justify-content: flex-end;
+}
+
+.Footer .footer_container .footer_col_1 a,
+.Footer .footer_container .footer_col_2 a,
+.Footer .footer_container .footer_col_3 a,
+.Footer .footer_container .footer_col_4{
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 187.5%;
+  letter-spacing: -0.304px;
+  text-decoration: none;
+}

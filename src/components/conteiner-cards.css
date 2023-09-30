@@ -1,0 +1,26 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 80%;
+    height: inherit;
+}
+
+.contenedor {
+    width: 80%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contenedor::-webkit-scrollbar {
+    display: none;
+  }
+

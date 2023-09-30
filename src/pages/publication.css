@@ -1,0 +1,149 @@
+/* Fonts */
+@font-face {
+    font-family: 'Circular Spotify Text';
+    src: url('./fonts/CircularSpotifyText-Medium.otf');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Circular Spotify Text';
+    src: url('./fonts/CircularSpotifyText-Bold.otf');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/DMSans-VariableFont_opszwght.ttf');
+  }
+  
+  *{
+    margin: 0;
+  }
+
+.Publicacion .product{
+    max-width: 1116px;
+    margin: 40px auto 192px auto;
+    padding: 31px 70px;
+    box-sizing: border-box;
+  }
+  .Publicacion .product .title{
+    color: #000;
+    font-family: 'DM Sans';
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -0.57px;
+    margin-bottom: 20px;
+  }
+  
+  .Publicacion .product_content{
+    display: flex;
+    gap: 40px;
+  }
+  
+  .Publicacion .product_content .product_peview{
+    padding: 10px 10px 29px 10px;
+    background-color: white;
+  }
+  
+  .Publicacion .product_content .product_peview .product_img{
+    width: 380px;
+  }
+  
+  .Publicacion .product_content .product_peview img{
+    width: 100%;
+  }
+  
+  .Publicacion .product_content .product_peview .product_variants{  
+    display: flex;
+    width: 380px;
+    gap: 6px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .Publicacion .product_content .product_peview .product_variants .product_variant_img{
+    min-width: 100px;
+  }
+  
+  .Publicacion .product_content form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .Publicacion .product_content form label{
+    color: #212121;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.304px;
+    margin-top: 1.25rem;
+    margin-bottom: .2rem;
+  }
+  
+  .Publicacion .product_content form input{
+    width: 100%;
+    height: 46px;
+    border-radius: 8px;
+    border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  
+  .Publicacion .product_content form textarea{
+    height: 87px;
+    border-radius: 8px;
+    border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+    padding: 1rem;
+    margin-bottom: 20px;
+    resize: none;
+    box-sizing: border-box;
+  }
+  
+  .Publicacion .product_content form .row{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .Publicacion .product_content form .row .col{
+      width: 50%;
+  }
+  
+  .Publicacion .product .additional_info h2{
+    color: #000;
+    font-family: 'DM Sans';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21.24px;
+  }
+  
+  .Publicacion .product .additional_info form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .Publicacion .product .additional_info form label{
+    color: #212121;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.304px;
+    margin-top: 1.25rem;
+    margin-bottom: .4rem;;
+  }
+  
+  .Publicacion .product .additional_info form input{
+    width: 180px;
+    height: 46px;
+    border-radius: 8px;
+    border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  

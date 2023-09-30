@@ -1,60 +1,68 @@
 {
     "publicaciones": [
         {
-            "titulocard": "Ana Rodríguez",
-            "valor": "$700.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         },
         {
-            "titulocard": "Ana Rodríguez",
-            "valor": "$300.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         },
         {
-            "titulocard": "Ana Rodríguez",
-            "valor": "$200.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         },
         {
-            "titulocard": "Ana Rodríguez",
-            "valor": "$800.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         },
         {
-            "titulocard": "Ana Rodríguez",
-            "Valor": "900.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         },
         {
-            "titulocard": "Ana Rodríguez",
-            "Valor": "$1.300.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         },
         {
-            "titulocard": "Ana Rodríguez",
-            "Valor": "$1.300.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         },
         {
-            "titulocard": "Ana Rodríguez",
-            "Valor": "$1.300.000",
+            "nombre": "Ana Rodríguez",
+            "localizacion": "stirng",
+            "precio": 700.000,
             "imagen": "src/assets/img/card.png",
-            "textogenerico": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            "textoaccesibilidad": "texto"
+            "descripcion": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+            "avatar": "texto"
         }            
     ]
 }
