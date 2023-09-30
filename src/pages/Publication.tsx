@@ -1,7 +1,7 @@
-import Header from "../components/Header"
-import Button from "../components/Button"
+import Header from "../components/header"
+/* import Button from "../components/Button" */
 import product_img from "../assets/preview.png"
-import Footer from "../components/Footer"
+import Footer from "../components/footer"
 
 
 export default function Publicacion() {
@@ -18,16 +18,16 @@ export default function Publicacion() {
               </div>
               <div className="product_variants">
                   <div className="product_variant_img">
-                    <img src={product_img} alt="Producto" />
+                    <img className="imagen-producto" src={product_img} alt="Producto" />
                   </div>
                   <div className="product_variant_img">
-                    <img src={product_img} alt="Producto" />
+                    <img className="imagen-producto" src={product_img} alt="Producto" />
                   </div>
                   <div className="product_variant_img">
-                    <img src={product_img} alt="Producto" />
+                    <img className="imagen-producto" src={product_img} alt="Producto" />
                   </div>
                   <div className="product_variant_img">
-                    <img src={product_img} alt="Producto" />
+                    <img className="imagen-producto" src={product_img} alt="Producto" />
                   </div>
               </div>
             </div>
