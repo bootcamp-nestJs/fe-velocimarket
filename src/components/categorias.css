@@ -19,14 +19,14 @@
     text-align: center;
     margin: 0 8px 0 0   ;
 }
-img {
+.imagen-categoria {
     width: 210px;
     height: 100%;
 }
 p {
      position:absolute; 
 }
-h1{
+.titulo-categorias{
     font-size: 30px;
     max-width: 1116px;
     margin: 0px auto;

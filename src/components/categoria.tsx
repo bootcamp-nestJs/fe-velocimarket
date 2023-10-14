@@ -11,7 +11,7 @@ export function Categoria({
 ) {
     return (
         <div className='categoria'>
-            <img src={imagen_cat} alt="" />
+            <img className="imagen-categoria" src={imagen_cat} alt="" />
             <p>{categoria}</p>
         </div>
     )

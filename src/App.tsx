@@ -7,9 +7,12 @@ import Profile2 from "./pages/Profile2";
 import Publication from "./pages/Publication";
 import SignUp from "./pages/signup";
 import SignIn from "./pages/signin";
-
+import FileProduct from "./pages/file-product";
+import Cart from "./pages/cart";
+import Inbox from "./pages/inbox";
 //css
 import './App.css'
+
 
 function App() {  
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path='/profile1' element={<Profile1 />}/>
           <Route path='/profile2' element={<Profile2 />}/>
           <Route path='/publication' element={<Publication />}/>
+          <Route path='/file-product' element={<FileProduct />}/>
+          <Route path='/cart' element={<Cart />}/>
+          <Route path='/inbox' element={<Inbox />}/>
         </Routes>
     </>        
   )

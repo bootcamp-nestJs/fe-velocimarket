@@ -1,0 +1,155 @@
+.inbox-page-cont{
+    height: 100vh;
+}
+.title-inbox {
+    margin-top: 40px;
+    margin-left: 16vw;
+    margin-bottom: 40px;
+}
+
+.cont-inbox {
+    display: flex;
+    justify-content: flex-start;
+    height: fit-content;
+    margin-left: 16vw;
+    margin-bottom: 10vw;
+}
+
+.cont-messages {
+    width: 261px;
+    height: 483px;
+    margin-right: 20px;
+}
+
+.message {
+    display: flex;
+    width: 241px;
+    height: 67px;
+    gap: 20px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.10);
+    margin-bottom: 12px;
+    padding: 10px;
+}
+
+.avatar-inbox {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #D9D9D9;
+}
+
+.user-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.location-message {
+    justify-content: flex-start;
+    color: #000;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.message-view-zone {
+    display: flex;
+    width: 407px;
+    padding: 28px 0px 10px 0px;
+    flex-direction: column;
+    align-items: center;
+    gap: 163px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 8px;
+    margin-right: 20px;
+    background: #FFF;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.img-message {
+    width: 168px;
+    height: 168px;
+    border-radius: 100%;
+    margin: 20px;
+}
+
+.send-text {
+    display: flex;
+    justify-content: space-between;
+    width: 337px;
+    height: 34px;
+    padding: 2px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 19999px;
+    border: 1px solid #E6E7E8;
+    background: #F2F2F2;
+}
+
+.input-message {
+    border: none;
+    background: #F2F2F2;
+}
+
+.icon-message-zone {
+    width: 20px;
+    height: 20px;
+}
+
+.message-product-view {
+    display: flex;
+    width: 218px;
+    height: 346px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.img-product-message {
+    width: 218px;
+    height: 181px;
+    border-radius: 2px;
+}
+
+.precio-message {
+    width: 64px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: rgba(89, 89, 89, 0.60);
+    color: #FFF;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.text-product-message {
+    color: #444;
+    font-family: DM Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+.footer-inbox .Footer{
+    bottom: 0;
+    position: relative;
+}

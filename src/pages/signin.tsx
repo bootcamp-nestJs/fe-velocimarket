@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function SignIn() {
     return (
       <div className="Home">
@@ -16,7 +18,7 @@ export default function SignIn() {
                   </form>
   
                   <span>
-                  ¿No tienes cuenta? <a href="">regístrate acá</a>
+                  ¿No tienes cuenta? <Link to="/signUp" style={{ textDecoration: "none" }}>regístrate acá</Link>
                   </span>
   
                   <div className="separator">

@@ -2,6 +2,7 @@ import './signup.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { signUp } from '../interfaces/create-sign-up/sign-up'
+import { Link } from "react-router-dom";
 
 function SignUp() {
 
@@ -139,8 +140,8 @@ function SignUp() {
                             <input type="submit" value="Crear cuenta" />
                         </form>
 
-                        <span>
-                            ¿Ya tienes cuenta? <a href="">haz click acá</a>
+                        <span className='change-signIn'>
+                            ¿Ya tienes cuenta? <Link to="/signIn" style={{ textDecoration: "none" }}>haz click acá</Link>
                         </span>
 
                         <div className="separator">

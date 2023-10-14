@@ -1,0 +1,180 @@
+.container-product-file {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+
+.product_view {
+    width: 540px;
+    height: 530px;
+    padding: 10px 20px 10px 10px;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+img .imagen-producto {
+    width: 113px;
+    height: 98px;
+    flex-shrink: 0;
+    border-radius: 4px;
+}
+
+.product_variants {
+    display: flex;
+    gap: 6px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.product_variants .product_variant_img {
+    min-width: 100px;
+}
+
+.product_information {
+    width: 404px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 10px 10px 20px;
+}
+
+.section-information {
+    margin-bottom: 20px;
+}
+
+.information-value {
+    margin-bottom: 20px;
+    color: red;
+}
+
+.buttons-file {
+    width: 100%;
+}
+
+
+.blue-button {
+    border-radius: 10px;
+    width: inherit;
+    border: 1px solid #DEDEE2;
+    background: #578FFF;
+    display: flex;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #ffff;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.button_component:hover {
+    background-color: #e9e9e9;
+}
+
+
+.icon-fileProduct {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-car {
+    width: 20px;
+    height: 20px;
+}
+
+.second-buttons-file {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.trs-button {
+    border-radius: 10px;
+    width: 186px;
+    border: 2px solid #000000;
+    background: #fbfbfb;
+    display: flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #000000;
+    font-family: 'DM Sans';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.description {
+    display: flex;
+    height: 100%;
+    width: 1116px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px 80px;
+    margin: 0px 16vw;
+}
+
+.title-description {
+    color: #000;
+    font-family: DM Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21.24px;
+}
+
+.text-description {
+    width: 524px;
+    word-wrap: normal;
+    position: unset;
+}
+
+.section-information{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.description-paragraph{
+    width: auto;
+}
+.additional-Information{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 80px;
+    margin: 0px 16.5%;
+}
+.section-information span{
+    width: 228px;
+    height: 22px;
+}.additional-Information h3{
+    margin-bottom: 12px;
+}

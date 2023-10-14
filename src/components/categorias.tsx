@@ -6,7 +6,7 @@ import { Overflowbox } from '@hffxx/react-overflow-box';
 export function Categorias() {
   return (
     <div>      
-      <h1>Categorías Destacadas</h1>
+      <h1 className='titulo-categorias'>Categorías Destacadas</h1>
       <div className='contenedor-categorias'>
         <Overflowbox >
           <div className='categorias'>

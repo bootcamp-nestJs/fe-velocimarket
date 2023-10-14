@@ -2,3 +2,19 @@
   max-width: 1116px;
   margin: 60px auto;
 }
+
+.titulosec{
+  font-size: 30px;
+  max-width: 1116px;
+  margin: 0px auto;
+  display: flex;
+  justify-content:flex-start;
+}
+
+.titulosec2{
+  font-size: 30px;
+  max-width: 1116px;
+  margin: 0px auto;
+  display: flex;
+  justify-content:flex-start;
+}

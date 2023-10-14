@@ -8,7 +8,6 @@ export default function Publicacion() {
   return (
     <div className="Publicacion">
         <Header/>
-
         <section className="product">
           <h1 className="title">Ingresa los detalles y el precio de tu producto</h1>
           <div className="product_content">
