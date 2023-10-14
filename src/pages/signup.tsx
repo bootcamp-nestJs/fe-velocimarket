@@ -136,8 +136,9 @@ function SignUp() {
                             <input type="number" name="telefono" id="telefono" placeholder="987654321" value={form.telefono!} onChange={handleChange} />
                             {error.telefono && <span className='error'> El telefono debe tener 9 digitos</span>}
                             </div>
-
-                            <input type="submit" value="Crear cuenta" />
+                            <Link to="/profile1" style={{textDecoration: "none"}}>
+                            <input type="submit" value="Crear cuenta" className="entrar-link" />
+                            </Link>
                         </form>
 
                         <span className='change-signIn'>

@@ -223,3 +223,8 @@ label {
   margin-top: 1.25rem;
   margin-top: 24px;
 }
+
+.entrar-link{
+  text-decoration: none; 
+  width: 100% ;
+}
