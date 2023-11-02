@@ -2,17 +2,17 @@ import './categorias.css'
 
 interface CategoryProps {
     categoria: string,
-    imagen_cat: string
+    imagen_cat: string,
 }
 export function Categoria({
     categoria,
-    imagen_cat
+    imagen_cat,
 }: CategoryProps
 ) {
     return (
-        <div className='categoria'>
+        <div className='categoria'  >
             <img className="imagen-categoria" src={imagen_cat} alt="" />
-            <p>{categoria}</p>
+            <p className='pcategorias'>{categoria}</p>
         </div>
     )
 }

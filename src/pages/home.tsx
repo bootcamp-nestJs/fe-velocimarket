@@ -3,9 +3,12 @@ import Item from "../components/Item"
 import Footer from "../components/footer"
 import { Banner } from "../components/banner"
 import { Categorias } from "../components/categorias"
-import { Link } from "react-router-dom";
-
+import { BannerApp } from "../components/bannerApp"
+import informacion from "../json/informativo.json"
 import './home.css'
+import { Link } from "react-router-dom";
+import { Informativo } from "../components/informativoHome"
+import ItemParam from "../components/Item-parm"
 
 
 export default function Home() {
@@ -16,7 +19,13 @@ export default function Home() {
         <Banner />
       </div>
       <Categorias />
-      <h1 className="titulosec">Lo mas reciente de tus amigos</h1>
+      <h1 className="titulosec">Lo más reciente</h1>
+      <section className="products">
+      <ItemParam nombreuser="User name" precio={12313} tituloproducto="sadasd" localizacion="EL PUERTO" icons={true} vistahome={true} />
+      <Item icons={true} vistahome={true} />
+      {/* <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
+      <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
+      </section>
       <section className="products">
       <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
       <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
@@ -26,8 +35,16 @@ export default function Home() {
       <section className="products">
       <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
       <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
-      <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
+      <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link> */}
       </section>
+      <BannerApp></BannerApp>
+      {
+        informacion.flyer.map((flyer,index) => {
+          return(
+            <Informativo titulo={flyer.Titulo} descripcion={flyer.descripcion} imagen={flyer.imagen} invertido={index%2===0?true:false} key={"info"+index}></Informativo>
+          )
+        })
+      }
       <Footer />
     </div>
   )

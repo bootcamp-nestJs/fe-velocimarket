@@ -13,7 +13,7 @@ p {
   margin-bottom: 8px;
 }
 
-h2{
+h2 {
   margin-right: 0% !important;
   margin-left: 0% !important;
 }
@@ -65,24 +65,33 @@ label {
   display: block;
 }
 
-.Register{
+.Register {
   display: flex;
   height: 100vh;
 }
 
-.Register aside{
+.Register aside {
   flex-grow: 1;
-  height: 100%;
-  background-color: #d9d9d9;
+  height: 100vh;
+  border-radius: 0px 20px 20px 0px;
 }
-.Register .login_section{
+
+.imagenAsideRegister{
+  background: url('../assets/img/imagenesEstaticas/registro.png'), lightgray 50% / cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  height:auto;
+  max-width: 100%;
+}
+
+.Register .login_section {
   display: flex;
   width: 67.3%;
   height: 100%;
   background-color: white;
 }
 
-.Register .login_section .container{ 
+.Register .login_section .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +101,7 @@ label {
   margin-left: 9rem;
 }
 
-.Register .login_section h1{
+.Register .login_section h1 {
   color: #000;
   font-family: 'Circular Spotify Text', sans-serif;
   font-size: 2.25rem;
@@ -103,31 +112,32 @@ label {
   padding-left: .625rem;
 }
 
-.Register .login_section form{
+.Register .login_section form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.Register .login_section form label{
+.Register .login_section form label {
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 16px */
+  line-height: 100%;
+  /* 16px */
   letter-spacing: -0.304px;
   margin-top: 1.25rem;
   margin-bottom: .2rem;
 }
 
-.Register .login_section form input{
+.Register .login_section form input {
   height: 46px;
   border-radius: 8px;
   border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
   padding: 0 1rem;
 }
 
-.Register .login_section form input[type="submit"]{
+.Register .login_section form input[type="submit"] {
   margin-top: 1.25rem;
   height: 46px;
   border-radius: 8px;
@@ -140,20 +150,21 @@ label {
   font-weight: 500;
   line-height: normal;
 }
-.Register .login_section form input[type="submit"]:hover{
+
+.Register .login_section form input[type="submit"]:hover {
   background-color: #578fffc4;
 }
 
-.Register .login_section span{
+.Register .login_section span {
   font-family: 'DM Sans';
-  font-size: 13px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: -0.304px;
 }
 
-.Register .login_section span a{
+.Register .login_section span a {
   color: var(--comp-gray-comp-gray-700);
 }
 
@@ -172,7 +183,7 @@ label {
   background-color: #ccc;
 }
 
-.Register .login_section .separator span { 
+.Register .login_section .separator span {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -185,11 +196,12 @@ label {
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 16px */
+  line-height: 100%;
+  /* 16px */
   letter-spacing: -0.304px;
 }
 
-.Register .login_section .login_buttons{
+.Register .login_section .login_buttons {
   margin-top: 1.25rem;
   width: 100%;
   display: flex;
@@ -198,7 +210,7 @@ label {
   box-sizing: border-box;
 }
 
-.Register .login_section .login_buttons button{
+.Register .login_section .login_buttons button {
   border-radius: 8px;
   border: 1px solid #666;
   background: #FFF;
@@ -215,16 +227,17 @@ label {
   font-weight: 600;
   line-height: normal;
 }
-.Register .login_section .login_buttons button:hover{
+
+.Register .login_section .login_buttons button:hover {
   background-color: #e9e9e9;
 }
 
-.change-signIn{
+.change-signIn {
   margin-top: 1.25rem;
   margin-top: 24px;
 }
 
-.entrar-link{
-  text-decoration: none; 
-  width: 100% ;
+.entrar-link {
+  text-decoration: none;
+  width: 100%;
 }

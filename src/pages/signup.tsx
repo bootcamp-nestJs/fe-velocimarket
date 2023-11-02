@@ -1,10 +1,12 @@
 import './signup.css'
 import { useState } from 'react';
-import { useEffect } from 'react';
 import { signUp } from '../interfaces/create-sign-up/sign-up'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { validarApellido, validarContrasena, validarEmail, validarNombre, validarTelefono, validarUsuario } from '../validadores/validadores';
 
 function SignUp() {
+
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({
         nombre: "",
@@ -12,7 +14,7 @@ function SignUp() {
         correo: "",
         nombreusuario: "",
         contrasena: "",
-        telefono: null,
+        telefono: null, //preguntar como poder hacer que quede vacio y pueda ver solo lo que indica el placeholder
     } as signUp);
 
     const [error, setError] = useState({
@@ -24,9 +26,12 @@ function SignUp() {
         telefono: false,
     });
 
-    useEffect(() => {
-        Object.values(error).includes(true) ? console.log("existen errores, revise que completo corectamente todos los campos") : enviarFormulario(), [error]
-    })
+    //Al parecer no tiene un uso practico para un formulario, quizas es mejor para fecth data en la seccion de productos para actualizar las nuevas cards del feed.
+
+    // useEffect(() => {
+    //     // (Object.values(validarInputs(form)).includes(true)) ? console.log("existen errores, revise que completo correctamente todos los campos") : enviarFormulario(), [error]
+    //     Object.values(validarInputs(form)).includes(true)
+    // })
 
     const validarInputs = (inputForm: signUp) => {
 
@@ -40,39 +45,24 @@ function SignUp() {
         };
 
         /*  validar nombre */
-
-        if (inputForm.nombre == undefined || inputForm.nombre.length == 0) {
-            erroresFormulario.nombre = true;
-        }
-
+        erroresFormulario.nombre = validarNombre(inputForm.nombre);
         /*  validar apellido*/
 
-        if (inputForm.apellido == undefined || inputForm.apellido.length == 0) {
-            erroresFormulario.apellido = true;
-        }
+        erroresFormulario.apellido = validarApellido(inputForm.apellido);
+
         /*  validar correo */
 
-        if (inputForm.correo == undefined || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputForm.correo)) {
-            erroresFormulario.correo = true;
-        }
+        erroresFormulario.correo = validarEmail(inputForm.correo)
 
         /*  validar nombreusuario */
-
-        if (inputForm.nombreusuario == undefined || inputForm.nombreusuario.length == 0) {
-            erroresFormulario.nombreusuario = true;
-        }
+        erroresFormulario.nombreusuario = validarUsuario(inputForm.nombreusuario);
 
         /*  validar contraseña */
-
-        if (inputForm.contrasena == undefined || inputForm.contrasena.length == 0 || !/[@#$%^&+=]/.test(inputForm.contrasena) || !/[A-Z]/.test(inputForm.contrasena) || !/[a-z]/.test(inputForm.contrasena) || !/[0-9]/.test(inputForm.contrasena)) {
-            erroresFormulario.contrasena = true;
-        }
+        erroresFormulario.contrasena = validarContrasena(inputForm.contrasena);
 
         /*  validar telefono */
 
-        if (inputForm.telefono == undefined || inputForm.telefono.toString().length < 9 || inputForm.telefono.toString().length > 9) {
-            erroresFormulario.telefono = true;
-        }
+        erroresFormulario.telefono = validarTelefono(inputForm.telefono);
 
         return erroresFormulario
 
@@ -81,11 +71,14 @@ function SignUp() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setError(validarInputs(form));
+        Object.values(validarInputs(form)).includes(true) ? console.log("Error en formulario") : enviarFormulario();
+
     }
 
     const enviarFormulario = () => {
         console.log('formulario enviado con exito');
         console.log(form);
+        navigate("/profile1")
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -98,7 +91,7 @@ function SignUp() {
     return (
         <>
             <div className="Register">
-                <aside></aside>
+                <aside className='imagenAsideRegister'></aside>
                 <div className="login_section">
                     <div className="container">
                         <h2 className='tituloUp'>Regístrate</h2>
@@ -108,7 +101,7 @@ function SignUp() {
                                 <div className='input-label-name'>
                                     <label htmlFor="nombre">Nombre</label>
                                     <input type="text" name="nombre" id="nombre" value={form.nombre} onChange={handleChange} />
-                                    {error.nombre && <span className='error'>Campo obligatorio</span>}
+                                    {error.nombre && <span className='error'>Ingresa dos nombres</span>}
                                 </div>
                                 <div className='input-label-lastname'>
                                     <label htmlFor="apellido">Apellido</label>
@@ -117,28 +110,28 @@ function SignUp() {
                                 </div>
                             </div>
                             <div className='input-label'>
-                            <label htmlFor="correo">Correo electrónico</label>
-                            <input type="text" name="correo" id="correo" value={form.correo} onChange={handleChange} />
-                            {error.correo && <span className='error'>Debe ingresar correo valido</span>}
+                                <label htmlFor="correo">Correo electrónico</label>
+                                <input type="text" name="correo" id="correo" value={form.correo} onChange={handleChange} />
+                                {error.correo && <span className='error'>Debe ingresar correo valido</span>}
                             </div>
                             <div className='input-label'>
-                            <label htmlFor="nombreusuario">Nombre de Usuario</label>
-                            <input type="any" name="nombreusuario" id="nombreusuario" value={form.nombreusuario} onChange={handleChange} />
-                            {error.nombreusuario && <span className='error'>Debe ingresar Nombre de Usuario</span>}
+                                <label htmlFor="nombreusuario">Nombre de Usuario</label>
+                                <input type="any" name="nombreusuario" id="nombreusuario" value={form.nombreusuario} onChange={handleChange} />
+                                {error.nombreusuario && <span className='error'>Debe ingresar Nombre de Usuario</span>}
                             </div>
                             <div className='input-label'>
-                            <label htmlFor="contrasena">Contraseña</label>
-                            <input type="password" name="contrasena" id="contrasena" value={form.contrasena} onChange={handleChange} />
-                            {error.contrasena && <span className='error'> La contraseña debe ser mayor a 8 digitos, contener al menos una mayuscula, un número y un caracter especial</span>}
+                                <label htmlFor="contrasena">Contraseña</label>
+                                <input type="password" name="contrasena" id="contrasena" value={form.contrasena} onChange={handleChange} />
+                                {error.contrasena && <span className='error'> La contraseña debe ser mayor a 8 digitos, contener al menos una mayuscula, un número y un caracter especial (@#$%^&+=)</span>}
                             </div>
                             <div className='input-label'>
-                            <label htmlFor="telefono">Número de teléfono</label>
-                            <input type="number" name="telefono" id="telefono" placeholder="987654321" value={form.telefono!} onChange={handleChange} />
-                            {error.telefono && <span className='error'> El telefono debe tener 9 digitos</span>}
+                                <label htmlFor="telefono">Número de teléfono</label>
+                                <input type="number" name="telefono" id="telefono" placeholder="987654321" value={form.telefono!} onChange={handleChange} />
+                                {error.telefono && <span className='error'> El telefono debe tener 9 digitos</span>}
                             </div>
-                            <Link to="/profile1" style={{textDecoration: "none"}}>
+
                             <input type="submit" value="Crear cuenta" className="entrar-link" />
-                            </Link>
+
                         </form>
 
                         <span className='change-signIn'>

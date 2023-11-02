@@ -1,13 +1,21 @@
 import itemImg from "../assets/item.png"
 import Button from "./Button"
 import { Link } from "react-router-dom";
+import './item-param.css'
+interface PropsItem  { 
+  icons?: boolean,
+  vistahome?: boolean,
+  nombreuser:string,
+  precio:number,
+  tituloproducto:string,
+  localizacion:string
+}
 
-
-export default function Item({ icons = false, vistahome = false }: { icons?: boolean, vistahome?: boolean }) {
+export default function ItemParam({ icons = false, vistahome = false, nombreuser, precio,tituloproducto,localizacion}:PropsItem) {
   return (
-    <div className="Item">
+    <div className="ItemParam">
       <div className="img">
-      <Link to="/file-product" style={{ textDecoration: "none" }}><img src={itemImg} alt="" /></Link>
+        <img src={itemImg} alt="" />
         {icons &&
           <div className="icons">
             <Link to="/signIn" style={{ textDecoration: "none" }}>
@@ -36,19 +44,15 @@ export default function Item({ icons = false, vistahome = false }: { icons?: boo
       {vistahome && <div className="datoscard" >
         <img className="avatar" src="src/assets/avatar.png" alt="" />
         <div className="nameloc">
-          <span className="username">Nombre de Usuario</span>
-          <span className="localizacion">Localización</span>
+          <span className="username">{nombreuser}</span>
+          <span className="localizacion">{localizacion}</span>
         </div>
-        <Link to="/file-product" style={{ textDecoration: "none" }}>
-          <span className="price">PRECIO</span>
-        </Link>
+        <span className="price">{precio}</span>
       </div>}
       {!vistahome &&
-        <Link to="/file-product" style={{ textDecoration: "none" }}>
-          <span className="price">PRECIO</span>
-        </Link>
+        <span className="price">{precio}</span>
       }
-      <span className="details">Título de producto para la venta del producto en mucho </span>
+      <span className="details">{tituloproducto}</span>
     </div>
   )
 }

@@ -8,28 +8,29 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
 }
 .categoria {
     position: relative;
     display: flex;
     flex-direction:column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
     margin: 0 8px 0 0   ;
+    
 }
 .imagen-categoria {
     width: 210px;
     height: 100%;
 }
-p {
+.pcategorias {
      position:absolute; 
+     color: white;
 }
 .titulo-categorias{
     font-size: 30px;
     max-width: 1116px;
-    margin: 0px auto;
+    margin: 40px auto;
     display: flex;
     justify-content:flex-start;
 }

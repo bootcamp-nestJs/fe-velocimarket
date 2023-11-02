@@ -27,9 +27,18 @@
   
   .Home aside{
     flex-grow: 1;
-    height: 100%;
-    background-color: #d9d9d9;
+    height: 100vh;
+    border-radius:  0px 20px 20px 0px;
   }
+
+  .imagenAside{
+    background: url('../assets/img/imagenesEstaticas/login.png'), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    height:auto;
+    max-width: 100%;
+  }
+
   .Home .login_section{
     display: flex;
     width: 67.3%;

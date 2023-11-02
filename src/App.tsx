@@ -12,6 +12,7 @@ import Cart from "./pages/cart";
 import Inbox from "./pages/inbox";
 //css
 import './App.css'
+import Results from "./pages/results";
 
 
 function App() {  
@@ -27,6 +28,7 @@ function App() {
           <Route path='/file-product' element={<FileProduct />}/>
           <Route path='/cart' element={<Cart />}/>
           <Route path='/inbox' element={<Inbox />}/>
+          <Route path='/results' element={<Results />}/>
         </Routes>
     </>        
   )

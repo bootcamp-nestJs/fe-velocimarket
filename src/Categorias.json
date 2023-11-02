@@ -1,88 +1,38 @@
 {
     "category": [
         {
-            "categoria": "Ruta",
-            "imagen": "src/assets/img/categorias/frame101.png",
+            "categoria": "Carretera",
+            "imagen": "src/assets/img/categorias/Frame102.png",
             "link":"https://www.freecodecamp.org/espanol/news/como-crear-un-formulario-responsivo-con-funcionalidad-de-filtro-usando-html-css-y-javascript/"
         },
         {
-            "categoria": "Mountan bike",
-            "imagen": "src/assets/img/categorias/frame101.png",
+            "categoria": "Bicicletas de montaña",
+            "imagen": "src/assets/img/categorias/Frame116.png",
+            "link":""
+        },
+        {
+            "categoria": "Componentes",
+            "imagen": "src/assets/img/categorias/Frame120.png",
+            "link":""
+        },
+        {
+            "categoria": "Bicicletas de gravel",
+            "imagen": "src/assets/img/categorias/Frame117.png",
             "link":""
         },
         {
             "categoria": "Accesorios",
-            "imagen": "src/assets/img/categorias/frame101.png",
+            "imagen": "src/assets/img/categorias/Frame123.png",
             "link":""
         },
         {
-            "categoria": "Fixie",
-            "imagen": "src/assets/img/categorias/frame101.png",
+            "categoria": "Indumentaria",
+            "imagen": "src/assets/img/categorias/Frame121.png",
             "link":""
         },
         {
-            "categoria": "Ruedas",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Protectores",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "BMX",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Downhill",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Ruedas",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Protectores",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "BMX",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Downhill",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Downhill",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Ruedas",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Protectores",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "BMX",
-            "imagen": "src/assets/img/categorias/frame101.png",
-            "link":""
-        },
-        {
-            "categoria": "Downhill",
-            "imagen": "src/assets/img/categorias/frame101.png",
+            "categoria": "Bicicletas eléctricas",
+            "imagen": "src/assets/img/categorias/Frame122.png",
             "link":""
         }
     ]

@@ -1,12 +1,12 @@
 .banner {
     display: flex;
-    justify-content: center;
     width: 100%;
-    height: 240px;
-    flex-shrink: 0;
+    height: 586px;
     border-radius: 20px;
-    background: #C4C4C4;
     margin-top: 40px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 40px;
 }
 
 img{

@@ -154,6 +154,7 @@ img .imagen-producto {
     width: 524px;
     word-wrap: normal;
     position: unset;
+    color: #000;
 }
 
 .section-information{

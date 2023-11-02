@@ -10,10 +10,11 @@ export function Categorias() {
       <div className='contenedor-categorias'>
         <Overflowbox >
           <div className='categorias'>
-            {category.map((categoria) => (
+            {category.map((categoria,index) => (
               <Categoria
                 categoria={categoria.categoria}
                 imagen_cat={categoria.imagen}
+                key={"cat"+index}
               />
             ))}
           </div>

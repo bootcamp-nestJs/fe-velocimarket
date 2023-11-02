@@ -1,23 +1,51 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../pages/signin.css"
-
+import { signIn } from "../interfaces/create-sign-in/sign-in";
+import { useState } from "react";
 
 export default function SignIn() {
+    const navigate = useNavigate();
+    const [form, setForm] = useState({
+        nombreusuario: "",
+        contrasena: ""
+    } as signIn);
+    
+    const validarLogin = () => {
+        console.log("consultando a base de datos");
+        if( form.nombreusuario === "usuario1" && form.contrasena === "usuario1"){
+            alert("Ingresando");
+            navigate("/profile1");
+        }
+        else{
+            alert("Usuario o contraseña incorrectos")
+        }
+    }
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        validarLogin();
+    }
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value
+        });
+    }
+
     return (
         <div className="Home">
-            <aside></aside>
+            <aside className="imagenAside"></aside>
             <div className="login_section">
                 <div className="container">
                     <h2 className="tituloin">Inicio de sesión</h2>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <label htmlFor="name">Nombre de usuario</label>
-                        <input type="text" name="name" id="name" />
+                        <input type="text" name="nombreusuario" id="name" onChange={handleChange} />
                         <label htmlFor="password">Contraseña</label>
-                        <input type="text" name="password" id="password" />
-                        <Link to="/profile1" style={{ textDecoration: "none" }}>
-                            <input type="submit" value="Crear cuenta" className="entrar-link" />
-                        </Link>
+                        <input type="text" name="contrasena" id="password" onChange={handleChange}/>
+                        <input type="submit" value={'\u2713 Entrar'} className="entrar-link" />
                     </form>
 
                     <span>
