@@ -47,7 +47,7 @@
   
     margin: 16px 0;
     border-radius: 10px;
-    background: rgba(89, 89, 89, 0.60);
+    background: #4F82E8;
   }
   
    .ItemParam .details{
@@ -70,6 +70,12 @@
   display: flex;
   flex-direction: column;
   width: 90%;
+}
+
+.ItemParam .avatar{
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
 }
 .username{
   justify-self: center;

@@ -106,13 +106,13 @@ function SignUp() {
                                 <div className='input-label-lastname'>
                                     <label htmlFor="apellido">Apellido</label>
                                     <input type="text" name="apellido" id="apellido" value={form.apellido} onChange={handleChange} />
-                                    {error.apellido && <span className='error'>Campo obligatorio</span>}
+                                    {error.apellido && <span className='error'>Ingresa dos apellidos</span>}
                                 </div>
                             </div>
                             <div className='input-label'>
                                 <label htmlFor="correo">Correo electrónico</label>
                                 <input type="text" name="correo" id="correo" value={form.correo} onChange={handleChange} />
-                                {error.correo && <span className='error'>Debe ingresar correo valido</span>}
+                                {error.correo && <span className='error'>Debe ingresar correo válido</span>}
                             </div>
                             <div className='input-label'>
                                 <label htmlFor="nombreusuario">Nombre de Usuario</label>
@@ -122,12 +122,12 @@ function SignUp() {
                             <div className='input-label'>
                                 <label htmlFor="contrasena">Contraseña</label>
                                 <input type="password" name="contrasena" id="contrasena" value={form.contrasena} onChange={handleChange} />
-                                {error.contrasena && <span className='error'> La contraseña debe ser mayor a 8 digitos, contener al menos una mayuscula, un número y un caracter especial (@#$%^&+=)</span>}
+                                {error.contrasena && <span className='error'> La contraseña debe ser mayor a 8 dígitos, contener al menos una mayúscula, un número y un caracter especial (@#$%^&+=)</span>}
                             </div>
                             <div className='input-label'>
                                 <label htmlFor="telefono">Número de teléfono</label>
                                 <input type="number" name="telefono" id="telefono" placeholder="987654321" value={form.telefono!} onChange={handleChange} />
-                                {error.telefono && <span className='error'> El telefono debe tener 9 digitos</span>}
+                                {error.telefono && <span className='error'> El telefono debe tener 9 dígitos</span>}
                             </div>
 
                             <input type="submit" value="Crear cuenta" className="entrar-link" />

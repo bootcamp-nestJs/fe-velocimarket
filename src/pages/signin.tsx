@@ -5,24 +5,49 @@ import { useState } from "react";
 
 export default function SignIn() {
     const navigate = useNavigate();
+
+    const [error, setError] = useState({
+        nombreusuario: false,
+        contrasena: false,
+    });
+
     const [form, setForm] = useState({
         nombreusuario: "",
         contrasena: ""
     } as signIn);
-    
+
     const validarLogin = () => {
         console.log("consultando a base de datos");
-        if( form.nombreusuario === "usuario1" && form.contrasena === "usuario1"){
+        if (form.nombreusuario === "usuario1" && form.contrasena === "usuario1") {
             alert("Ingresando");
             navigate("/profile1");
         }
-        else{
+        else {
             alert("Usuario o contraseña incorrectos")
         }
     }
 
+    const validarInputs = (inputForm: signIn) => {
+
+        const erroresFormulario = {
+            nombreusuario: false,
+            contrasena: false,
+        }
+        if (inputForm.nombreusuario.length === 0 ){
+            erroresFormulario.nombreusuario = true;
+        }
+        if(inputForm.contrasena!.length === 0){
+            erroresFormulario.contrasena = true;
+        }
+
+        return (erroresFormulario)
+    }
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setError(validarInputs(form))
+        console.log(Object.values(validarInputs(form)).includes(true));
+
         validarLogin();
     }
 
@@ -43,9 +68,12 @@ export default function SignIn() {
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="name">Nombre de usuario</label>
                         <input type="text" name="nombreusuario" id="name" onChange={handleChange} />
+                        {error.nombreusuario && <span className='error'>Ingrese usuario</span>}
                         <label htmlFor="password">Contraseña</label>
-                        <input type="text" name="contrasena" id="password" onChange={handleChange}/>
+                        <input type="text" name="contrasena" id="password" onChange={handleChange} />
+                        {error.contrasena && <span className='error'>Ingrese contraseña</span>}
                         <input type="submit" value={'\u2713 Entrar'} className="entrar-link" />
+                        
                     </form>
 
                     <span>

@@ -2,9 +2,85 @@ import Header from "../components/header"
 /* import Button from "../components/Button" */
 import product_img from "../assets/preview.png"
 import Footer from "../components/footer"
+import { useNavigate } from "react-router-dom";
+import { createProduct } from "../interfaces/create-product/create-product";
+import { useState } from "react";
+import { validarPrecio } from "../validadores/validadores";
 
 
 export default function Publicacion() {
+
+  const navigate = useNavigate();
+
+    const [form, setForm] = useState({
+        titulo: "",
+        precio: null,
+        region: "",
+        ciudad: "",
+        descripcion: "",
+        categoria:"",
+        tamano:"",
+        estado:"",
+        marca:"",
+        material:"",
+        componentes:""
+    } as createProduct);
+
+    const [error, setError] = useState({
+      titulo: false,
+      precio: false,
+      region: false,
+      ciudad: false,
+      descripcion: false
+    });
+
+    //Al parecer no tiene un uso practico para un formulario, quizas es mejor para fecth data en la seccion de productos para actualizar las nuevas cards del feed.
+
+    // useEffect(() => {
+    //     // (Object.values(validarInputs(form)).includes(true)) ? console.log("existen errores, revise que completo correctamente todos los campos") : enviarFormulario(), [error]
+    //     Object.values(validarInputs(form)).includes(true)
+    // })
+
+    const validarInputs = (inputForm: createProduct) => {
+
+        const erroresFormulario = {
+          titulo: false,
+          precio: false,
+          region: false,
+          ciudad: false,
+          descripcion: false
+        };
+
+        erroresFormulario.titulo = (inputForm.titulo.length > 62 || inputForm.titulo.length === 0) ? true:false;
+        erroresFormulario.precio = validarPrecio(inputForm.precio);
+        erroresFormulario.region = inputForm.region.length === 0?true:false;
+        erroresFormulario.ciudad = inputForm.ciudad.length === 0?true:false;
+        erroresFormulario.descripcion = (inputForm.descripcion.length > 600 || inputForm.descripcion.length === 0) ? true:false;
+
+        return erroresFormulario
+
+    }
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        console.log(form.descripcion)
+        event.preventDefault();
+        setError(validarInputs(form));
+        Object.values(validarInputs(form)).includes(true) ? console.log("Error en formulario") : enviarFormulario();
+
+    }
+
+    const enviarFormulario = () => {
+        console.log('formulario enviado con exito');
+        console.log(form);
+        navigate("/file-product")
+    }
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value
+        });
+    }
   return (
     <div className="Publicacion">
         <Header/>
@@ -30,20 +106,30 @@ export default function Publicacion() {
                   </div>
               </div>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Escribe el título de tu producto (así es como te verán los compradores)</label>    
-                <input type="text" name="title" id="title" />    
+                <input type="text" name="titulo" id="title" onChange={handleChange} />    
+                {error.titulo && <span className='error'>Ingresa Titulo</span>}
                 <label htmlFor="details">Añade una descripción para conocer más de tu producto</label>
-                <textarea name="details" id="details" cols={30} rows={10}></textarea> 
+                <textarea name="descripcion" id="details" cols={30} rows={10} onChange={handleChange}></textarea> 
+                {error.descripcion && <span className='error'>Ingresa Descripcion</span>}
 
                 <div className="row">
                   <div className="col">
                     <label htmlFor="price">Tu precio de venta</label>                    
-                    <input type="number" name="price" id="price" />   
+                    <input type="number" name="precio" id="price" onChange={handleChange} />
+                    {error.precio && <span className='error'>Ingresa Precio</span>}
+   
                   </div>
                   <div className="col">
-                    <label htmlFor="location">Tu ubicación</label>  
-                    <input type="text" name="location" id="location" />
+                    <label htmlFor="region">Region</label>  
+                    <input type="text" name="region" id="region"  onChange={handleChange}/>
+                    {error.region && <span className='error'>Selecciona Region</span>}
+
+                    <label htmlFor="ciudad">Ciudad o Comuna</label>  
+                    <input type="text" name="ciudad" id="ciudad" onChange={handleChange}/>
+                    {error.ciudad && <span className='error'>Selecciona Ciudad</span>}
+
                   </div>
                 </div>
             
@@ -60,19 +146,19 @@ export default function Publicacion() {
             <h2 className="subtitle">Información adicional</h2>
           <form>
                 <label htmlFor="size">Tamaño/talla</label>    
-                <input type="text" name="size" id="size" />
+                <input type="text" name="tamano" id="size" onChange={handleChange} />
 
                 <label htmlFor="state">Estado</label>                      
-                <input type="text" name="state" id="state" />    
+                <input type="text" name="estado" id="state" onChange={handleChange}/>    
 
                 <label htmlFor="category">Categoría</label>                      
-                <input type="text" name="category" id="category" /> 
+                <input type="text" name="categoria" id="category" onChange={handleChange}/> 
 
                 <label htmlFor="material">Material del cuadro</label>                      
-                <input type="text" name="material" id="material" />  
+                <input type="text" name="material" id="material" onChange={handleChange}/>  
                 
                 <label htmlFor="components">Componentes</label>                      
-                <input type="text" name="components" id="components" />   
+                <input type="text" name="componentes" id="components" onChange={handleChange}/>   
             </form>
           </div>
 

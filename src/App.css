@@ -563,9 +563,9 @@ text-decoration:1px underline rgba(0, 0, 0, 0.715);
 /* footer */
 
 .Footer{
-  border-radius: 20px 20px 0px 0px;
-  padding: 20px 0 40px 0 ;
-  background: #BCBCBC;
+  border-radius: 0px;
+  padding: 46px 0 51px 0 ;
+  background: #F4F4F8;
 }
 .Footer .footer_container{
   display: flex;

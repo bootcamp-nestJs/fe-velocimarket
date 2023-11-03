@@ -8,17 +8,17 @@
         {
             "Titulo": "2. Conecta con vendedores ",
             "descripcion": "No solo compras una bicicleta, te conectas con una comunidad que comparte tu pasión.",
-            "imagen": "src/assets/img/imagenesEstaticas/informativo2.png"
+            "imagen": "src/assets/img/imagenesEstaticas/informativo1.png"
         },
         {
             "Titulo": "3. Compra con confianza",
             "descripcion": "Nuestro sistema de revisión y valoración te permite conocer la reputación del vendedor. Además, sin comisiones ocultas, pagas solo por lo que ves.",
-            "imagen": "src/assets/img/imagenesEstaticas/informativo2.png"
+            "imagen": "src/assets/img/imagenesEstaticas/informativo3.png"
         },
         {                                                                                          
             "Titulo": "4. Disfruta del camino",
             "descripcion": "Una vez que hayas hecho tu elección, prepárate para nuevas aventuras con tu bici.",
-            "imagen": "src/assets/img/imagenesEstaticas/informativo2.png"
+            "imagen": "src/assets/img/imagenesEstaticas/informativo4.png"
         }
     ]
 }

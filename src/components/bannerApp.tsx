@@ -14,15 +14,15 @@ export function BannerApp() {
                 <Button className="buttonbannerApp">
                     <img className="icon-bannerApp" src={apple} />
                     <div className='texto-bannerApp'>
-                        <p className='texto-little'>Descarga desde</p><br />
-                        <p>App store</p>
+                        <p className='texto-little'>Descarga desde</p>
+                        <p className='texto-med'>App store</p>
                     </div>
                 </Button>
                 <Button className="buttonbannerApp">
                     <img className="icon-bannerApp" src={google} />
                     <div className='texto-bannerApp'>
-                        <p className='texto-little'>Consíguela en</p><br />
-                        <p>Google Play</p>
+                        <p className='texto-little'>Consíguela en</p>
+                        <p className='texto-med'>Google Play</p>
                     </div>
                 </Button>
             </div>
