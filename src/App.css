@@ -492,7 +492,7 @@ text-decoration:1px underline rgba(0, 0, 0, 0.715);
   font-weight: 500;
   line-height: 100%;
   letter-spacing: -0.304px;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   margin-bottom: .2rem;
 }
 
@@ -510,7 +510,7 @@ text-decoration:1px underline rgba(0, 0, 0, 0.715);
   border-radius: 8px;
   border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
   padding: 1rem;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   resize: none;
   box-sizing: border-box;
 }

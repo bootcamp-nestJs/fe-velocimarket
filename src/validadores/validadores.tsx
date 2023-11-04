@@ -21,14 +21,14 @@ export function validarApellido(apellido: string | undefined): boolean {
 }
 
 export function validarContrasena(contrasena: string | undefined): boolean {
-    if (contrasena == undefined || contrasena.length === 0 || !/[@#$%^&+=]/.test(contrasena) || !/[A-Z]/.test(contrasena) || !/[a-z]/.test(contrasena) || !/[0-9]/.test(contrasena) || contrasena.length < 8) {
+    if (contrasena == undefined || contrasena.length === 0 || !/[@#$%^&+=]/.test(contrasena) || !/[A-Z]/.test(contrasena) || !/[a-z]/.test(contrasena) || !/[0-9]/.test(contrasena) || contrasena.length < 8 || contrasena.length > 12) {
         return true;
     }
     return false;
 }
 
 export function validarUsuario(nombreusuario: string | undefined): boolean {
-    if (nombreusuario == undefined || nombreusuario.length === 0 || nombreusuario.length > 14 || !/^[a-zA-Z-._]*$/.test(nombreusuario)) {
+    if (nombreusuario == undefined || nombreusuario.length === 0 || nombreusuario.length > 20 || !/^[a-zA-Z-._]*$/.test(nombreusuario)) {
         return true;
     }
     return false;

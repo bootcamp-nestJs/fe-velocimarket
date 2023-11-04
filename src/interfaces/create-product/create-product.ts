@@ -10,7 +10,7 @@ export type createProduct={
     titulo: string,
     precio: number | null,
     region: string,
-    ciudad: string,
+    comuna: string,
     descripcion: string,
     categoria:string,
     tamano:string,

@@ -101,12 +101,12 @@ function SignUp() {
                                 <div className='input-label-name'>
                                     <label htmlFor="nombre">Nombre</label>
                                     <input type="text" name="nombre" id="nombre" value={form.nombre} onChange={handleChange} />
-                                    {error.nombre && <span className='error'>Ingresa dos nombres</span>}
+                                    {error.nombre && <span className='error'>Ingresa un nombre, solo letras</span>}
                                 </div>
                                 <div className='input-label-lastname'>
                                     <label htmlFor="apellido">Apellido</label>
                                     <input type="text" name="apellido" id="apellido" value={form.apellido} onChange={handleChange} />
-                                    {error.apellido && <span className='error'>Ingresa dos apellidos</span>}
+                                    {error.apellido && <span className='error'>Ingresa un apellido, solo letras</span>}
                                 </div>
                             </div>
                             <div className='input-label'>
@@ -117,12 +117,12 @@ function SignUp() {
                             <div className='input-label'>
                                 <label htmlFor="nombreusuario">Nombre de Usuario</label>
                                 <input type="any" name="nombreusuario" id="nombreusuario" value={form.nombreusuario} onChange={handleChange} />
-                                {error.nombreusuario && <span className='error'>Debe ingresar Nombre de Usuario</span>}
+                                {error.nombreusuario && <span className='error'>Ingresar Nombre de Usuario max 20 caracteres</span>}
                             </div>
                             <div className='input-label'>
                                 <label htmlFor="contrasena">Contraseña</label>
                                 <input type="password" name="contrasena" id="contrasena" value={form.contrasena} onChange={handleChange} />
-                                {error.contrasena && <span className='error'> La contraseña debe ser mayor a 8 dígitos, contener al menos una mayúscula, un número y un caracter especial (@#$%^&+=)</span>}
+                                {error.contrasena && <span className='error'> La contraseña debe de 8 a 12 dígitos, contener al menos una mayúscula, un número y un caracter especial (@#$%^&+=)</span>}
                             </div>
                             <div className='input-label'>
                                 <label htmlFor="telefono">Número de teléfono</label>
