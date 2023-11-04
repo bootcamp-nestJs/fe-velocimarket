@@ -28,7 +28,7 @@ export function validarContrasena(contrasena: string | undefined): boolean {
 }
 
 export function validarUsuario(nombreusuario: string | undefined): boolean {
-    if (nombreusuario == undefined || nombreusuario.length === 0 || nombreusuario.length > 20 || !/^[a-zA-Z-._]*$/.test(nombreusuario)) {
+    if (nombreusuario == undefined || nombreusuario.length === 0 || nombreusuario.length > 20 || !/^[a-zA-Z-._0-9]*$/.test(nombreusuario)) {
         return true;
     }
     return false;
