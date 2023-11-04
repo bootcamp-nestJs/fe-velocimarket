@@ -8,6 +8,7 @@ import informacion from "../json/informativo.json"
 import './home.css'
 import { Informativo } from "../components/informativoHome"
 import ItemParam from "../components/Item-parm"
+import { BannerRed } from "../components/bannerRed"
 
 
 export default function Home() {
@@ -21,6 +22,8 @@ export default function Home() {
       <h1 className="titulosec">Lo más reciente</h1>
       <section className="products">
       <ItemParam nombreuser="cristobalride" precio={12313} tituloproducto="Canyon Ultimate CF SLX 9 Di2 2023" localizacion="Ñuñoa" icons={true} vistahome={true} />
+      <Item icons={true} vistahome={true} />
+      <h1 className="titulosec2">Te puede interesar</h1><ItemParam nombreuser="cristobalride" precio={12313} tituloproducto="Canyon Ultimate CF SLX 9 Di2 2023" localizacion="Ñuñoa" icons={true} vistahome={true} />
       <Item icons={true} vistahome={true} />
       {/* <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
       <Link to="/file-product" style={{ textDecoration: "none" }}><Item icons={true} vistahome={true} /></Link>
@@ -44,6 +47,7 @@ export default function Home() {
           )
         })
       }
+      <BannerRed></BannerRed>
       <Footer />
     </div>
   )

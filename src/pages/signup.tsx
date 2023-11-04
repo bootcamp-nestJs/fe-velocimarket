@@ -119,24 +119,26 @@ function SignUp() {
                                 <input type="any" name="nombreusuario" id="nombreusuario" value={form.nombreusuario} onChange={handleChange} />
                                 {error.nombreusuario && <span className='error'>Ingresar Nombre de Usuario max 20 caracteres</span>}
                             </div>
-                            <div className='input-label'>
-                                <label htmlFor="contrasena">Contraseña</label>
-                                <input type="password" name="contrasena" id="contrasena" value={form.contrasena} onChange={handleChange} />
-                                {error.contrasena && <span className='error'> La contraseña debe de 8 a 12 dígitos, contener al menos una mayúscula, un número y un caracter especial (@#$%^&+=)</span>}
-                            </div>
-                            <div className='input-label'>
-                                <label htmlFor="telefono">Número de teléfono</label>
-                                <input type="number" name="telefono" id="telefono" placeholder="987654321" value={form.telefono!} onChange={handleChange} />
-                                {error.telefono && <span className='error'> El telefono debe tener 9 dígitos</span>}
+                            <div className='conteiner-contrasena-telefono'>
+                                <div className='input-label-contrasena'>
+                                    <label htmlFor="contrasena">Contraseña</label>
+                                    <input type="password" name="contrasena" id="contrasena" value={form.contrasena} onChange={handleChange} />
+                                    {error.contrasena && <span className='error'> contraseña miníma de 8 a 12 dígitos, contener al menos una mayúscula, un número y un caracter especial (@#$%^&+=)</span>}
+                                </div>
+                                <div className='input-label-telefono'>
+                                    <label htmlFor="telefono">Número de teléfono</label>
+                                    <input type="number" name="telefono" id="telefono" placeholder="987654321" value={form.telefono!} onChange={handleChange} />
+                                    {error.telefono && <span className='error'> El telefono debe tener 9 dígitos</span>}
+                                </div>
                             </div>
 
                             <input type="submit" value="Crear cuenta" className="entrar-link" />
 
                         </form>
 
-                        <span className='change-signIn'>
+                        <p className='Text-up'>
                             ¿Ya tienes cuenta? <Link to="/signIn" style={{ textDecoration: "none" }}>haz click acá</Link>
-                        </span>
+                        </p>
 
                         <div className="separator">
                             <hr />

@@ -1,0 +1,49 @@
+.contenedor-bannerRed {
+    display: flex;
+    width: 1440px;
+    height: 122px;
+    padding: 0px 71px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #FF4858;
+    margin-bottom: 100px;
+}
+
+.Informacion-principalRed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-bannerRed {
+    color: var(--comp-white-comp-white-100, #FCFCFD);
+    font-family: DM Sans;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+
+.buttonbannerRed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-bannerRed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-little-red {
+    color: var(--secundiario-azul-secundiario-azul-500, #002C66);
+    font-family: DM Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 0px;
+}

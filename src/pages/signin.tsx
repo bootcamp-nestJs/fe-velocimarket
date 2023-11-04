@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import "../pages/signin.css"
+import "./signin.css"
 import { signIn } from "../interfaces/create-sign-in/sign-in";
 import { useState } from "react";
 
@@ -59,7 +59,7 @@ export default function SignIn() {
     }
 
     return (
-        <div className="Home">
+        <div className="signIn">
             <aside className="imagenAside"></aside>
             <div className="login_section">
                 <div className="container">
@@ -76,9 +76,9 @@ export default function SignIn() {
                         
                     </form>
 
-                    <span>
+                    <p className="Text-In">
                         ¿No tienes cuenta? <Link to="/signUp" style={{ textDecoration: "none" }}>regístrate acá</Link>
-                    </span>
+                    </p>
 
                     <div className="separator">
                         <hr />
