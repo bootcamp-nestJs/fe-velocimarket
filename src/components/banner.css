@@ -1,14 +1,18 @@
 .banner {
     display: flex;
-    width: 100%;
+    flex-grow: 1;
     height: 586px;
-    border-radius: 20px;
     margin-top: 40px;
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 40px;
 }
 
-img{
-    width:100%;
+.portada{
+    background: url(/src/assets/img/bannerimg.png), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    max-width: 100%;
+    border-radius: 20px;
 }
