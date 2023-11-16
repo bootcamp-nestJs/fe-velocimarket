@@ -2,16 +2,21 @@ import Button from "./Button"
 import iconplus from "../assets/Añadir.svg"
 import perfil from "../assets/Perfil-button.svg"
 import plus from "../assets/plus-circle-bold.svg"
-import { Link } from "react-router-dom";
+import { Link, /* useLocation */ } from "react-router-dom";
 import '../components/header-register.css'
 import Buscador from "./buscador";
+/* import Breadcrumbs from "./breadcrumbs"; */
 
 export default function HeaderRegister() {
 
+  /* const location = useLocation();
+  const showBreadcrumbs = location.pathname !== '/home'; */
+
   return (
+    <>
     <header>
       <div className="logo">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <span>Velomarket</span>
         </Link>
       </div>
@@ -45,7 +50,8 @@ export default function HeaderRegister() {
           </svg>
         </Button>
       </div>
-
     </header>
+    {/* {showBreadcrumbs && <Breadcrumbs />} */}
+   </>
   )
 }

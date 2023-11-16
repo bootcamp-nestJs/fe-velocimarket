@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import "./bannerRed.css"
 
@@ -8,12 +9,15 @@ export function BannerRed() {
                 <p className='texto-bannerRed'>Velomarket: Compra. Vende. Pedalea en comunidad.</p>
             </div>
             <div className='botonesBannerRed'>
-                <Button>
-                    <div className='texto-bannerRed'>
-                        <p className='texto-little-red'>Únete acá!</p>
-                    </div>
-                </Button>
+                <Link to="/signIn" style={{ textDecoration: "none" }}>
+                    <Button>
+                        <div className='texto-bannerRed'>
+                            <p className='texto-little-red'>Únete acá!</p>
+                        </div>
+                    </Button>
+                </Link>
             </div>
         </div>
     )
 }
+

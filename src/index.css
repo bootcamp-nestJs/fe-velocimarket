@@ -47,7 +47,8 @@ input[type="submit"]{
   background-color: #e9e9e9;
 }
 .button_component.blue{
-  background-color: #002c66;
+  border: 1px solid #578FFF;
+  background-color: #578FFF;
   color: #FFF;
 }
 .button_component.transparent{

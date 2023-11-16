@@ -12,7 +12,7 @@ export default function Cart() {
             <Header />
             <div className="cont-cart">
                 <div className="title-cart">
-                    <h2>Resumen de tu compra</h2>
+                    Resumen de tu compra
                 </div>    
                 <ProfileCard name="Nombre de usuario propio" location="Locación" rate={0} />
                 <div className="container-product-cart">
@@ -31,7 +31,7 @@ export default function Cart() {
                             <div className="checkout-item">
                                 <div className="label">Producto:</div>
                                 <div className="label">Envío:</div>
-                                <div className="label">Producto:</div>
+                                <div className="label">Total:</div>
                             </div>
                             <div className="checkout-result">
                                 <div className="text">Valor del producto</div> {/* realizar js */}
@@ -41,7 +41,7 @@ export default function Cart() {
                         </div>
                         <button className="blue-button-cart">
                             <img className="icon-cart" src={confirm}></img>{/* realizar js */}
-                            Proceder al checkout
+                            Comprar
                         </button>
                     </div>
                 </div>

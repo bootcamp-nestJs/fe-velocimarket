@@ -1,5 +1,4 @@
 import Header from "../components/header"
-import Item from "../components/Item"
 import Footer from "../components/footer"
 import product_img from "../assets/preview.png"
 import ProfileCard from "../components/Profilefile"
@@ -8,9 +7,36 @@ import heart from "../assets/heart.svg"
 import car from "../assets/car-market-white.svg"
 import './home.css'
 import './file-product.css'
+import { BannerApp } from "../components/bannerApp"
+import { useEffect, useState } from "react"
+import { testProduct } from "../interfaces/testproduct"
+import ItemParam from "../components/Item-parm"
+import { Link } from "react-router-dom"
 
+
+const shuffleArray = (array: any[]) => {
+    return array.sort(() => Math.random() - 0.5);
+};
 
 export default function FileProduct() {
+
+    const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
+    const shuffledtestProducts = shuffleArray(listaProductos).slice(0, 3);
+
+    useEffect(() => {
+        fetch(`https://api2-velo.lemichi.cl/api/products`, {
+            method: 'GET',
+        }).then(response => {
+            return response.json() as Promise<testProduct[]>;
+        }).then(json => {
+            console.log(json);
+            setlistaProductos(json)
+        }).catch(error => {
+            console.error(error);
+        });
+    }, []);
+
+
     return (
         <>
             <Header />
@@ -53,15 +79,20 @@ export default function FileProduct() {
                         <h3 className="information-value">VALOR DEL PRODUCTO</h3>
                         <ProfileCard name="Nombre de usuario propio" location="Locación" rate={4} />
                         <div className="buttons-file">
-                            <button className="blue-button">
-                                <img className="icon-car" src={car}></img>
-                                Añadir al carrito
-                            </button>
-                            <div className="second-buttons-file">
-                                <button className="trs-button">
-                                    <img className="icon-fileProduct" src={paperplane}></img>
-                                    Contactar
+                            <Link to="/Cart" style={{ textDecoration: "none" }}>
+                                <button className="blue-button">
+                                    <img className="icon-car" src={car}></img>
+                                    Añadir al carrito
                                 </button>
+                            </Link>
+
+                            <div className="second-buttons-file">
+                                <Link to="/inbox" style={{ textDecoration: "none" }}>
+                                    <button className="trs-button">
+                                        <img className="icon-fileProduct" src={paperplane}></img>
+                                        Contactar
+                                    </button>
+                                </Link>
                                 <button className="trs-button">
                                     <img className="icon-fileProduct" src={heart}></img>
                                     Añadir a favoritos
@@ -75,42 +106,65 @@ export default function FileProduct() {
                     <div className="description">
                         <h3 className="title-description">Descripción del producto</h3>
                         <div className="description-paragraph">
-                            <p className="text-description">Lorem ipsum dolor sit amet consectetur. Integer ornare sed imperdiet ullamcorper vel interdum quam lectus. Netus ut aenean aliquet posuere a eu. Sed netus aliquam viverra morbi viverra imperdiet augue. Pellentesque imperdiet tortor fusce dolor molestie aenean at libero. Vitae sit non diam eu. Diam facilisi.</p>
+                            <p className="text-description-file">Lorem ipsum dolor sit amet consectetur. Integer ornare sed imperdiet ullamcorper vel interdum quam lectus. Netus ut aenean aliquet posuere a eu. Sed netus aliquam viverra morbi viverra imperdiet augue. Pellentesque imperdiet tortor fusce dolor molestie aenean at libero. Vitae sit non diam eu. Diam facilisi.</p>
                         </div>
                     </div>
-                    <div className="additional-Information">
+                    <div className="additional-Information-file">
                         <h3>Información adicional</h3>
-                        <div className="section-information">
-                            <span>Tamaño/Talla</span>
-                            <span>{/* {valorvariable} */}----------------</span>
-                        </div>
-                        <div className="section-information">
-                            <span>Estado</span>
-                            <span>{/* {valorvariable} */}----------------</span>
-                        </div>
-                        <div className="section-information">
-                            <span>Categoría</span>
-                            <span>{/* {valorvariable} */}----------------</span>
-                        </div>
-                        <div className="section-information">
-                            <span>Material del cuadro</span>
-                            <span>{/* {valorvariable} */}----------------</span>
-                        </div>
-                        <div className="section-information">
-                            <span>Componentes</span>
-                            <span>{/* {valorvariable} */}----------------</span>
+                        <div className="sections-files">
+                            <div>
+                                <div className="section-information">
+                                    <span>Marca</span>
+                                    <span>{/* {valorvariable} */}----------------</span>
+                                </div>
+                                <div className="section-information">
+                                    <span>Tamaño/Talla</span>
+                                    <span>{/* {valorvariable} */}----------------</span>
+                                </div>
+                                <div className="section-information">
+                                    <span>Estado</span>
+                                    <span>{/* {valorvariable} */}----------------</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="section-information">
+                                    <span>Categoría</span>
+                                    <span>{/* {valorvariable} */}----------------</span>
+                                </div>
+                                <div className="section-information">
+                                    <span>Material del cuadro</span>
+                                    <span>{/* {valorvariable} */}----------------</span>
+                                </div>
+                                <div className="section-information">
+                                    <span>Componentes</span>
+                                    <span>{/* {valorvariable} */}----------------</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <h1 className="titulosec2">Te puede interesar</h1>
                 <section className="products">
-                    <Item icons={true} vistahome={true} />
-                    <Item icons={true} vistahome={true} />
-                    <Item icons={true} vistahome={true} />
+                    {shuffledtestProducts.map((producto, index) => (
+                        <Link to="/signIn" style={{ textDecoration: "none" }}>
+                            <ItemParam
+                                icons={true}
+                                vistahome={true}
+                                nombreuser={"usuario" + index}
+                                precio={producto.precio}
+                                nombreproduct={producto.nombre}
+                                localizacion={"localización" + index}
+                                key={`producto-interes-${index}`}
+                            ></ItemParam>
+                        </Link>
+                    ))}
+
                 </section>
+
+                <BannerApp></BannerApp>
                 <Footer />
-            </div>
+            </div >
         </>
     )
 }

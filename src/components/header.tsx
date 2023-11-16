@@ -1,15 +1,20 @@
 import Button from "./Button"
 import '../components/header.css'
-import { Link } from "react-router-dom";
+import { Link, /* useLocation  */} from "react-router-dom";
 import Buscador from "./buscador";
+/* import Breadcrumbs from "./breadcrumbs"; */
 
 
 export default function Header() {
 
+  /* const location = useLocation();
+  const showBreadcrumbs = location.pathname !== '/home'; */
+
   return (
+    <>
     <header>
       <div className="logo">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link to="/home" style={{textDecoration:"none"}}>
           <span>Velomarket</span>
         </Link>
       </div>
@@ -63,5 +68,7 @@ export default function Header() {
       </div>
 
     </header>
+    {/* {showBreadcrumbs && <Breadcrumbs />} */}
+    </>
   )
 }

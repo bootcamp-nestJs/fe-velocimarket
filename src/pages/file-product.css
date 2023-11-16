@@ -63,7 +63,7 @@ img .imagen-producto {
 
 .blue-button {
     border-radius: 10px;
-    width: inherit;
+    width: 100%;
     border: 1px solid #DEDEE2;
     background: #578FFF;
     display: flex;
@@ -133,11 +133,10 @@ img .imagen-producto {
 .description {
     display: flex;
     height: 100%;
-    width: 1116px;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    padding: 10px 80px;
+    padding: 10px 10px;
     margin: 0px 16vw;
 }
 
@@ -150,8 +149,8 @@ img .imagen-producto {
     line-height: 21.24px;
 }
 
-.text-description {
-    width: 524px;
+.text-description-file{
+    width: 100%;
     word-wrap: normal;
     position: unset;
     color: #000;
@@ -166,13 +165,19 @@ img .imagen-producto {
 .description-paragraph{
     width: auto;
 }
-.additional-Information{
+.additional-Information-file{
+    gap: 12px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 80px;
-    margin: 0px 16.5%;
+    padding: 10px 10px;
+    margin: 0px 16vw;
 }
+
+.sections-files{
+    display: flex;
+}
+
 .section-information span{
     width: 228px;
     height: 22px;

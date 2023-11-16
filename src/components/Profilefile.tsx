@@ -26,7 +26,7 @@ export default function ProfileCard({ name, location, rate = 5 }: ProfileCardPro
   };
   
   return (
-    <div className="FileCard mycart">
+    <div className="FileCardmycart">
         <div className="FileCard_header">
             <img className="avatar" src={avatar} alt="" />
             <div className="details">

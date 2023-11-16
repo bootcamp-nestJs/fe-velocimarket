@@ -1,0 +1,46 @@
+{
+    "message": [
+        {
+            "mensaje": "Hola, quisiera saber el precio de la bicicleta",
+            "descripcion": "Bicicleta de ruta Giant Defy Advanced ",
+            "idUsuario": "1",
+            "idProducto": "1b",
+            "avatar": "src/assets/img/avatar1.png",
+            "userName": "Juna_23",
+            "location": "santiago"
+            
+        },
+        {
+            "mensaje": "Hola, quisiera saber el precio de la bicicleta",
+            "descripcion": "Bicicleta de ruta Giant Defy Advanced ",
+            "idUsuario": "1",
+            "idProducto": "1b",
+            "avatar": "src/assets/img/avatar1.png",
+            "userName": "Juna_23",
+            "location": "santiago"
+            
+        },
+        {
+            "mensaje": "Hola, quisiera saber el precio de la bicicleta",
+            "descripcion": "Bicicleta de ruta Giant Defy Advanced ",
+            "idUsuario": "1",
+            "idProducto": "1b",
+            "avatar": "src/assets/img/avatar1.png",
+            "userName": "Juna_23",
+            "location": "santiago"
+            
+        },
+        {
+            "mensaje": "Hola, quisiera saber el precio de la bicicleta",
+            "descripcion": "Bicicleta de ruta Giant Defy Advanced ",
+            "idUsuario": "1",
+            "idProducto": "1b",
+            "avatar": "src/assets/img/avatar1.png",
+            "userName": "Juna_23",
+            "location": "santiago"
+            
+        }
+
+    ]
+
+}

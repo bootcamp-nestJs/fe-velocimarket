@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { signUp } from '../interfaces/create-sign-up/sign-up'
 import { Link, useNavigate } from "react-router-dom";
 import { validarApellido, validarContrasena, validarEmail, validarNombre, validarTelefono, validarUsuario } from '../validadores/validadores';
+import { user_response } from '../interfaces/testuser';
 
 function SignUp() {
-
+ 
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -76,9 +77,42 @@ function SignUp() {
     }
 
     const enviarFormulario = () => {
+        const usuario = {
+            "nombre": form.nombre,
+            "apellido": form.apellido,
+            "mail": form.correo,
+            "user": form.nombreusuario,
+            "password": form.contrasena,
+            "telefono": form.telefono,
+            "calle": "san juan de PEPITO",
+            "número": 742,
+            "comuna": "san juan de PEPITO",
+            "region": "san juan de PEPITO"
+        }
+        console.log(usuario)
+        fetch(`https://api2-velo.lemichi.cl/api/users/signup`, {
+            method: 'POST',
+            body: JSON.stringify(usuario),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (response.status==201) {
+                return response.json() as Promise<user_response>;
+            } else {
+                console.log(response.json())
+                throw new Error('algo salio mal al crear el usuario en el backend');
+            }
+        }).then(json => {
+            console.log(json);
+        }).catch(error => {
+            console.error(error);
+        });
+        
         console.log('formulario enviado con exito');
         console.log(form);
-        navigate("/profile1")
+
+         navigate("/signIn")
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -87,6 +121,8 @@ function SignUp() {
             [event.target.name]: event.target.value
         });
     }
+
+
 
     return (
         <>

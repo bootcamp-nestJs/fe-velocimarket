@@ -7,11 +7,11 @@ interface PropsItem  {
   vistahome?: boolean,
   nombreuser:string,
   precio:number,
-  tituloproducto:string,
+  nombreproduct:string,
   localizacion:string
 }
 
-export default function ItemParam({ icons = false, vistahome = false, nombreuser, precio,tituloproducto,localizacion}:PropsItem) {
+export default function ItemParam({ icons = false, vistahome = false, nombreuser, precio,nombreproduct,localizacion}:PropsItem) {
   return (
     <div className="ItemParam">
       <div className="img">
@@ -52,7 +52,7 @@ export default function ItemParam({ icons = false, vistahome = false, nombreuser
       {!vistahome &&
         <span className="price">{precio}</span>
       }
-      <span className="details">{tituloproducto}</span>
+      <span className="nombre">{nombreproduct}</span>
     </div>
   )
 }

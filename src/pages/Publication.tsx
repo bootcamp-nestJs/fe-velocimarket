@@ -1,14 +1,38 @@
 import Header from "../components/header"
 /* import Button from "../components/Button" */
-import product_img from "../assets/preview.png"
+/* import product_img from "../assets/preview.png" */
 import Footer from "../components/footer"
 import { useNavigate } from "react-router-dom";
 import { createProduct } from "../interfaces/create-product/create-product";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { validarPrecio } from "../validadores/validadores";
 import "./publication.css"
+import { BannerApp } from "../components/bannerApp";
+import ImageUploader from "../components/ImageUploader";
+import { testProduct } from "../interfaces/testproduct";
+import ItemParam from "../components/Item-parm";
+
+const shuffleArray = (array: any[]) => {
+  return array.sort(() => Math.random() - 0.5);
+};
 
 export default function Publicacion() {
+
+  const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
+  const shuffledtestProducts = shuffleArray(listaProductos).slice(0, 3);
+
+  useEffect(() => {
+    fetch(`https://api2-velo.lemichi.cl/api/products`, {
+      method: 'GET',
+    }).then(response => {
+      return response.json() as Promise<testProduct[]>;
+    }).then(json => {
+      console.log(json);
+      setlistaProductos(json)
+    }).catch(error => {
+      console.error(error);
+    });
+  }, []);
 
   const navigate = useNavigate();
 
@@ -79,6 +103,12 @@ export default function Publicacion() {
 
   }
 
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
+
+  const handleImageChange = (images: File[]) => {
+    setSelectedImages(images);
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     console.log(form.descripcion)
     event.preventDefault();
@@ -90,6 +120,7 @@ export default function Publicacion() {
   const enviarFormulario = () => {
     console.log('formulario enviado con exito');
     console.log(form);
+    console.log('Imagen seleccionada:', selectedImages);
     navigate("/file-product")
   }
 
@@ -100,28 +131,14 @@ export default function Publicacion() {
     });
   }
   return (
-    <div className="Publicacion">
+    <div className="crear-publicaction">
       <Header />
       <section className="product">
         <h1 className="title">Ingresa los detalles y el precio de tu producto</h1>
         <div className="product_content">
           <div className="product_peview">
             <div className="product_img">
-              <img src={product_img} alt="Producto" />
-            </div>
-            <div className="product_variants">
-              <div className="product_variant_img">
-                <img className="imagen-producto" src={product_img} alt="Producto" />
-              </div>
-              <div className="product_variant_img">
-                <img className="imagen-producto" src={product_img} alt="Producto" />
-              </div>
-              <div className="product_variant_img">
-                <img className="imagen-producto" src={product_img} alt="Producto" />
-              </div>
-              <div className="product_variant_img">
-                <img className="imagen-producto" src={product_img} alt="Producto" />
-              </div>
+              <ImageUploader setImages={handleImageChange} />
             </div>
           </div>
           <form onSubmit={handleSubmit}>
@@ -165,41 +182,78 @@ export default function Publicacion() {
           <h2 className="subtitle">Información adicional</h2>
           <form>
             <div className="content_Content_ad">
-            <div className="informacionAdicional">
+              <div className="informacionAdicional">
+              <div className="select-input">
               <label htmlFor="category">Categoría</label>
-              <input type="text" name="categoria" id="category" onChange={handleChange} />
-              {error.categoria && <span className='error'>selecciona categoría</span>}
+              <select className="selectInput" name="categoria" id="category" onChange={handleChange}>
+                <option value="">Selecciona Categoría</option>
+                <option value="Carretera">Carretera</option>
+                <option value="Montaña">Montaña</option>
+                <option value="Gravel">Gravel</option>
+                <option value="Urbana">Urbana</option>
+                <option value="Eléctrica">Eléctrica</option>
+                <option value="Plegable">Plegable</option>
+              </select>
+              {error.categoria && <span className='error'>Selecciona categoría</span>}
+            </div>
 
+            <div className="select-input">
               <label htmlFor="size">Tamaño/talla</label>
-              <input type="text" name="tamano" id="size" onChange={handleChange} />
-              {error.tamano && <span className='error'>selecciona tamaño</span>}
+              <select className="selectInput" name="tamano" id="size" onChange={handleChange}>
+                <option value="">Selecciona Tamaño</option>
+                <option value="XXS">XXS</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+              {error.tamano && <span className='error'>Selecciona tamaño</span>}
+            </div>
 
+            <div className="select-input">
               <label htmlFor="state">Estado</label>
-              <input type="text" name="estado" id="state" onChange={handleChange} />
-              {error.estado && <span className='error'>selecciona estado</span>}
+              <select className="selectInput" name="estado" id="state" onChange={handleChange}>
+                <option value="">Selecciona Estado</option>
+                <option value="Nuevo">Nuevo</option>
+                <option value="Semi nuevo">Semi nuevo</option>
+                <option value="Usado">Usado</option>
+              </select>
+              {error.estado && <span className='error'>Selecciona estado</span>}
+              </div>
             </div>
+              <div className="informacionAdicional">
+                <label htmlFor="marca">Marca</label>
+                <input type="text" name="marca" id="marca" onChange={handleChange} />
+                {error.marca && <span className='error'>Ingresa una marca max.15 caracteres</span>}
 
+                <label htmlFor="material">Material del cuadro</label>
+                <input type="text" name="material" id="material" onChange={handleChange} />
+                {error.material && <span className='error'>Ingresa material</span>}
 
-            <div className="informacionAdicional">
-              <label htmlFor="marca">Marca</label>
-              <input type="text" name="marca" id="marca" onChange={handleChange} />
-              {error.marca && <span className='error'>Ingresa una marca max.15 caracteres</span>}
-
-              <label htmlFor="material">Material del cuadro</label>
-              <input type="text" name="material" id="material" onChange={handleChange} />
-              {error.material && <span className='error'>Ingresa material</span>}
-
-              <label htmlFor="components">Componentes</label>
-              <input type="text" name="componentes" id="components" onChange={handleChange} />
-              {error.componentes && <span className='error'>describe componentes max. 200 carácteres</span>}
+                <label htmlFor="components">Componentes</label>
+                <input type="text" name="componentes" id="components" onChange={handleChange} />
+                {error.componentes && <span className='error'>describe componentes max. 200 carácteres</span>}
+              </div>
             </div>
-            </div>
-
           </form>
         </div>
-
       </section>
-
+      <h1 className="titulosec2">Te puede interesar</h1>
+      <section className="products-publication">
+        {shuffledtestProducts.map((producto, index) => (
+          <ItemParam
+            icons={true}
+            vistahome={true}
+            nombreuser={"usuario" + index}
+            precio={producto.precio}
+            nombreproduct={producto.nombre}
+            localizacion={"localización" + index}
+            key={`producto-interes-${index}`}
+          ></ItemParam>))}
+      </section>
+      <BannerApp></BannerApp>
       <Footer />
     </div>
   )

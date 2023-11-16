@@ -1,7 +1,14 @@
 .title-cart{
+    width: 1089px;
     margin-top: 40px;
-    align-self: self-start;
-    margin-left: 14.7%;
+    text-align: left;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 
 }
 
@@ -89,7 +96,7 @@ img.avatar {
 .checkout-list {
     width: fit-content;
     display: flex;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 35px 10px;
 }
 
 .checkout-item {

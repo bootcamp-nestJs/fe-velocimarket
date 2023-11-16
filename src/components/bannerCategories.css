@@ -1,0 +1,31 @@
+.container-banner-cat {
+    background: url(/src/assets/img/bannercat.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 100%;
+    display: flex;
+    height: 279px;
+    margin-top: 40px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 40px;
+}
+
+.text-banner-cat{
+    width: 666px;
+    color: var(--comp-white-comp-white-500, #F4F4F8);
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.40);
+    font-family: DM Sans;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 15%;
+    margin-bottom: 0px;
+}
+
+
+
+    

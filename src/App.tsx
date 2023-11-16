@@ -12,14 +12,15 @@ import Cart from "./pages/cart";
 import Inbox from "./pages/inbox";
 //css
 import './App.css'
-import Results from "./pages/results";
+import Results from "./pages/results-search";
+import ResultsCategories from "./pages/results-categories";
 
 
 function App() {  
   return (
     <>
         <Routes>
-          <Route path='/' element={<Home />}/>
+          <Route path='/home' element={<Home />}/>
           <Route path= '/signUp' element = {<SignUp/>} />
           <Route path= '/signIn' element = {<SignIn/>} />
           <Route path='/profile1' element={<Profile1 />}/>
@@ -29,6 +30,7 @@ function App() {
           <Route path='/cart' element={<Cart />}/>
           <Route path='/inbox' element={<Inbox />}/>
           <Route path='/results' element={<Results />}/>
+          <Route path='/results-categories' element={<ResultsCategories />}/>
         </Routes>
     </>        
   )

@@ -7,6 +7,11 @@
     flex-shrink: 0;
   }
 
+  .FileCardmycart{
+    width: fit-content;
+
+  }
+
   .FileCard_header{
     width: 100%;  
     height: 150px;
