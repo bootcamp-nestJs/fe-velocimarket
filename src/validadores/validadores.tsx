@@ -41,8 +41,8 @@ export function validarTelefono(telefono: number | undefined | null): boolean {
     }
     return false;
 }
-export function validarPrecio(precio: number | undefined | null): boolean {
-    if (precio == undefined || precio.toString().length === 0 || /[,.]/.test(precio.toString())) {
+export function validarPrecio(precio: string| undefined): boolean {
+    if (precio == undefined || precio.length === 0 || /[,.]/.test(precio))  {
         return true;
     }
     return false;

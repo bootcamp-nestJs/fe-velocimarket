@@ -14,6 +14,7 @@ import Inbox from "./pages/inbox";
 import './App.css'
 import Results from "./pages/results-search";
 import ResultsCategories from "./pages/results-categories";
+import Calification from "./pages/calification";
 
 
 function App() {  
@@ -31,6 +32,7 @@ function App() {
           <Route path='/inbox' element={<Inbox />}/>
           <Route path='/results' element={<Results />}/>
           <Route path='/results-categories' element={<ResultsCategories />}/>
+          <Route path='/calification' element={<Calification />}/>
         </Routes>
     </>        
   )

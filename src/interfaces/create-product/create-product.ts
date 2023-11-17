@@ -8,7 +8,7 @@
 // }
 export type createProduct={
     titulo: string,
-    precio: number | null,
+    precio: string,
     region: string,
     comuna: string,
     descripcion: string,

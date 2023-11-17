@@ -9,8 +9,9 @@ import { validarPrecio } from "../validadores/validadores";
 import "./publication.css"
 import { BannerApp } from "../components/bannerApp";
 import ImageUploader from "../components/ImageUploader";
-import { testProduct } from "../interfaces/testproduct";
+import { product_response, testProduct } from "../interfaces/testproduct";
 import ItemParam from "../components/Item-parm";
+import { } from "../interfaces/testproduct";
 
 const shuffleArray = (array: any[]) => {
   return array.sort(() => Math.random() - 0.5);
@@ -27,7 +28,7 @@ export default function Publicacion() {
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
     }).then(json => {
-      console.log(json);
+      // console.log(json);
       setlistaProductos(json)
     }).catch(error => {
       console.error(error);
@@ -38,7 +39,7 @@ export default function Publicacion() {
 
   const [form, setForm] = useState({
     titulo: "",
-    precio: null,
+    precio: "0",
     region: "",
     comuna: "",
     descripcion: "",
@@ -110,7 +111,7 @@ export default function Publicacion() {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(form.descripcion)
+    // console.log(form.descripcion)
     event.preventDefault();
     setError(validarInputs(form));
     Object.values(validarInputs(form)).includes(true) ? console.log("Error en formulario") : enviarFormulario();
@@ -118,6 +119,40 @@ export default function Publicacion() {
   }
 
   const enviarFormulario = () => {
+    const producto = {
+      "nombre": form.titulo,
+      "categoria": parseInt(form.categoria),
+      "descripcion": form.descripcion,
+      "marca": form.marca,
+      "avatar": "aqui va un avatar",
+      "precio": parseInt(form.precio),
+      "tamanio": form.tamano,
+      "estado": form.estado,
+      "material_cuadro": form.estado,
+      "componentes": form.componentes,
+      "valoracion": 2
+    }
+    
+    console.log(typeof(producto.precio))
+    fetch(`https://api2-velo.lemichi.cl/api/products`, {
+      method: 'POST',
+      body: JSON.stringify(producto),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+      if (response.status == 201) {
+        return response.json() as Promise<product_response>;
+      } else {
+        console.log(response.json())
+        throw new Error('algo salio mal al crear el usuario en el backend');
+      }
+    }).then(json => {
+      console.log(json);
+    }).catch(error => {
+      console.error(error);
+    });
+
     console.log('formulario enviado con exito');
     console.log(form);
     console.log('Imagen seleccionada:', selectedImages);
@@ -183,46 +218,46 @@ export default function Publicacion() {
           <form>
             <div className="content_Content_ad">
               <div className="informacionAdicional">
-              <div className="select-input">
-              <label htmlFor="category">Categoría</label>
-              <select className="selectInput" name="categoria" id="category" onChange={handleChange}>
-                <option value="">Selecciona Categoría</option>
-                <option value="Carretera">Carretera</option>
-                <option value="Montaña">Montaña</option>
-                <option value="Gravel">Gravel</option>
-                <option value="Urbana">Urbana</option>
-                <option value="Eléctrica">Eléctrica</option>
-                <option value="Plegable">Plegable</option>
-              </select>
-              {error.categoria && <span className='error'>Selecciona categoría</span>}
-            </div>
+                <div className="select-input">
+                  <label htmlFor="category">Categoría</label>
+                  <select className="selectInput" name="categoria" id="category" onChange={handleChange}>
+                    <option value="">Selecciona Categoría</option>
+                    <option value={1} >Carretera</option>
+                    <option value={2}>Montaña</option>
+                    <option value={3}>Gravel</option>
+                    <option value="Urbana">Urbana</option>
+                    <option value="Eléctrica">Eléctrica</option>
+                    <option value="Plegable">Plegable</option>
+                  </select>
+                  {error.categoria && <span className='error'>Selecciona categoría</span>}
+                </div>
 
-            <div className="select-input">
-              <label htmlFor="size">Tamaño/talla</label>
-              <select className="selectInput" name="tamano" id="size" onChange={handleChange}>
-                <option value="">Selecciona Tamaño</option>
-                <option value="XXS">XXS</option>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-              </select>
-              {error.tamano && <span className='error'>Selecciona tamaño</span>}
-            </div>
+                <div className="select-input">
+                  <label htmlFor="size">Tamaño/talla</label>
+                  <select className="selectInput" name="tamano" id="size" onChange={handleChange}>
+                    <option value="">Selecciona Tamaño</option>
+                    <option value="XXS">XXS</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                  </select>
+                  {error.tamano && <span className='error'>Selecciona tamaño</span>}
+                </div>
 
-            <div className="select-input">
-              <label htmlFor="state">Estado</label>
-              <select className="selectInput" name="estado" id="state" onChange={handleChange}>
-                <option value="">Selecciona Estado</option>
-                <option value="Nuevo">Nuevo</option>
-                <option value="Semi nuevo">Semi nuevo</option>
-                <option value="Usado">Usado</option>
-              </select>
-              {error.estado && <span className='error'>Selecciona estado</span>}
+                <div className="select-input">
+                  <label htmlFor="state">Estado</label>
+                  <select className="selectInput" name="estado" id="state" onChange={handleChange}>
+                    <option value="">Selecciona Estado</option>
+                    <option value="Nuevo">Nuevo</option>
+                    <option value="Semi nuevo">Semi nuevo</option>
+                    <option value="Usado">Usado</option>
+                  </select>
+                  {error.estado && <span className='error'>Selecciona estado</span>}
+                </div>
               </div>
-            </div>
               <div className="informacionAdicional">
                 <label htmlFor="marca">Marca</label>
                 <input type="text" name="marca" id="marca" onChange={handleChange} />

@@ -23,3 +23,17 @@ export type img = {
     fecha_creacion: string,
     fecha_modificacion: string
 }
+
+export type product_response = {
+        nombre: string,
+        categoria: string,
+        descripcion : string,
+        marca: string,
+        avatar: string,
+        precio: number,
+        tamanio: string,
+        estado: string,
+        material_cuadro: string,
+        componentes: string,
+        valoracion: number
+}
