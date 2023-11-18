@@ -2,6 +2,9 @@ import { checkout } from "../interfaces/testcheckout";
 import { user_response } from "../interfaces/testuser";
 import { validarApellido, validarEmail, validarNombre, validarTelefono } from "../validadores/validadores";
 
+
+//CODIGO EN PENDIENTE SE BEDE REVISAR 
+
 function checkout() {
 
     const validarInputs = (inputForm: checkout) => {
