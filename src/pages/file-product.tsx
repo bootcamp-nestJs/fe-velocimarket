@@ -147,7 +147,7 @@ export default function FileProduct() {
                 <h1 className="titulosec2">Te puede interesar</h1>
                 <section className="products">
                     {shuffledtestProducts.map((producto, index) => (
-                        <Link to="/signIn" style={{ textDecoration: "none" }}>
+                        <Link to="/file-product" style={{ textDecoration: "none" }}>
                             <ItemParam
                                 icons={true}
                                 vistahome={true}

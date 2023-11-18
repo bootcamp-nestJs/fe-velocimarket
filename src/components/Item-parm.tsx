@@ -1,7 +1,9 @@
-import itemImg from "../assets/item.png"
+import itemImg from "../assets/img/product.png"
 import Button from "./Button"
 import { Link } from "react-router-dom";
+import imagenesprueba from "../json/imagenesprueba.json"
 import './item-param.css'
+
 interface PropsItem  { 
   icons?: boolean,
   vistahome?: boolean,
@@ -11,7 +13,11 @@ interface PropsItem  {
   localizacion:string
 }
 
+
+
 export default function ItemParam({ icons = false, vistahome = false, nombreuser, precio,nombreproduct,localizacion}:PropsItem) {
+  const avatarImages = imagenesprueba.avatar;
+
   return (
     <div className="ItemParam">
       <div className="img">
@@ -42,11 +48,13 @@ export default function ItemParam({ icons = false, vistahome = false, nombreuser
           </div>}
       </div>
       {vistahome && <div className="datoscard" >
-        <img className="avatar" src="src/assets/avatar.png" alt="" />
+      <Link to="/profile2" style={{ textDecoration: "none" }}>
+        <img className="avatar" src= {avatarImages[0].avatar} alt="" />
         <div className="nameloc">
           <span className="username">{nombreuser}</span>
           <span className="localizacion">{localizacion}</span>
         </div>
+        </Link>
         <span className="price">{precio}</span>
       </div>}
       {!vistahome &&

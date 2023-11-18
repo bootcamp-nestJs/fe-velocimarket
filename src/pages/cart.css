@@ -21,6 +21,16 @@
     align-items: center;
 }
 
+.cont-profile-cart{
+    width: 1089px;
+    justify-content: flex-start;
+}
+.cont-profile{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .container-cart {
     display: flex;
     justify-content: center;

@@ -8,6 +8,7 @@ import ItemParam from "../components/Item-parm";
 import { useEffect, useState } from "react";
 import { testProduct } from "../interfaces/testproduct";
 import SelectorSection from "../components/SelectorSection";
+import { Link } from "react-router-dom";
 
 
 export default function ResultsCategories() {
@@ -71,23 +72,25 @@ export default function ResultsCategories() {
 
                 <div className="container-products-pagination">
                     <div className="container-products">
-                    {
-                        currentProducts.map((producto, index) => (
-                            <ItemParam
-                                nombreuser={"usuario" + index}
-                                precio={producto.precio}
-                                nombreproduct={producto.nombre}
-                                localizacion={"localización" + index}
-                                key={`producto-interes-${index}`}
-                                icons={true}
-                                vistahome={true}
-                            />
-                        ))
-                    }
+                        {
+                            currentProducts.map((producto, index) => (
+                                <Link to="/file-product" style={{ textDecoration: "none" }}>
+                                    <ItemParam
+                                        nombreuser={"usuario" + index}
+                                        precio={producto.precio}
+                                        nombreproduct={producto.nombre}
+                                        localizacion={"localización" + index}
+                                        key={`producto-interes-${index}`}
+                                        icons={true}
+                                        vistahome={true}
+                                    />
+                                </Link>
+                            ))
+                        }
                     </div>
                     <div className="pagination">
                         {[...Array(Math.ceil(listaProductos.length / productsPerPage))].map((_, index) => (
-                            <button  className={`button-pagination ${currentPage === index + 1 ? 'active' : ''}`} key={index} onClick={() => paginate(index + 1)}>
+                            <button className={`button-pagination ${currentPage === index + 1 ? 'active' : ''}`} key={index} onClick={() => paginate(index + 1)}>
                                 {index + 1}
                             </button>
                         ))}

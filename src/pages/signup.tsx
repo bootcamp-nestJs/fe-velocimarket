@@ -84,10 +84,10 @@ function SignUp() {
             "user": form.nombreusuario,
             "password": form.contrasena,
             "telefono": form.telefono,
-            "calle": "san juan de PEPITO",
-            "número": 742,
-            "comuna": "san juan de PEPITO",
-            "region": "san juan de PEPITO"
+            "calle": "edita tu calle",
+            "número": 111,
+            "comuna": "elige una comuna",
+            "region": "elige una región"
         }
         console.log(usuario)
         fetch(`https://api2-velo.lemichi.cl/api/users/signup`, {

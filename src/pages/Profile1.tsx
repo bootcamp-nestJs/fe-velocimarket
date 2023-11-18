@@ -6,6 +6,7 @@ import ItemParam from "../components/Item-parm"
 import { useEffect, useState } from "react"
 import { testProduct } from "../interfaces/testproduct"
 import ProfileCard from "../components/ProfileCard"
+import { Link } from "react-router-dom"
 
 
 export default function Profile1() {
@@ -15,16 +16,16 @@ export default function Profile1() {
 
   useEffect(() => {
     fetch(`https://api2-velo.lemichi.cl/api/products`, {
-        method: 'GET',
+      method: 'GET',
     }).then(response => {
-        return response.json() as Promise<testProduct[]>;
+      return response.json() as Promise<testProduct[]>;
     }).then(json => {
-        console.log(json);
-        setlistaProductos(json)
+      console.log(json);
+      setlistaProductos(json)
     }).catch(error => {
-        console.error(error);
+      console.error(error);
     });
-}, []);
+  }, []);
 
   return (
     <div className="Profile">
@@ -40,10 +41,12 @@ export default function Profile1() {
 
       <section className="products">
         {
-          newtestProducts.map((producto, index) => {
+          newtestProducts.slice(0, 5).map((producto, index) => {
             return (
-              <ItemParam nombreuser={"usuario" + index} precio={producto.precio} nombreproduct={producto.nombre} localizacion={"localización" + index}
-                key={`producto-interes-${index}`} icons={false} vistahome={false} />
+              <Link to="/file-product" style={{ textDecoration: "none" }}>
+                <ItemParam nombreuser={"usuario" + index} precio={producto.precio} nombreproduct={producto.nombre} localizacion={"localización" + index}
+                  key={`producto-interes-${index}`} icons={false} vistahome={false} />
+              </Link>
             )
           })
         }

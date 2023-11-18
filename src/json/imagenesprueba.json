@@ -1,0 +1,42 @@
+{
+    "imagen": [
+        {
+            "imagen": "src/assets/img/imagenesEstaticas/informativo2.png"
+        },
+        {
+            "imagen": "src/assets/img/imagenesEstaticas/informativo1.png"
+        },
+        {
+            "imagen": "src/assets/img/imagenesEstaticas/informativo3.png"
+        },
+        {                                                                                         
+            "imagen": "src/assets/img/imagenesEstaticas/informativo4.png"
+        },
+        {
+            "imagen": "src/assets/img/imagenesEstaticas/informativo1.png"
+        },
+        {
+            "imagen": "src/assets/img/imagenesEstaticas/informativo3.png"
+        }
+    ],
+    "avatar": [
+        {
+            "avatar": "src/assets/img/avatares/avatar1.png"
+        },
+        {
+            "avatar": "src/assets/img/avatares/avatar2.png"
+        },
+        {
+            "avatar": "src/assets/img/avatares/avatar3.png"
+        },
+        {                                                                                         
+            "avatar": "src/assets/img/avatares/avatar4.png"
+        },
+        {
+            "avatar": "src/assets/img/avatares/avatar5.png"
+        },
+        {
+            "avatar": "src/assets/img/avatares/avatar6.png"
+        }
+    ]
+}

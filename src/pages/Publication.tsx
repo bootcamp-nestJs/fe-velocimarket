@@ -2,7 +2,7 @@ import Header from "../components/header"
 /* import Button from "../components/Button" */
 /* import product_img from "../assets/preview.png" */
 import Footer from "../components/footer"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createProduct } from "../interfaces/create-product/create-product";
 import { useEffect, useState } from "react";
 import { validarPrecio } from "../validadores/validadores";
@@ -225,9 +225,9 @@ export default function Publicacion() {
                     <option value={1} >Carretera</option>
                     <option value={2}>Montaña</option>
                     <option value={3}>Gravel</option>
-                    <option value="Urbana">Urbana</option>
-                    <option value="Eléctrica">Eléctrica</option>
-                    <option value="Plegable">Plegable</option>
+                    <option value={4}>Urbana</option>
+                    <option value={5}>Eléctrica</option>
+                    <option value={6}>Plegable</option>
                   </select>
                   {error.categoria && <span className='error'>Selecciona categoría</span>}
                 </div>
@@ -278,6 +278,7 @@ export default function Publicacion() {
       <h1 className="titulosec2">Te puede interesar</h1>
       <section className="products-publication">
         {shuffledtestProducts.map((producto, index) => (
+          <Link to="/file-product" style={{ textDecoration: "none" }}>
           <ItemParam
             icons={true}
             vistahome={true}
@@ -286,7 +287,10 @@ export default function Publicacion() {
             nombreproduct={producto.nombre}
             localizacion={"localización" + index}
             key={`producto-interes-${index}`}
-          ></ItemParam>))}
+          ></ItemParam>
+          </Link>        
+          ))}
+          
       </section>
       <BannerApp></BannerApp>
       <Footer />

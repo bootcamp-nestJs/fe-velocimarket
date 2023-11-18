@@ -1,7 +1,15 @@
+.content-separator{
+    display: flex;
+    width: auto;
+    justify-content: center;
+}
+
+
 .separator {
     background-color: black;
-    margin: 40px;
-    width: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 1116px;
     height: 1px;
     stroke-width: 1px;
     stroke: var(--comp-gray-comp-gray-500, #667085);
