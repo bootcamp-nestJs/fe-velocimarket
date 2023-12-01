@@ -3,8 +3,10 @@ export type signUp = {
     apellido?: string;
     correo?: string;
     nombreusuario: string;
-    contrasena?: string;
-    telefono?: null | number;
+    contrasena: string;
+    telefono?: undefined | number;
+    comuna: string;
+    region: string
 }
 
 

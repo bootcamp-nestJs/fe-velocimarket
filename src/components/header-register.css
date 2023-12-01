@@ -30,12 +30,13 @@
     height: 22px;
 }
 
-.orange {
+.blue-register {
     color: #fff !important;
     border-style: none !important;
     margin-right: 8px;
-    border-style:#FF4858 ;
-    background-color: #FF4858 !important;
+    border-style:#578FFF ;
+    background-color: #578FFF !important;
+    
 }
 
 .orange :hover{

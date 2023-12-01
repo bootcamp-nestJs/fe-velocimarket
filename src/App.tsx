@@ -10,29 +10,34 @@ import SignIn from "./pages/signin";
 import FileProduct from "./pages/file-product";
 import Cart from "./pages/cart";
 import Inbox from "./pages/inbox";
+import { Checkout } from "./pages/checkout";
+
 //css
-import './App.css'
+import './App.css';
 import Results from "./pages/results-search";
 import ResultsCategories from "./pages/results-categories";
 import Calification from "./pages/calification";
-
+import { ProtectedComponent } from "./components/ProtectedRoute";
 
 function App() {  
+
+
   return (
     <>
         <Routes>
           <Route path='/home' element={<Home />}/>
           <Route path= '/signUp' element = {<SignUp/>} />
           <Route path= '/signIn' element = {<SignIn/>} />
-          <Route path='/profile1' element={<Profile1 />}/>
-          <Route path='/profile2' element={<Profile2 />}/>
-          <Route path='/publication' element={<Publication />}/>
+          <Route path='/profile1' element={<ProtectedComponent><Profile1 /></ProtectedComponent> }/>
+          <Route path='/profile2' element={<ProtectedComponent><Profile2 /></ProtectedComponent>}/>
+          <Route path='/publication' element={<ProtectedComponent><Publication /></ProtectedComponent>}/>
           <Route path='/file-product' element={<FileProduct />}/>
-          <Route path='/cart' element={<Cart />}/>
-          <Route path='/inbox' element={<Inbox />}/>
+          <Route path='/cart' element={<ProtectedComponent><Cart /></ProtectedComponent>}/>
+          <Route path='/inbox' element={<ProtectedComponent><Inbox /></ProtectedComponent>}/>
           <Route path='/results' element={<Results />}/>
           <Route path='/results-categories' element={<ResultsCategories />}/>
-          <Route path='/calification' element={<Calification />}/>
+          <Route path='/calification' element={<ProtectedComponent><Calification /></ProtectedComponent>}/>
+          <Route path='/checkout' element={<ProtectedComponent><Checkout /></ProtectedComponent>}/>
         </Routes>
     </>        
   )

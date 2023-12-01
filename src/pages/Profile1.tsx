@@ -7,9 +7,14 @@ import { useEffect, useState } from "react"
 import { testProduct } from "../interfaces/testproduct"
 import ProfileCard from "../components/ProfileCard"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { RootState } from "../redux/store"
+import HeaderRegister from "../components/header-register"
 
 
 export default function Profile1() {
+
+  const user = useSelector((state: RootState) => state.user)
 
   const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
   const newtestProducts = listaProductos
@@ -17,6 +22,9 @@ export default function Profile1() {
   useEffect(() => {
     fetch(`https://api2-velo.lemichi.cl/api/products`, {
       method: 'GET',
+      headers: {
+        Authorization:`Bearer ${user.access_token}`
+      },
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
     }).then(json => {
@@ -29,7 +37,7 @@ export default function Profile1() {
 
   return (
     <div className="Profile">
-      <Header />
+      {user.isAuth && <Header />}
       <ProfileCard name="Nombre de usuario propio" location="Locación" rate={5} followers={200} following={100} products={5}>
         <Button className="w-130">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +51,7 @@ export default function Profile1() {
         {
           newtestProducts.slice(0, 5).map((producto, index) => {
             return (
-              <Link to="/file-product" style={{ textDecoration: "none" }}>
+              <Link to="/file-product" style={{ textDecoration: "none" }} key={index}>
                 <ItemParam nombreuser={"usuario" + index} precio={producto.precio} nombreproduct={producto.nombre} localizacion={"localización" + index}
                   key={`producto-interes-${index}`} icons={false} vistahome={false} />
               </Link>

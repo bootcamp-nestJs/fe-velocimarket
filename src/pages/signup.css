@@ -95,11 +95,11 @@ label {
   border-radius: 0px 20px 20px 0px;
 }
 
-.imagenAsideRegister{
+.imagenAsideRegister {
   background: url('../assets/img/imagenesEstaticas/registro.png'), lightgray 50% / cover no-repeat;
   background-size: cover;
   background-position: center;
-  height:auto;
+  height: auto;
   max-width: 100%;
 }
 
@@ -145,7 +145,7 @@ label {
   line-height: 100%;
   /* 16px */
   letter-spacing: -0.304px;
-  margin-top: 16px;
+  margin-top: 12px;
   margin-bottom: .2rem;
 }
 
@@ -271,4 +271,42 @@ label {
 .entrar-link {
   text-decoration: none;
   width: 100%;
+}
+
+.icon-singup {
+  width: 24px;
+  height: 24px;
+}
+
+.buttonG {
+  border-radius: 8px;
+  border: 1px solid #666;
+  background: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 237px;
+  height: 45px;
+  gap: 1.25rem;
+  color: #000(54%);
+  font-family: Roboto-Medium;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.contenedorUbicacion{
+  display: flex;
+  align-items: flex-start;
+  gap: 23px;
+  align-self: stretch;
+}
+
+.Register .regionComuna {
+  width: 260.5px;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--comp-gray-comp-gray-700, #48505E);
+  padding: 0 1rem;
 }

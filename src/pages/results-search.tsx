@@ -6,6 +6,8 @@ import { testProduct } from "../interfaces/testproduct"
 import SelectorSection from "../components/SelectorSection"
 import "./results-search.css"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { RootState } from "../redux/store"
 
 // result es la vista que te arroga cuando buscas palabras en el buscador 
 
@@ -34,9 +36,12 @@ export default function Results() {
     const currentProducts = listaProductos.slice(indexOfFirstProduct, indexOfLastProduct);
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+    const user = useSelector((state: RootState) => state.user)
+
     return (
         <>
-            <Header />
+            {user.isAuth && <Header />}
             <div>
                 <div className="content-separator">
                 <div className="separator"></div>

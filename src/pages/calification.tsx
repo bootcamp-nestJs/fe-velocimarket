@@ -7,6 +7,7 @@ import posterior from "../assets/icon/Más adelante.svg"
 import seguir from "../assets/icon/Carrito.svg"
 import imagen from "../assets/img/product.png"
 import './calification.css'
+import { Link } from "react-router-dom"
 
 export default function Calification() {
     return (
@@ -44,10 +45,12 @@ export default function Calification() {
                                 <img className="icon-calification" src={posterior}></img>{/* realizar js */}
                                 calificar más adelante
                             </button>
+                            <Link to="/home" style={{ textDecoration: "none" }}>
                             <button className="white-button-calification">
                                 <img className="icon-calification" src={seguir}></img>{/* realizar js */}
                                 Seguir comprando
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

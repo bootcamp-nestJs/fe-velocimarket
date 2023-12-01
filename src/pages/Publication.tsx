@@ -12,6 +12,8 @@ import ImageUploader from "../components/ImageUploader";
 import { product_response, testProduct } from "../interfaces/testproduct";
 import ItemParam from "../components/Item-parm";
 import { } from "../interfaces/testproduct";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const shuffleArray = (array: any[]) => {
   return array.sort(() => Math.random() - 0.5);
@@ -25,6 +27,9 @@ export default function Publicacion() {
   useEffect(() => {
     fetch(`https://api2-velo.lemichi.cl/api/products`, {
       method: 'GET',
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
+      },
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
     }).then(json => {
@@ -54,8 +59,8 @@ export default function Publicacion() {
   const [error, setError] = useState({
     titulo: false,
     precio: false,
-    region: false,
-    comuna: false,
+   /*  region: false,
+    comuna: false, */
     descripcion: false,
     categoria: false,
     tamano: false,
@@ -77,8 +82,8 @@ export default function Publicacion() {
     const erroresFormulario = {
       titulo: false,
       precio: false,
-      region: false,
-      comuna: false,
+      /* region: false,
+      comuna: false, */
       descripcion: false,
       categoria: false,
       tamano: false,
@@ -90,8 +95,8 @@ export default function Publicacion() {
 
     erroresFormulario.titulo = (inputForm.titulo.length > 20 || inputForm.titulo.length === 0) ? true : false;
     erroresFormulario.precio = validarPrecio(inputForm.precio);
-    erroresFormulario.region = inputForm.region.length === 0 ? true : false;
-    erroresFormulario.comuna = inputForm.comuna.length === 0 ? true : false;
+   /*  erroresFormulario.region = inputForm.region.length === 0 ? true : false;
+    erroresFormulario.comuna = inputForm.comuna.length === 0 ? true : false; */
     erroresFormulario.descripcion = (inputForm.descripcion.length > 200 || inputForm.descripcion.length === 0) ? true : false;
     erroresFormulario.categoria = (inputForm.categoria.length === 0) ? true : false;
     erroresFormulario.tamano = (inputForm.tamano.length === 0) ? true : false;
@@ -132,13 +137,16 @@ export default function Publicacion() {
       "componentes": form.componentes,
       "valoracion": 2
     }
+
+    const user = useSelector((state: RootState) => state.user)
     
     console.log(typeof(producto.precio))
     fetch(`https://api2-velo.lemichi.cl/api/products`, {
       method: 'POST',
       body: JSON.stringify(producto),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization:`Bearer ${user.access_token}`
       }
     }).then(response => {
       if (response.status == 201) {
@@ -165,9 +173,12 @@ export default function Publicacion() {
       [event.target.name]: event.target.value
     });
   }
+
+  const user = useSelector((state: RootState) => state.user)
+  
   return (
     <div className="crear-publicaction">
-      <Header />
+      {user.isAuth && <Header />}
       <section className="product">
         <h1 className="title">Ingresa los detalles y el precio de tu producto</h1>
         <div className="product_content">
@@ -185,7 +196,7 @@ export default function Publicacion() {
             {error.descripcion && <span className='error'>Ingresa Descripcion max. 200 caracteres</span>}
 
             <div className="content_row">
-              <div className="colLocation">
+              {/* <div className="colLocation">
                 <div className="input_location">
                   <label htmlFor="region">Region</label>
                   <input type="text" name="region" id="region" onChange={handleChange} />
@@ -196,7 +207,7 @@ export default function Publicacion() {
                   <input type="text" name="comuna" id="comuna" onChange={handleChange} />
                   {error.comuna && <span className='error'>Ingresa comuna</span>}
                 </div>
-              </div>
+              </div> */}
               <div className="col">
                 <label htmlFor="price">Tu precio de venta</label>
                 <input type="number" name="precio" id="price" onChange={handleChange} />

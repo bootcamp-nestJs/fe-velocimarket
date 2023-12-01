@@ -12,6 +12,7 @@ export interface users {
 }
 
 export interface user_response{
+    success: any
     nombre: string,
     apellido: string,
     user_name: string,

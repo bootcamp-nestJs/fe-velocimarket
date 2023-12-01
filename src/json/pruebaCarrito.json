@@ -1,0 +1,46 @@
+{
+    "productscart": [
+        {
+            "precioproducto": 1000000,
+            "medioPago": "Transferencia",
+            "valorEnvio": 20000,
+            "totalCarrito": 1020000,
+            "usuario": {
+                "id": 2,
+                "nombre": "Segundo",
+                "apellido": "Contreras",
+                "user_name": "Segundo1234",
+                "mail": "alfonso.contreras@gmail.cl",
+                "telefono": "972085025"
+            }
+        },
+        {
+            "precioproducto": 1000000,
+            "medioPago": "Transferencia",
+            "valorEnvio": 20000,
+            "totalCarrito": 1020000,
+            "usuario": {
+                "id": 2,
+                "nombre": "Segundo",
+                "apellido": "Contreras",
+                "user_name": "Segundo1234",
+                "mail": "alfonso.contreras@gmail.cl",
+                "telefono": "972085025"
+            }
+        },
+        {
+            "precioproducto": 1000000,
+            "medioPago": "Transferencia",
+            "valorEnvio": 20000,
+            "totalCarrito": 1020000,
+            "usuario": {
+                "id": 2,
+                "nombre": "Segundo",
+                "apellido": "Contreras",
+                "user_name": "Segundo1234",
+                "mail": "alfonso.contreras@gmail.cl",
+                "telefono": "972085025"
+            }
+        }
+    ]
+}

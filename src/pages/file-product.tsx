@@ -12,6 +12,9 @@ import { useEffect, useState } from "react"
 import { testProduct } from "../interfaces/testproduct"
 import ItemParam from "../components/Item-parm"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { RootState } from "../redux/store"
+import HeaderRegister from "../components/header-register"
 
 
 const shuffleArray = (array: any[]) => {
@@ -20,12 +23,17 @@ const shuffleArray = (array: any[]) => {
 
 export default function FileProduct() {
 
+    const user = useSelector((state: RootState) => state.user)
+
     const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
     const shuffledtestProducts = shuffleArray(listaProductos).slice(0, 3);
 
     useEffect(() => {
         fetch(`https://api2-velo.lemichi.cl/api/products`, {
             method: 'GET',
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
+              },
         }).then(response => {
             return response.json() as Promise<testProduct[]>;
         }).then(json => {
@@ -39,7 +47,8 @@ export default function FileProduct() {
 
     return (
         <>
-            <Header />
+        {!user.isAuth && <HeaderRegister/>}
+        {user.isAuth && <Header />}
             <div className="Profile">
                 <div className="container-product-file">
                     <div className="product_view">
@@ -78,6 +87,7 @@ export default function FileProduct() {
                         <h3 className="section-information">Título del producto que se está vendiendo on poco detalle</h3>
                         <h3 className="information-value">VALOR DEL PRODUCTO</h3>
                         <ProfileCard name="Nombre de usuario propio" location="Locación" rate={4} />
+                       {user.isAuth &&
                         <div className="buttons-file">
                             <Link to="/Cart" style={{ textDecoration: "none" }}>
                                 <button className="blue-button">
@@ -99,6 +109,8 @@ export default function FileProduct() {
                                 </button>
                             </div>
                         </div>
+
+                        }
                     </div>
                 </div>
 

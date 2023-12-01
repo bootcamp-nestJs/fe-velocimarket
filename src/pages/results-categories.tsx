@@ -9,9 +9,14 @@ import { useEffect, useState } from "react";
 import { testProduct } from "../interfaces/testproduct";
 import SelectorSection from "../components/SelectorSection";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import HeaderRegister from "../components/header-register";
 
 
 export default function ResultsCategories() {
+
+    const user = useSelector((state: RootState) => state.user)
 
     const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -21,6 +26,9 @@ export default function ResultsCategories() {
     useEffect(() => {
         fetch(`https://api2-velo.lemichi.cl/api/products`, {
             method: 'GET',
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
+            },
         }).then(response => {
             return response.json() as Promise<testProduct[]>;
         }).then(json => {
@@ -40,7 +48,8 @@ export default function ResultsCategories() {
 
     return (
         <div className="results-container">
-            <Header />
+            {!user.isAuth && <HeaderRegister />}
+            {user.isAuth && <Header />}
             <BannerCategories />
             <div className="content-container-result">
                 <aside className='container-selector'>

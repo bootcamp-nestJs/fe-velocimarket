@@ -7,12 +7,17 @@ import { useState } from "react";
 import mensajesprueba from '../json/mensajesprueba.json';
 import { Message } from "../interfaces/testmensajes";
 import "./inbox.css"
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 interface InboxProps {
     messages: Message[];
 }
 
 export default function Inbox({ messages }: InboxProps) {
+
+    const user = useSelector((state: RootState) => state.user)
+
     const [userMessage, setUserMessage] = useState<string>('');
 
     const handleSendMessage = () => {
@@ -22,7 +27,7 @@ export default function Inbox({ messages }: InboxProps) {
     return (
         <>
             <div className="inbox-page-cont">
-                <Header />
+                {user.isAuth && <Header />}
                 <div className="title-inbox">
                     <h2>Bandeja de Mensajes</h2>
                 </div>

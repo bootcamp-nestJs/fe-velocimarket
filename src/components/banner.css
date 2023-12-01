@@ -1,5 +1,5 @@
 .banner {
-    background: url(/src/assets/img/portada.png), lightgray 50% / cover no-repeat;
+    background: url(/src/assets/img/portada.png), rgb(48, 48, 48) 50% / cover no-repeat;
     background-size: cover;
     background-position: center;
     border-radius: 20px;
@@ -9,8 +9,8 @@
     align-items: center;
     height: 586px;
     margin-top: 40px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 40px;
 }
 

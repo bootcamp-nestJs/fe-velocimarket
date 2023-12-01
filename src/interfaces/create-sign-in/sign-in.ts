@@ -1,4 +1,4 @@
 export type signIn = {
     nombreusuario: string;
-    contrasena?: string;
+    contrasena: string;
 }

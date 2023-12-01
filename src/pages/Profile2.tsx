@@ -8,9 +8,13 @@ import ItemParam from "../components/Item-parm"
 import { useEffect, useState } from "react"
 import { testProduct } from "../interfaces/testproduct"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { RootState } from "../redux/store"
 
 
 export default function profile2() {
+
+  const user = useSelector((state: RootState) => state.user)
 
   const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
   const newtestProducts = listaProductos
@@ -18,6 +22,9 @@ export default function profile2() {
   useEffect(() => {
     fetch(`https://api2-velo.lemichi.cl/api/products`, {
       method: 'GET',
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
+      },
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
     }).then(json => {
@@ -31,7 +38,7 @@ export default function profile2() {
 
   return (
     <div className="Profile">
-      <Header />
+      {user.isAuth && <Header />}
       <ProfileCard name="Nombre de usuario" location="Locación" rate={5} followers={150} following={200} products={8}>
         <Button className="w-130">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
