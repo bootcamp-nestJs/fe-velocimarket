@@ -1,6 +1,6 @@
 import Button from "./Button"
 import '../components/header.css'
-import { Link, Navigate, useNavigate, /*  useLocation  */ } from "react-router-dom";
+import { Link, useNavigate, /*  useLocation  */ } from "react-router-dom";
 import Buscador from "./buscador";
 import { useState } from "react";
 import message from "../assets/icon/Chat.svg"
