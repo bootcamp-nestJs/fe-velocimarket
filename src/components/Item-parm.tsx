@@ -3,6 +3,8 @@ import Button from "./Button"
 import { Link } from "react-router-dom";
 import imagenesprueba from "../json/imagenesprueba.json"
 import './item-param.css'
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 interface PropsItem  { 
   icons?: boolean,
@@ -18,10 +20,14 @@ interface PropsItem  {
 export default function ItemParam({ icons = false, vistahome = false, nombreuser, precio,nombreproduct,localizacion}:PropsItem) {
   const avatarImages = imagenesprueba.avatar;
 
+  const user = useSelector((state: RootState) => state.user)
+
   return (
     <div className="ItemParam">
       <div className="img">
         <img src={itemImg} alt="" />
+        {user.isAuth &&
+        <div>
         {icons &&
           <div className="icons">
             <Link to="/signIn" style={{ textDecoration: "none" }}>
@@ -45,7 +51,7 @@ export default function ItemParam({ icons = false, vistahome = false, nombreuser
                 </svg>
               </Button>
             </Link>
-          </div>}
+          </div>} </div>}
       </div>
       {vistahome && <div className="datoscard" >
       <Link to="/profile2" style={{ textDecoration: "none" }}>
@@ -60,7 +66,9 @@ export default function ItemParam({ icons = false, vistahome = false, nombreuser
       {!vistahome &&
         <span className="price">{precio}</span>
       }
+      <Link to="/file-product" style={{ textDecoration: "none" }}>
       <span className="nombre">{nombreproduct}</span>
+      </Link>
     </div>
   )
 }

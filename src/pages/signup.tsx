@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { validarApellido, validarContrasena, validarEmail, validarNombre, validarTelefono, validarUsuario } from '../validadores/validadores';
 import { user_response } from '../interfaces/testuser';
 import { Region } from '../interfaces/testregiones.ts'
-import { Md5 } from "ts-md5";
+/* import { Md5 } from "ts-md5"; */
 
 function SignUp() {
 

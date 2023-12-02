@@ -45,7 +45,7 @@ export default function Home() {
   useEffect(() => {
     // Actualizar el índice cada 6 segundos
     const intervalId = setInterval(() => {
-      if(currentIndex + 5 > listaProductos.length-1){
+      if (currentIndex + 5 > listaProductos.length - 1) {
         setCurrentIndex(0);
       }
       setCurrentIndex(prevIndex => (prevIndex + 1) % (listaProductos.length / 2));
@@ -55,7 +55,7 @@ export default function Home() {
   }, [listaProductos.length]);
 
   // Obtener los próximos 6 productos basados en el índice actual
-  const slicedProducts = listaProductos.slice(currentIndex , currentIndex+6);
+  const slicedProducts = listaProductos.slice(currentIndex, currentIndex + 6);
 
   return (
     <div className="Profile">
@@ -79,6 +79,24 @@ export default function Home() {
           ></ItemParam>
         ))}
       </section>
+
+      {user.isAuth && <div>
+        <h1 className="titulosec2">Publicaciones de tus amigos</h1>
+        <section className="products">
+          {slicedProducts.map((producto, index) => (
+            <ItemParam
+              icons={true}
+              vistahome={true}
+              nombreuser={`usuario${currentIndex * 6 + index}`}
+              precio={producto.precio}
+              nombreproduct={producto.nombre}
+              localizacion={`localización${currentIndex * 6 + index}`}
+              key={`producto-interes-${currentIndex * 6 + index}`}
+            ></ItemParam>
+          ))}
+        </section>
+      </div>}
+
       <h1 className="titulosec2">Te puede interesar</h1>
       <section className="products">
         {slicedProducts.map((producto, index) => (
@@ -91,8 +109,10 @@ export default function Home() {
             localizacion={`localización${currentIndex * 6 + index}`}
             key={`producto-interes-${currentIndex * 6 + index}`}
           ></ItemParam>
+
         ))}
       </section>
+
       <BannerApp></BannerApp>
       {
         informacion.flyer.map((flyer, index) => (
@@ -113,5 +133,4 @@ export default function Home() {
 
 
 
-       
-  
+
