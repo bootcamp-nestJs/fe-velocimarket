@@ -1,17 +1,17 @@
 /* Fonts */
 @font-face {
   font-family: 'Circular Spotify Text';
-  src: url('./fonts/CircularSpotifyText-Medium.otf');
+  src: url('../fonts/CircularSpotifyText-Medium.otf');
   font-weight: 500;
 }
 @font-face {
   font-family: 'Circular Spotify Text';
-  src: url('./fonts/CircularSpotifyText-Bold.otf');
+  src: url('../fonts/CircularSpotifyText-Bold.otf');
   font-weight: 700;
 }
 @font-face {
   font-family: 'DM Sans';
-  src: url('./fonts/DMSans-VariableFont_opszwght.ttf');
+  src: url('../fonts/DMSans-VariableFont_opszwght.ttf');
 }
 
 *{
@@ -227,7 +227,7 @@ header .buttons{
 
 /* Profile Card */
 .ProfileCard{
-  background-color: #F4F4F4;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -285,9 +285,9 @@ header .buttons{
 font-family: 'DM Sans';
 font-size: 1.25rem;
 font-style: normal;
-font-weight: 500;
+font-weight: 700;
 line-height: normal;
-text-decoration:1px underline rgba(0, 0, 0, 0.715);
+/* text-decoration:1px underline rgba(0, 0, 0, 0.715); */
 }
 
 .ProfileCard .mid_text{
@@ -325,7 +325,6 @@ text-decoration:1px underline rgba(0, 0, 0, 0.715);
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
   border-radius: 8px;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -334,6 +333,13 @@ text-decoration:1px underline rgba(0, 0, 0, 0.715);
   font-size: 20px;
   font-weight: 500;
 }
+.ProfileCard .ProfileCard_footer :hover{
+ background: #c8c8c8;
+}
+
+.ProfileCard .ProfileCard_footer :active{
+  color: #4c48ba;
+ }
 
 /* products */
 .Profile .products{

@@ -124,9 +124,12 @@ img .imagen-producto {
 }
 
 .information {
+    width: 1004px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    margin: auto;
     gap: 40px;
 }
 
@@ -137,7 +140,6 @@ img .imagen-producto {
     align-items: flex-start;
     gap: 20px;
     padding: 10px 10px;
-    margin: 0px 16vw;
 }
 
 .title-description {
@@ -171,7 +173,7 @@ img .imagen-producto {
     flex-direction: column;
     align-items: flex-start;
     padding: 10px 10px;
-    margin: 0px 16vw;
+    margin-bottom: 24px;
 }
 
 .sections-files{

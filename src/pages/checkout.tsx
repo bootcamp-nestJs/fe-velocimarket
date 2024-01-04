@@ -14,7 +14,7 @@ export function Checkout() {
     return (
         <>
             <Header />
-            <div className="checkout">
+            <div className="checkout-checkout">
                 <aside className='Asidecheckout'>
                     <div className='tituloUp-checkout'>
                         <h2>Resumen de tu compra</h2>

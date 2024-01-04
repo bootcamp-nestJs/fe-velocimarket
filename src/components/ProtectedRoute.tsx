@@ -11,7 +11,7 @@ export const ProtectedComponent = (props: Props) => {
 
     const user = useSelector((state: RootState) => state.user)
     const location =useLocation(); // se utiliza principalmente para que una vez logueado te permita redirigirte a la vista que querias entrara pero que esta protegida 
-console.log(user?.isAuth)
+// console.log(user?.isAuth)
     if (user?.isAuth) {
         return (
             <>

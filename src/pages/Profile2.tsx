@@ -1,15 +1,16 @@
 import Header from "../components/header"
 import ProfileCard from "../components/ProfileCard"
 import Button from "../components/Button"
-/* import productos from '../json/prueba.json' */
+import itemImg from "../assets/img/product.png"
 import Footer from "../components/footer"
 import { BannerApp } from "../components/bannerApp"
 import ItemParam from "../components/Item-parm"
-import { useEffect, useState } from "react"
+import { useEffect, useId, useState } from "react"
 import { testProduct } from "../interfaces/testproduct"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
+
 
 
 export default function profile2() {
@@ -19,11 +20,26 @@ export default function profile2() {
   const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
   const newtestProducts = listaProductos
 
+  const handleProductsClick = () => {
+    // Lógica para mostrar los productos
+    console.log("Mostrar productos");
+  };
+
+  const handleFollowClick = () => {
+    // Lógica para mostrar a quién sigue el usuario
+    console.log("Mostrar a quién sigue el usuario");
+  };
+
+  const handleFollowingClick = () => {
+    // Lógica para mostrar los seguidores del usuario
+    console.log("Mostrar seguidores del usuario");
+  };
+
   useEffect(() => {
-    fetch(`https://api2-velo.lemichi.cl/api/products`, {
+    fetch(`https://api2-velo.lemichi.cl/api/products?pag=1`, {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
+        Authorization: `Bearer ${user.access_token}`
       },
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
@@ -39,7 +55,16 @@ export default function profile2() {
   return (
     <div className="Profile">
       {user.isAuth && <Header />}
-      <ProfileCard name="Nombre de usuario" location="Locación" rate={5} followers={150} following={200} products={8}>
+      <ProfileCard
+        name={useId.name}
+        location="Locación"
+        rate={5}
+        followers={150}
+        following={200}
+        products={8}
+        onProductsClick={handleProductsClick}
+        onFollowClick={handleFollowClick}
+        onFollowingClick={handleFollowingClick}>
         <Button className="w-130">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.8124 4.375C12.8124 4.12636 12.9112 3.8879 13.087 3.71209C13.2628 3.53627 13.5013 3.4375 13.7499 3.4375H14.6874V2.5C14.6874 2.25136 14.7862 2.0129 14.962 1.83709C15.1378 1.66127 15.3763 1.5625 15.6249 1.5625C15.8736 1.5625 16.112 1.66127 16.2878 1.83709C16.4636 2.0129 16.5624 2.25136 16.5624 2.5V3.4375H17.4999C17.7486 3.4375 17.987 3.53627 18.1628 3.71209C18.3386 3.8879 18.4374 4.12636 18.4374 4.375C18.4374 4.62364 18.3386 4.8621 18.1628 5.03791C17.987 5.21373 17.7486 5.3125 17.4999 5.3125H16.5624V6.25C16.5624 6.49864 16.4636 6.7371 16.2878 6.91291C16.112 7.08873 15.8736 7.1875 15.6249 7.1875C15.3763 7.1875 15.1378 7.08873 14.962 6.91291C14.7862 6.7371 14.6874 6.49864 14.6874 6.25V5.3125H13.7499C13.5013 5.3125 13.2628 5.21373 13.087 5.03791C12.9112 4.8621 12.8124 4.62364 12.8124 4.375ZM18.321 8.59375C18.6171 10.3557 18.3456 12.1661 17.5458 13.7637C16.7459 15.3613 15.4591 16.6633 13.871 17.4819C12.283 18.3005 10.4759 18.5933 8.71057 18.3179C6.9453 18.0426 5.31318 17.2134 4.04985 15.9501C2.78652 14.6867 1.95733 13.0546 1.68199 11.2893C1.40666 9.52407 1.69942 7.71696 2.51801 6.1289C3.3366 4.54085 4.63867 3.254 6.23625 2.45415C7.83383 1.6543 9.64425 1.38282 11.4062 1.67891C11.6514 1.72035 11.8701 1.8575 12.0142 2.0602C12.1583 2.2629 12.216 2.51454 12.1745 2.75977C12.1331 3.00499 11.9959 3.2237 11.7932 3.3678C11.5905 3.51189 11.3389 3.56956 11.0937 3.52812C10.7322 3.46779 10.3664 3.43748 9.99992 3.4375C8.76798 3.43667 7.56071 3.78287 6.51643 4.43644C5.47215 5.09001 4.63308 6.02452 4.09535 7.13292C3.55763 8.24131 3.34299 9.47876 3.47603 10.7035C3.60907 11.9282 4.0844 13.0907 4.84758 14.0578C5.45523 13.2849 6.22974 12.6595 7.1132 12.2281C6.55016 11.658 6.16832 10.934 6.0157 10.1474C5.86308 9.36074 5.9465 8.54653 6.25547 7.80718C6.56445 7.06783 7.08517 6.43637 7.75214 5.99223C8.4191 5.5481 9.20252 5.31112 10.0038 5.31112C10.8051 5.31112 11.5886 5.5481 12.2555 5.99223C12.9225 6.43637 13.4432 7.06783 13.7522 7.80718C14.0612 8.54653 14.1446 9.36074 13.992 10.1474C13.8393 10.934 13.4575 11.658 12.8945 12.2281C13.7781 12.6592 14.5527 13.2847 15.1601 14.0578C16.0719 12.9021 16.5661 11.4721 16.5624 10C16.5624 9.63354 16.5321 9.26772 16.4718 8.90625C16.4304 8.66103 16.488 8.40939 16.6321 8.20669C16.7762 8.00399 16.9949 7.86683 17.2402 7.82539C17.4854 7.78395 17.737 7.84162 17.9397 7.98572C18.1424 8.12981 18.2796 8.34853 18.321 8.59375ZM9.99992 11.5625C10.4326 11.5625 10.8555 11.4342 11.2152 11.1938C11.575 10.9535 11.8553 10.6118 12.0209 10.2121C12.1865 9.81241 12.2298 9.37257 12.1454 8.94824C12.061 8.52391 11.8526 8.13413 11.5467 7.8282C11.2408 7.52228 10.851 7.31394 10.4267 7.22953C10.0023 7.14513 9.56252 7.18845 9.1628 7.35401C8.76309 7.51958 8.42145 7.79996 8.18108 8.15969C7.94072 8.51942 7.81242 8.94235 7.81242 9.375C7.81242 9.95516 8.04289 10.5116 8.45313 10.9218C8.86336 11.332 9.41976 11.5625 9.99992 11.5625ZM9.99992 16.5625C11.3557 16.5635 12.6782 16.1421 13.7835 15.357C13.3483 14.762 12.7789 14.2779 12.1214 13.9442C11.464 13.6106 10.7372 13.4367 9.99992 13.4367C9.26267 13.4367 8.53582 13.6106 7.8784 13.9442C7.22099 14.2779 6.65154 14.762 6.21633 15.357C7.32168 16.1421 8.64412 16.5635 9.99992 16.5625Z" fill="black" />
@@ -60,10 +85,17 @@ export default function profile2() {
         {
           newtestProducts.slice(0, 8).map((producto, index) => {
             return (
-              <Link to="/file-product" style={{ textDecoration: "none" }}>
-                <ItemParam nombreuser={"usuario" + index} precio={producto.precio} nombreproduct={producto.nombre} localizacion={"localización" + index}
-                  key={`producto-interes-${index}`} icons={true} vistahome={false} />
-              </Link>
+
+              <ItemParam 
+              imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
+              nombreuser={"usuario" + index} 
+              precio={producto.precio} 
+              nombreproduct={producto.nombre} 
+              localizacion={"localización" + index}
+              key={`producto-interes-${index}`} 
+              icons={true} vistahome={false} 
+              idProductArg={producto.id} />
+
             )
           })
         }

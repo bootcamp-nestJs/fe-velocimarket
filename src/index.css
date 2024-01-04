@@ -27,7 +27,7 @@ input[type="submit"]{
 }
 
 .button_component{
-  border-radius: 20px;
+  border-radius: 100px;
   border: 1px solid #0D0D0D;
   background: #ffffff;
   display: flex;
@@ -67,7 +67,7 @@ input[type="submit"]{
   padding: 0;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 100%;
   border: 0;
 }
 .button_component.full-blue{

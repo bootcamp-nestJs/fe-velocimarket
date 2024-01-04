@@ -1,19 +1,19 @@
 /* Fonts */
 @font-face {
   font-family: 'Circular Spotify Text';
-  src: url('./fonts/CircularSpotifyText-Medium.otf');
+  src: url('../fonts/CircularSpotifyText-Medium.otf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Circular Spotify Text';
-  src: url('./fonts/CircularSpotifyText-Bold.otf');
+  src: url('../fonts/CircularSpotifyText-Bold.otf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'DM Sans';
-  src: url('./fonts/DMSans-VariableFont_opszwght.ttf');
+  src: url('../fonts/DMSans-VariableFont_opszwght.ttf');
 }
 
 * {
@@ -22,13 +22,13 @@
 
 .product {
   max-width: 1116px;
-  margin: 40px 192px 40px 192px;
-  padding: 31px 70px;
+  margin: 40px auto;
+  padding: 31px 0px;
   box-sizing: border-box;
 }
 
 .crear-publicaction .product .title {
-  color: #000;
+  color: #48505E;
   font-family: 'DM Sans';
   font-size: 1.875rem;
   font-style: normal;
@@ -45,10 +45,13 @@
 }
 
 .crear-publicaction .product_content .product_peview {
+  border-radius: 14px;
   overflow: hidden;
-  width: 70%;
+  width: 100%;
   padding: 10px 10px 29px 10px;
-  background-color: white;
+  background: url(/src/assets/preview.png), rgb(255, 255, 255) 50% / cover no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .crear-publicaction .product_content form {

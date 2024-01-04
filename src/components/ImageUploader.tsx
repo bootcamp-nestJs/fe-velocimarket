@@ -26,13 +26,11 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ setImages }) => {
     };
 
     return (
+        <>
+        {selectedImages.length < 1 && <div></div>}
+
         <div className="image-uploader-container">
             <div className="max-img">
-                <div className="input-image">
-                    <label className="custom-file-upload">
-                        <input className="agregar-img" type="file" accept="image/*" multiple onChange={handleImageChange} />
-                    </label>
-                </div>
                 <div className="uploader-images">
                     {selectedImages.length >= 1 &&
                         <div key={0} className="image-container">
@@ -47,8 +45,14 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ setImages }) => {
                     }
                 </div>
             </div>
-
-            <Overflowbox>                {selectedImages.length > 1 &&
+            <div className="input-image">
+                <label className="custom-file-upload">
+                    + Cargar
+                    <input className="agregar-img" type="file" accept="image/*" multiple onChange={handleImageChange} />
+                </label>
+            </div>
+            <Overflowbox>                
+                {selectedImages.length > 1 &&
                 <div className="img-carrusel">
                     {selectedImages.map((image, index) => (
                         <div key={index} className="image-container">
@@ -66,7 +70,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ setImages }) => {
                         </div>))}
                 </div>}
             </Overflowbox>
+            
         </div>
+        </>
     );
 };
 

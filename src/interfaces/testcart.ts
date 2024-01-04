@@ -25,4 +25,21 @@ export interface getcart{
     }
 
 }
+export interface productoCarrito {
+    id: number;
+    nombre: string;
+    precio: number;
+    avatarVendedor: string;
+    ubicacionVendedor: string;
+    imgProducto: string;
+    descripcion: string;
 
+}
+
+export interface createCarritoResponse {
+    id: number,
+    medioPago: string,
+    valorEnvio: number,
+    totalCarrito: number,
+    productos: string[]
+}

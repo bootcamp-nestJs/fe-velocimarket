@@ -1,10 +1,9 @@
 import Header from "../components/header"
-/* import Button from "../components/Button" */
-/* import product_img from "../assets/preview.png" */
+
 import Footer from "../components/footer"
 import { Link, useNavigate } from "react-router-dom";
 import { createProduct } from "../interfaces/create-product/create-product";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { validarPrecio } from "../validadores/validadores";
 import "./publication.css"
 import { BannerApp } from "../components/bannerApp";
@@ -13,6 +12,7 @@ import { product_response, testProduct } from "../interfaces/testproduct";
 import ItemParam from "../components/Item-parm";
 import { } from "../interfaces/testproduct";
 import { useSelector } from "react-redux";
+import itemImg from "../assets/img/product.png"
 import { RootState } from "../redux/store";
 
 const shuffleArray = (array: any[]) => {
@@ -24,8 +24,19 @@ export default function Publicacion() {
   const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
   const shuffledtestProducts = shuffleArray(listaProductos).slice(0, 3);
 
+  const createIdRef = useRef<number | null>(null);
+  const navigate = useNavigate();
+
+    // // En algún lugar del componente, probablemente en useEffect
+    // useEffect(() => {
+    //   // Accede a createIdRef.current para navegar cuando sea necesario
+    //     if (createIdRef.current !== null) {
+    //       navigate(`/file-product/${createIdRef.current}`);
+    //     }
+    //   }, [createIdRef.current,navigate]);    
+
   useEffect(() => {
-    fetch(`https://api2-velo.lemichi.cl/api/products`, {
+    fetch(`https://api2-velo.lemichi.cl/api/products?pag=1`, {
       method: 'GET',
       headers: {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
@@ -40,7 +51,6 @@ export default function Publicacion() {
     });
   }, []);
 
-  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     titulo: "",
@@ -59,15 +69,16 @@ export default function Publicacion() {
   const [error, setError] = useState({
     titulo: false,
     precio: false,
-   /*  region: false,
-    comuna: false, */
+    /*  region: false,
+     comuna: false, */
     descripcion: false,
     categoria: false,
     tamano: false,
     estado: false,
     marca: false,
     material: false,
-    componentes: false
+    componentes: false,
+    imagen: false
   });
 
   //Al parecer no tiene un uso practico para un formulario, quizas es mejor para fecth data en la seccion de productos para actualizar las nuevas cards del feed.
@@ -90,13 +101,14 @@ export default function Publicacion() {
       estado: false,
       marca: false,
       material: false,
-      componentes: false
+      componentes: false,
+      imagen: false
     };
 
     erroresFormulario.titulo = (inputForm.titulo.length > 20 || inputForm.titulo.length === 0) ? true : false;
     erroresFormulario.precio = validarPrecio(inputForm.precio);
-   /*  erroresFormulario.region = inputForm.region.length === 0 ? true : false;
-    erroresFormulario.comuna = inputForm.comuna.length === 0 ? true : false; */
+    /*  erroresFormulario.region = inputForm.region.length === 0 ? true : false;
+     erroresFormulario.comuna = inputForm.comuna.length === 0 ? true : false; */
     erroresFormulario.descripcion = (inputForm.descripcion.length > 200 || inputForm.descripcion.length === 0) ? true : false;
     erroresFormulario.categoria = (inputForm.categoria.length === 0) ? true : false;
     erroresFormulario.tamano = (inputForm.tamano.length === 0) ? true : false;
@@ -105,12 +117,12 @@ export default function Publicacion() {
     erroresFormulario.material = (inputForm.material.length === 0 || !/^[a-zA-ZÀ-ÿ\s]+$/.test(inputForm.material)) ? true : false;
     erroresFormulario.componentes = (inputForm.componentes.length > 200 || inputForm.componentes.length === 0) ? true : false;
 
+    erroresFormulario.imagen = (selectedImages.length===0)?true:false;
     return erroresFormulario
 
   }
 
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
-
   const handleImageChange = (images: File[]) => {
     setSelectedImages(images);
   };
@@ -123,48 +135,81 @@ export default function Publicacion() {
 
   }
 
-  const enviarFormulario = () => {
-    const producto = {
-      "nombre": form.titulo,
-      "categoria": parseInt(form.categoria),
-      "descripcion": form.descripcion,
-      "marca": form.marca,
-      "avatar": "aqui va un avatar",
-      "precio": parseInt(form.precio),
-      "tamanio": form.tamano,
-      "estado": form.estado,
-      "material_cuadro": form.estado,
-      "componentes": form.componentes,
-      "valoracion": 2
+  const enviarFormulario = async () => {
+
+    try {
+      const producto = {
+        "nombre": form.titulo,
+        "categoria": parseInt(form.categoria),
+        "descripcion": form.descripcion,
+        "marca": form.marca,
+        // "avatar": "aqui va un avatar",
+        "precio": parseInt(form.precio),
+        "tamanio": form.tamano,
+        "estado": form.estado,
+        "material_cuadro": form.estado,
+        "componentes": form.componentes,
+        "valoracion": 2,
+      }
+
+      const formData = new FormData();
+
+      // Agregar imágenes al FormData
+      selectedImages.forEach((image, index) => {
+        formData.append(`images`, image);
+        // formData.append(`images${index + 1}`, image);
+      });
+      //formData.set("image",selectedImages[0])
+      // const user = useSelector((state: RootState) => state.user)
+
+      console.log(formData)
+      fetch(`https://api2-velo.lemichi.cl/api/products`, {
+        method: 'POST',
+        body: JSON.stringify(producto),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.access_token}`
+        }
+      }).then(response => {
+        if (response.ok) {
+          return response.json() as Promise<product_response>;
+        } else {
+          console.log(response.json())
+          throw new Error('algo salio mal al crear el usuario en el backend');
+        }
+      }).then(json => {
+        console.log("Producto creado" + json.id);
+        createIdRef.current = json.id;
+        // subir imagen
+        fetch(`https://api2-velo.lemichi.cl/api/products/${json.id}/upload`, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${user.access_token}`
+          }
+        }).then(response => {
+          if (response.ok) {
+            return response.text();
+          } else {
+            console.log(response.text())
+            throw new Error('algo salio mal al crear el usuario en el backend');
+          }
+        }).then(texto_img => {
+          console.log(texto_img);
+        }).catch(error => {
+          console.error(error);
+        });
+      }).catch(error => {
+        console.error(error);
+      });
+      console.log('formulario enviado con exito');
+      console.log(form);
+      console.log('Imagen seleccionada:', selectedImages);
+
+      setTimeout(() => navigate(`/file-product/${createIdRef.current}`),1000)
+    } catch (error) {
+      console.error(error)
     }
-
-    const user = useSelector((state: RootState) => state.user)
-    
-    console.log(typeof(producto.precio))
-    fetch(`https://api2-velo.lemichi.cl/api/products`, {
-      method: 'POST',
-      body: JSON.stringify(producto),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization:`Bearer ${user.access_token}`
-      }
-    }).then(response => {
-      if (response.status == 201) {
-        return response.json() as Promise<product_response>;
-      } else {
-        console.log(response.json())
-        throw new Error('algo salio mal al crear el usuario en el backend');
-      }
-    }).then(json => {
-      console.log(json);
-    }).catch(error => {
-      console.error(error);
-    });
-
-    console.log('formulario enviado con exito');
-    console.log(form);
-    console.log('Imagen seleccionada:', selectedImages);
-    navigate("/file-product")
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -175,17 +220,18 @@ export default function Publicacion() {
   }
 
   const user = useSelector((state: RootState) => state.user)
-  
+
   return (
     <div className="crear-publicaction">
       {user.isAuth && <Header />}
       <section className="product">
         <h1 className="title">Ingresa los detalles y el precio de tu producto</h1>
         <div className="product_content">
-          <div className="product_peview">
+          <div className="product_peview"> {/* aqui va la imagen default */}
             <div className="product_img">
               <ImageUploader setImages={handleImageChange} />
             </div>
+            {error.imagen && <span className='error'>Subir al menos una imagen</span>}
           </div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="title">Escribe el título de tu producto (así es como te verán los compradores)</label>
@@ -196,18 +242,6 @@ export default function Publicacion() {
             {error.descripcion && <span className='error'>Ingresa Descripcion max. 200 caracteres</span>}
 
             <div className="content_row">
-              {/* <div className="colLocation">
-                <div className="input_location">
-                  <label htmlFor="region">Region</label>
-                  <input type="text" name="region" id="region" onChange={handleChange} />
-                  {error.region && <span className='error'>Ingresa Región </span>}
-                </div>
-                <div className="input_location">
-                  <label htmlFor="comuna">Comuna</label>
-                  <input type="text" name="comuna" id="comuna" onChange={handleChange} />
-                  {error.comuna && <span className='error'>Ingresa comuna</span>}
-                </div>
-              </div> */}
               <div className="col">
                 <label htmlFor="price">Tu precio de venta</label>
                 <input type="number" name="precio" id="price" onChange={handleChange} />
@@ -289,8 +323,8 @@ export default function Publicacion() {
       <h1 className="titulosec2">Te puede interesar</h1>
       <section className="products-publication">
         {shuffledtestProducts.map((producto, index) => (
-          <Link to="/file-product" style={{ textDecoration: "none" }}>
           <ItemParam
+          imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
             icons={true}
             vistahome={true}
             nombreuser={"usuario" + index}
@@ -298,10 +332,10 @@ export default function Publicacion() {
             nombreproduct={producto.nombre}
             localizacion={"localización" + index}
             key={`producto-interes-${index}`}
+            idProductArg={producto.id}
           ></ItemParam>
-          </Link>        
-          ))}
-          
+        ))}
+
       </section>
       <BannerApp></BannerApp>
       <Footer />

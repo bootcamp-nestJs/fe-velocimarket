@@ -5,17 +5,23 @@ interface UserState {
     user_name: string;
     email: string;
     isAuth: boolean;
-    role: string
+    role: string;
+    iat:number
     access_token:string
 }
 
-const initialState: UserState = { // estado inicial 
+const defaultInitialState: UserState = { // estado inicial 
     id: 0,
     user_name: "",
     email: "",
     isAuth: false,
     role: "",
+    iat: 0,
     access_token:""
+}
+const initialState =  () => { // estado inicial
+    const estadoPersistente = localStorage.getItem("_redux_user");
+    return estadoPersistente ? JSON.parse(estadoPersistente): defaultInitialState
 }
 
 

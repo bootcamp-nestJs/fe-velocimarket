@@ -13,6 +13,8 @@ import { testProduct } from "../interfaces/testproduct";
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import Header from '../components/header';
+import itemImg from "../assets/img/product.png"
+
 
 const shuffleArray = (array: any[]) => {
   return array.sort(() => Math.random() - 0.5);
@@ -26,11 +28,11 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch(`https://api2-velo.lemichi.cl/api/products`, {
+    fetch(`https://api2-velo.lemichi.cl/api/products?pag=1`, {
       method: 'GET',
-      headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
-      },
+      // headers: {
+      //   Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
+      // },
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
     }).then(json => {
@@ -69,6 +71,7 @@ export default function Home() {
       <section className="products">
         {slicedProducts.map((producto, index) => (
           <ItemParam
+            imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
             icons={true}
             vistahome={true}
             nombreuser={`usuario${currentIndex * 6 + index}`}
@@ -76,6 +79,7 @@ export default function Home() {
             nombreproduct={producto.nombre}
             localizacion={`localización${currentIndex * 6 + index}`}
             key={`producto-interes-${currentIndex * 6 + index}`}
+            idProductArg={producto.id}
           ></ItemParam>
         ))}
       </section>
@@ -85,6 +89,7 @@ export default function Home() {
         <section className="products">
           {slicedProducts.map((producto, index) => (
             <ItemParam
+              imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
               icons={true}
               vistahome={true}
               nombreuser={`usuario${currentIndex * 6 + index}`}
@@ -92,6 +97,7 @@ export default function Home() {
               nombreproduct={producto.nombre}
               localizacion={`localización${currentIndex * 6 + index}`}
               key={`producto-interes-${currentIndex * 6 + index}`}
+              idProductArg={producto.id}
             ></ItemParam>
           ))}
         </section>
@@ -101,6 +107,7 @@ export default function Home() {
       <section className="products">
         {slicedProducts.map((producto, index) => (
           <ItemParam
+            imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
             icons={true}
             vistahome={true}
             nombreuser={`usuario${currentIndex * 6 + index}`}
@@ -108,6 +115,7 @@ export default function Home() {
             nombreproduct={producto.nombre}
             localizacion={`localización${currentIndex * 6 + index}`}
             key={`producto-interes-${currentIndex * 6 + index}`}
+            idProductArg={producto.id}
           ></ItemParam>
 
         ))}

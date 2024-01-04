@@ -12,7 +12,7 @@ export type testProduct = {
     valoracion: number,
     /* region: string,
     comuna: string, */
-    img: img,
+    img: img[],
     cat: string,
 }
 
@@ -25,6 +25,7 @@ export type img = {
 }
 
 export type product_response = {
+        id:number,
         nombre: string,
         categoria: string,
         descripcion : string,

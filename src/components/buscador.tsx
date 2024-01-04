@@ -1,13 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+/* import { useNavigate } from 'react-router-dom'
 export default function Buscador() {
 
     const navigate = useNavigate();
     const buscar = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key == "Enter") {
             alert("buscando");
- 
-            navigate('/results');
-
+            navigate('/results-categories');
         }
     }
 
@@ -20,6 +18,39 @@ export default function Buscador() {
             <input type="text" placeholder="Buscar bicicletas, marcas, modelos..." onKeyDown={buscar} />
         </div>
     )
-}
+} */
 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+export default function Buscador() {
+    const navigate = useNavigate();
+    const [searchText, setSearchText] = useState<string>('');
+  
+    const buscar = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        alert(`Buscando: ${searchText}`);
+        localStorage.setItem('searchText', searchText); // Guardar en localStorage
+        navigate('/results-categories');
+        console.log(localStorage.getItem('searchText'));
+      }
+    };
+  
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchText(e.target.value);
+    };
+  
+    return (
+      <div className="search">
+        {/* ... (código anterior) */}
+        <input
+          type="text"
+          placeholder="Buscar bicicletas, marcas, modelos..."
+          onKeyDown={buscar}
+          onChange={handleInputChange}
+          value={searchText}
+        />
+      </div>
+    );
+  }
+  

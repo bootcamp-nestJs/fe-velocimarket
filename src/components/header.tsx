@@ -4,9 +4,10 @@ import { Link, useNavigate, /*  useLocation  */ } from "react-router-dom";
 import Buscador from "./buscador";
 import { useState } from "react";
 import message from "../assets/icon/Chat.svg"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/userSlice";
-/* import Breadcrumbs from "./breadcrumbs";  */
+import { RootState } from "../redux/store";
+import Breadcrumbs from "./breadcrumbs";
 
 
 export default function Header() {
@@ -27,6 +28,12 @@ export default function Header() {
     dispatch(logout())
    navigate("/home")
   }
+
+  const handleHistorial = () => {
+   navigate("/historial")
+  }
+  const user = useSelector((state: RootState) => state.user)
+  
 
   return (
     <>
@@ -72,7 +79,7 @@ export default function Header() {
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.3111 16.4063C17.24 14.5263 15.5674 13.0615 13.5627 12.2477C14.5596 11.5 15.296 10.4575 15.6676 9.26803C16.0392 8.07853 16.0271 6.80228 15.633 5.62006C15.2389 4.43783 14.4829 3.40956 13.4719 2.68091C12.461 1.95225 11.2464 1.56016 10.0002 1.56016C8.75401 1.56016 7.53942 1.95225 6.52847 2.68091C5.51752 3.40956 4.76146 4.43783 4.36738 5.62006C3.9733 6.80228 3.96119 8.07853 4.33276 9.26803C4.70433 10.4575 5.44075 11.5 6.43769 12.2477C4.43294 13.0615 2.76038 14.5263 1.68925 16.4063C1.62288 16.513 1.57864 16.6319 1.55917 16.7561C1.5397 16.8803 1.54539 17.0071 1.57591 17.129C1.60642 17.2509 1.66114 17.3654 1.7368 17.4658C1.81247 17.5661 1.90753 17.6502 2.01635 17.7131C2.12517 17.776 2.24552 17.8163 2.37025 17.8318C2.49497 17.8472 2.62153 17.8374 2.74239 17.8029C2.86325 17.7685 2.97595 17.7101 3.07379 17.6312C3.17162 17.5523 3.2526 17.4546 3.31191 17.3438C4.72753 14.8969 7.22753 13.4375 10.0002 13.4375C12.7728 13.4375 15.2728 14.8977 16.6885 17.3438C16.817 17.5504 17.0209 17.699 17.2569 17.7581C17.493 17.8172 17.7428 17.7822 17.9536 17.6604C18.1643 17.5387 18.3194 17.3397 18.3861 17.1057C18.4529 16.8716 18.426 16.6208 18.3111 16.4063ZM5.93769 7.5C5.93769 6.69651 6.17595 5.91107 6.62234 5.243C7.06874 4.57492 7.70321 4.05422 8.44554 3.74674C9.18786 3.43926 10.0047 3.35881 10.7927 3.51556C11.5808 3.67231 12.3047 4.05923 12.8728 4.62738C13.441 5.19553 13.8279 5.9194 13.9846 6.70745C14.1414 7.49549 14.0609 8.31233 13.7534 9.05465C13.446 9.79698 12.9253 10.4315 12.2572 10.8778C11.5891 11.3242 10.8037 11.5625 10.0002 11.5625C8.92313 11.5613 7.89053 11.1329 7.12894 10.3713C6.36734 9.60965 5.93893 8.57706 5.93769 7.5Z" fill="white" />
               </svg>
-              Nombre usuario
+              {user.user_name}
             </Button>
           </Link>
 
@@ -90,8 +97,8 @@ export default function Header() {
               <button className="new-menu" /* onClick={handleLogout} */>
                 Favoritos
               </button>
-              <button className="new-menu" /* onClick={handleLogout} */>
-                Vendidos
+              <button className="new-menu" onClick={handleHistorial}>
+                Historial
               </button>
               <button className="new-menu" onClick={handleLogout}> {/* agregar la opcion de desloguearse */}
                 Cerrar Sesión
@@ -100,6 +107,7 @@ export default function Header() {
         )}
 
     </header >
+    <Breadcrumbs/>
     </>
   )
 }

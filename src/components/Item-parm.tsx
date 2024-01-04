@@ -1,73 +1,73 @@
-import itemImg from "../assets/img/product.png"
 import Button from "./Button"
 import { Link } from "react-router-dom";
 import imagenesprueba from "../json/imagenesprueba.json"
+import heart from "../assets/Like.svg"
+import chat from "../assets/ChatTeardropDots.svg"
 import './item-param.css'
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { useEffect, useState } from "react";
 
-interface PropsItem  { 
+interface PropsItem {
   icons?: boolean,
   vistahome?: boolean,
-  nombreuser:string,
-  precio:number,
-  nombreproduct:string,
-  localizacion:string
+  nombreuser: string,
+  precio: number,
+  nombreproduct: string,
+  localizacion: string,
+  idProductArg: number,
+  imagen: string
+
 }
 
 
 
-export default function ItemParam({ icons = false, vistahome = false, nombreuser, precio,nombreproduct,localizacion}:PropsItem) {
+export default function ItemParam({ icons = false, vistahome = false, nombreuser, precio, nombreproduct, localizacion, idProductArg, imagen }: PropsItem) {
   const avatarImages = imagenesprueba.avatar;
+
+  const [idProduct, setIdproduct] = useState<Number>()
+
+  useEffect(() => setIdproduct(idProductArg), [idProductArg])
 
   const user = useSelector((state: RootState) => state.user)
 
+
+  const handlefav = () => {
+    alert("se agrego a favoritos")
+  }
   return (
     <div className="ItemParam">
       <div className="img">
-        <img src={itemImg} alt="" />
+        <img src={imagen} alt="" />
         {user.isAuth &&
-        <div>
-        {icons &&
-          <div className="icons">
-            <Link to="/signIn" style={{ textDecoration: "none" }}>
-              <Button className="w-34">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.9062 2.1875C12.3367 2.1875 10.9438 2.80703 10 3.87188C9.05625 2.80703 7.66328 2.1875 6.09375 2.1875C4.72674 2.18915 3.41618 2.73293 2.44956 3.69956C1.48293 4.66618 0.939154 5.97674 0.9375 7.34375C0.9375 12.9953 9.20391 17.5109 9.55547 17.7008C9.69209 17.7744 9.84483 17.8129 10 17.8129C10.1552 17.8129 10.3079 17.7744 10.4445 17.7008C10.7961 17.5109 19.0625 12.9953 19.0625 7.34375C19.0608 5.97674 18.5171 4.66618 17.5504 3.69956C16.5838 2.73293 15.2733 2.18915 13.9062 2.1875ZM13.4773 13.3094C12.3893 14.2327 11.2261 15.0637 10 15.7938C8.77387 15.0637 7.61073 14.2327 6.52266 13.3094C4.82969 11.857 2.8125 9.64219 2.8125 7.34375C2.8125 6.47351 3.1582 5.63891 3.77356 5.02356C4.38891 4.4082 5.22351 4.0625 6.09375 4.0625C7.48438 4.0625 8.64844 4.79688 9.13203 5.97969C9.20242 6.15212 9.32257 6.29967 9.47715 6.40354C9.63174 6.50741 9.81376 6.56288 10 6.56288C10.1862 6.56288 10.3683 6.50741 10.5228 6.40354C10.6774 6.29967 10.7976 6.15212 10.868 5.97969C11.3516 4.79688 12.5156 4.0625 13.9062 4.0625C14.7765 4.0625 15.6111 4.4082 16.2264 5.02356C16.8418 5.63891 17.1875 6.47351 17.1875 7.34375C17.1875 9.64219 15.1703 11.857 13.4773 13.3094Z" fill="black" />
-                </svg>
-              </Button>
-            </Link>
-            <Link to="/signIn" style={{ textDecoration: "none" }}>
-              <Button className="w-34">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.8125 16.875C7.8125 17.184 7.72086 17.4861 7.54917 17.7431C7.37748 18 7.13345 18.2003 6.84794 18.3186C6.56243 18.4368 6.24827 18.4678 5.94517 18.4075C5.64208 18.3472 5.36367 18.1984 5.14515 17.9799C4.92663 17.7613 4.77781 17.4829 4.71752 17.1798C4.65723 16.8767 4.68818 16.5626 4.80644 16.2771C4.9247 15.9915 5.12497 15.7475 5.38192 15.5758C5.63887 15.4041 5.94097 15.3125 6.25 15.3125C6.6644 15.3125 7.06183 15.4771 7.35485 15.7701C7.64788 16.0632 7.8125 16.4606 7.8125 16.875ZM14.375 15.3125C14.066 15.3125 13.7639 15.4041 13.5069 15.5758C13.25 15.7475 13.0497 15.9915 12.9314 16.2771C12.8132 16.5626 12.7822 16.8767 12.8425 17.1798C12.9028 17.4829 13.0516 17.7613 13.2701 17.9799C13.4887 18.1984 13.7671 18.3472 14.0702 18.4075C14.3733 18.4678 14.6874 18.4368 14.9729 18.3186C15.2585 18.2003 15.5025 18 15.6742 17.7431C15.8459 17.4861 15.9375 17.184 15.9375 16.875C15.9375 16.4606 15.7729 16.0632 15.4799 15.7701C15.1868 15.4771 14.7894 15.3125 14.375 15.3125ZM18.3961 5.90078L16.2641 12.8305C16.1279 13.2786 15.8509 13.6709 15.4742 13.9492C15.0974 14.2274 14.641 14.3767 14.1727 14.375H6.47891C6.00383 14.3735 5.54205 14.218 5.16275 13.932C4.78346 13.6459 4.50707 13.2446 4.375 12.7883L1.70391 3.4375H0.9375C0.68886 3.4375 0.450403 3.33873 0.274587 3.16291C0.098772 2.9871 0 2.74864 0 2.5C0 2.25136 0.098772 2.0129 0.274587 1.83709C0.450403 1.66127 0.68886 1.5625 0.9375 1.5625H1.93906C2.27839 1.56355 2.60824 1.6746 2.87911 1.87898C3.14998 2.08337 3.34728 2.37008 3.44141 2.69609L4.01094 4.6875H17.5C17.6467 4.68749 17.7914 4.72191 17.9224 4.78801C18.0534 4.8541 18.167 4.95001 18.2542 5.06803C18.3414 5.18605 18.3996 5.32288 18.4243 5.46752C18.4489 5.61215 18.4393 5.76055 18.3961 5.90078ZM16.2305 6.5625H4.54609L6.17813 12.2734C6.19681 12.3388 6.23628 12.3962 6.29056 12.4371C6.34483 12.478 6.41096 12.5001 6.47891 12.5H14.1727C14.2395 12.5001 14.3047 12.4788 14.3586 12.4391C14.4124 12.3995 14.4521 12.3436 14.4719 12.2797L16.2305 6.5625Z" fill="black" />
-                </svg>
-              </Button>
-            </Link>
-            <Link to="/signIn" style={{ textDecoration: "none" }}>
-              <Button className="w-34">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.9797 2.02031C17.7833 1.82389 17.5381 1.68336 17.2694 1.61319C17.0007 1.54302 16.7181 1.54575 16.4508 1.6211L16.4336 1.62656L1.44062 6.17188C1.13609 6.26017 0.865626 6.43903 0.665157 6.68469C0.464688 6.93035 0.343702 7.23119 0.318268 7.54724C0.292835 7.86329 0.364158 8.1796 0.522764 8.45416C0.68137 8.72871 0.919752 8.94852 1.20625 9.08438L7.79375 12.2094L10.9187 18.7969C11.0435 19.0645 11.2422 19.2908 11.4913 19.4492C11.7405 19.6075 12.0298 19.6913 12.325 19.6906C12.3695 19.6906 12.4148 19.6906 12.4602 19.6852C12.776 19.66 13.0764 19.5385 13.321 19.3372C13.5657 19.1359 13.7427 18.8644 13.8281 18.5594L18.3734 3.56641C18.3757 3.56084 18.3776 3.55509 18.3789 3.54922C18.4543 3.28189 18.457 2.99931 18.3868 2.73058C18.3166 2.46185 18.1761 2.21668 17.9797 2.02031ZM12.2656 17.2594L9.63125 11.6977L13.1664 8.1625C13.3425 7.98638 13.4415 7.74751 13.4415 7.49844C13.4415 7.24937 13.3425 7.0105 13.1664 6.83438C12.9903 6.65826 12.7514 6.55931 12.5023 6.55931C12.2533 6.55931 12.0144 6.65826 11.8383 6.83438L8.30312 10.3695L2.74062 7.73438L16.4062 3.59375L12.2656 17.2594Z" fill="black" />
-                </svg>
-              </Button>
-            </Link>
-          </div>} </div>}
+          <div>
+            {icons &&
+              <div className="icons">
+                <Button className="w-34" onClick={handlefav}>
+                  <img className="redondeado" src={heart} />
+                </Button>
+                <Button className="w-34">
+                  <img className="redondeado" src={chat} />
+                </Button>
+              </div>} </div>}
       </div>
       {vistahome && <div className="datoscard" >
-      <Link to="/profile2" style={{ textDecoration: "none" }}>
-        <img className="avatar" src= {avatarImages[0].avatar} alt="" />
-        <div className="nameloc">
-          <span className="username">{nombreuser}</span>
-          <span className="localizacion">{localizacion}</span>
-        </div>
+        <Link to="/profile2" style={{ textDecoration: "none" }}>
+          <div className="present_avatar">
+            <img className="avatar" src={avatarImages[0].avatar} alt="" />
+            <div className="nameloc">
+              <span className="username">{nombreuser}</span>
+              <span className="localizacion">{localizacion}</span>
+            </div>
+          </div>
         </Link>
-        <span className="price">{precio}</span>
+        <span className="price">{"$" + precio}</span>
       </div>}
       {!vistahome &&
-        <span className="price">{precio}</span>
+        <span className="price">{"$" + precio}</span>
       }
-      <Link to="/file-product" style={{ textDecoration: "none" }}>
-      <span className="nombre">{nombreproduct}</span>
+      <Link to={`/file-product/${idProductArg}`} style={{ textDecoration: "none" }}>
+        <p className="title_product">{nombreproduct}</p>
       </Link>
     </div>
   )

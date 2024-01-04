@@ -1,4 +1,4 @@
-import {Route , Routes} from "react-router-dom";
+import {Navigate, Route , Routes} from "react-router-dom";
 
 //pages
 import Home from './pages/home';
@@ -14,10 +14,11 @@ import { Checkout } from "./pages/checkout";
 
 //css
 import './App.css';
-import Results from "./pages/results-search";
 import ResultsCategories from "./pages/results-categories";
 import Calification from "./pages/calification";
 import { ProtectedComponent } from "./components/ProtectedRoute";
+import Historial from "./pages/historialCompra";
+import Edition from "./pages/edition";
 
 function App() {  
 
@@ -31,13 +32,15 @@ function App() {
           <Route path='/profile1' element={<ProtectedComponent><Profile1 /></ProtectedComponent> }/>
           <Route path='/profile2' element={<ProtectedComponent><Profile2 /></ProtectedComponent>}/>
           <Route path='/publication' element={<ProtectedComponent><Publication /></ProtectedComponent>}/>
-          <Route path='/file-product' element={<FileProduct />}/>
+          <Route path='/file-product/:productId' element={<FileProduct />}/>
           <Route path='/cart' element={<ProtectedComponent><Cart /></ProtectedComponent>}/>
           <Route path='/inbox' element={<ProtectedComponent><Inbox /></ProtectedComponent>}/>
-          <Route path='/results' element={<Results />}/>
-          <Route path='/results-categories' element={<ResultsCategories />}/>
+          <Route path='/results-categories' element={<ProtectedComponent><ResultsCategories /></ProtectedComponent>}/>
           <Route path='/calification' element={<ProtectedComponent><Calification /></ProtectedComponent>}/>
           <Route path='/checkout' element={<ProtectedComponent><Checkout /></ProtectedComponent>}/>
+          <Route path='/historial' element={<ProtectedComponent><Historial/></ProtectedComponent>}/>
+          <Route path='/edition' element={<ProtectedComponent><Edition/></ProtectedComponent>}/>
+          <Route path="/" element={<Navigate to="home" />} />
         </Routes>
     </>        
   )

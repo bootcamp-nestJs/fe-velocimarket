@@ -6,7 +6,7 @@ import { signIn } from "../interfaces/create-sign-in/sign-in";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login, logout } from "../redux/userSlice";
-/* import { Md5 } from "ts-md5"; */
+import { Md5 } from "ts-md5";
 import { jwtDecode } from 'jwt-decode' // import dependency
 
 interface LoginRespose {
@@ -14,7 +14,8 @@ interface LoginRespose {
     isAuthenticated: boolean,
     user_name: string,
     mail: string,
-    role: string
+    role: string,
+    iat: number
 }
 interface AccessToken {
     access_token: string
@@ -39,8 +40,8 @@ export default function SignIn() {
 
         // encriptación de contraseña
         //DESCOMENTAR CUANDO BACKEND ARREGLE
-        // const passwordEncriptado = Md5.hashStr(form.contrasena)
-        const passwordEncriptado = form.contrasena
+        const passwordEncriptado = Md5.hashStr(form.contrasena)
+        // const passwordEncriptado = form.contrasena
         /* agregar fetch */
 
         fetch(`https://api2-velo.lemichi.cl/api/signin`, {
@@ -65,17 +66,18 @@ export default function SignIn() {
             console.log(json);
             const token = json.access_token 
             const user_data = jwtDecode(token) as LoginRespose
-            console.log(user_data.id)
+            console.log(user_data)
             dispatch(login({  //preguntar si lo que se guarda aca es en realidad el token el profe envia una estructura json pero a mi me devuelven un token
                 id:user_data.id,
                 user_name: user_data.user_name,
                 email: user_data.mail,
                 isAuth: true,
-                role: "user",
+                role: user_data.role,
+                iat:user_data.iat,
                 access_token: token
             }))
 
-            navigate("/profile1");
+            navigate(-1);
         }).catch(error => {
             console.error(error);
             dispatch(logout())

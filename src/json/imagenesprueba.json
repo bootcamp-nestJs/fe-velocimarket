@@ -21,7 +21,7 @@
     ],
     "avatar": [
         {
-            "avatar": "src/assets/img/avatares/avatar1.png"
+            "avatar": "../src/assets/img/avatares/avatar1.png"
         },
         {
             "avatar": "src/assets/img/avatares/avatar2.png"
