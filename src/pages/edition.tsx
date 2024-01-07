@@ -2,22 +2,22 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import ImageAvatarUploader from "../components/avatarUploader";
 import "./edition.css";
 import { useState } from "react";
 
 export default function Edition() {
-    const [selectedImages, setSelectedImages] = useState<File[]>([]);
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
-    const handleImageChange = (images: File[]) => {
-      setSelectedImages(images);
+    const handleImageChange = (image: File | null) => {
+        setSelectedImage(image);
     };
 
     const formData = new FormData();
 
-    selectedImages.forEach((image) => {
-        formData.append(`avatar`, image);
-        // formData.append(`images${index + 1}`, image);
-      });
+    if (selectedImage) {
+        formData.append(`avatar`, selectedImage);
+    }
 
     const user = useSelector((state: RootState) => state.user);
 
@@ -28,10 +28,10 @@ export default function Edition() {
                 <h2 className="titleh2edition">Editar tu perfil</h2>
             </div>
             <section className="conteiner-general-edition">
+                <div className="img_avatar_edition">
+                    <ImageAvatarUploader setAvatar={handleImageChange} />
+                </div>
                 <form className="conteiner-form-edition">
-                    <div className="product_img">
-                        <avatarUploader setAvatar={handleImageChange} />
-                    </div>
                     <h4 className="title-section-Edition">Cambiar foto perfil</h4>
 
                     <div className="inputedition">
@@ -55,7 +55,9 @@ export default function Edition() {
                             placeholder="987654321"
                         />
                     </div>
-
+                    <button className="bluebutton-edition">
+                        Guardar cambios
+                    </button>
                 </form>
                 <Footer />
             </section>

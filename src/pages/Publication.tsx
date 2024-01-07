@@ -1,7 +1,7 @@
 import Header from "../components/header"
 
 import Footer from "../components/footer"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createProduct } from "../interfaces/create-product/create-product";
 import { useEffect, useRef, useState } from "react";
 import { validarPrecio } from "../validadores/validadores";
@@ -27,19 +27,11 @@ export default function Publicacion() {
   const createIdRef = useRef<number | null>(null);
   const navigate = useNavigate();
 
-    // // En algún lugar del componente, probablemente en useEffect
-    // useEffect(() => {
-    //   // Accede a createIdRef.current para navegar cuando sea necesario
-    //     if (createIdRef.current !== null) {
-    //       navigate(`/file-product/${createIdRef.current}`);
-    //     }
-    //   }, [createIdRef.current,navigate]);    
-
   useEffect(() => {
     fetch(`https://api2-velo.lemichi.cl/api/products?pag=1`, {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
+        Authorization: `Bearer ${user.access_token}`
       },
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
@@ -69,8 +61,6 @@ export default function Publicacion() {
   const [error, setError] = useState({
     titulo: false,
     precio: false,
-    /*  region: false,
-     comuna: false, */
     descripcion: false,
     categoria: false,
     tamano: false,
@@ -81,20 +71,11 @@ export default function Publicacion() {
     imagen: false
   });
 
-  //Al parecer no tiene un uso practico para un formulario, quizas es mejor para fecth data en la seccion de productos para actualizar las nuevas cards del feed.
-
-  // useEffect(() => {
-  //     // (Object.values(validarInputs(form)).includes(true)) ? console.log("existen errores, revise que completo correctamente todos los campos") : enviarFormulario(), [error]
-  //     Object.values(validarInputs(form)).includes(true)
-  // })
-
   const validarInputs = (inputForm: createProduct) => {
 
     const erroresFormulario = {
       titulo: false,
       precio: false,
-      /* region: false,
-      comuna: false, */
       descripcion: false,
       categoria: false,
       tamano: false,
@@ -107,8 +88,6 @@ export default function Publicacion() {
 
     erroresFormulario.titulo = (inputForm.titulo.length > 20 || inputForm.titulo.length === 0) ? true : false;
     erroresFormulario.precio = validarPrecio(inputForm.precio);
-    /*  erroresFormulario.region = inputForm.region.length === 0 ? true : false;
-     erroresFormulario.comuna = inputForm.comuna.length === 0 ? true : false; */
     erroresFormulario.descripcion = (inputForm.descripcion.length > 200 || inputForm.descripcion.length === 0) ? true : false;
     erroresFormulario.categoria = (inputForm.categoria.length === 0) ? true : false;
     erroresFormulario.tamano = (inputForm.tamano.length === 0) ? true : false;
@@ -149,7 +128,7 @@ export default function Publicacion() {
         "estado": form.estado,
         "material_cuadro": form.estado,
         "componentes": form.componentes,
-        "valoracion": 2,
+        /* "valoracion": 2, */
       }
 
       const formData = new FormData();
@@ -157,12 +136,13 @@ export default function Publicacion() {
       // Agregar imágenes al FormData
       selectedImages.forEach((image, index) => {
         formData.append(`images`, image);
-        // formData.append(`images${index + 1}`, image);
       });
-      //formData.set("image",selectedImages[0])
-      // const user = useSelector((state: RootState) => state.user)
+      
+      /* console.log(formData) */
+      console.log("formulario a enviar");
+      console.log(form);
+      console.log('Imagen seleccionada:', selectedImages);
 
-      console.log(formData)
       fetch(`https://api2-velo.lemichi.cl/api/products`, {
         method: 'POST',
         body: JSON.stringify(producto),
@@ -175,11 +155,13 @@ export default function Publicacion() {
           return response.json() as Promise<product_response>;
         } else {
           console.log(response.json())
-          throw new Error('algo salio mal al crear el usuario en el backend');
+          throw new Error('algo salio mal al crear el producto en el backend');
         }
       }).then(json => {
         console.log("Producto creado" + json.id);
         createIdRef.current = json.id;
+        console.log('formulario enviado con exito');
+        
         // subir imagen
         fetch(`https://api2-velo.lemichi.cl/api/products/${json.id}/upload`, {
           method: 'POST',
@@ -192,7 +174,7 @@ export default function Publicacion() {
             return response.text();
           } else {
             console.log(response.text())
-            throw new Error('algo salio mal al crear el usuario en el backend');
+            throw new Error('algo salio mal al subir la imagen en el backend');
           }
         }).then(texto_img => {
           console.log(texto_img);
@@ -202,11 +184,9 @@ export default function Publicacion() {
       }).catch(error => {
         console.error(error);
       });
-      console.log('formulario enviado con exito');
-      console.log(form);
-      console.log('Imagen seleccionada:', selectedImages);
+      
 
-      setTimeout(() => navigate(`/file-product/${createIdRef.current}`),1000)
+      setTimeout(() => navigate(`/file-product/${createIdRef.current}`),2000)
     } catch (error) {
       console.error(error)
     }
@@ -267,7 +247,7 @@ export default function Publicacion() {
                   <label htmlFor="category">Categoría</label>
                   <select className="selectInput" name="categoria" id="category" onChange={handleChange}>
                     <option value="">Selecciona Categoría</option>
-                    <option value={1} >Carretera</option>
+                    <option value={1}>Carretera</option>
                     <option value={2}>Montaña</option>
                     <option value={3}>Gravel</option>
                     <option value={4}>Urbana</option>

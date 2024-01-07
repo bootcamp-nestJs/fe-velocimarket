@@ -1,49 +1,56 @@
 import React, { ChangeEvent, useState } from "react";
-import "./ImagenUploader.css"
+import "./avatarUploader.css";
 
 interface AvatarUploaderProps {
-    setAvatar: (files: File[]) => void;
+    setAvatar: (file: File | null) => void;
 }
 
 const ImageAvatarUploader: React.FC<AvatarUploaderProps> = ({ setAvatar }) => {
-    const [selectedImages, setSelectedImages] = useState<File[]>([]);
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
     const handleAvatarChange = (e: ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
-        if (files) {
-            const newImages: File[] = Array.from(files);
-            setSelectedImages([...selectedImages, ...newImages]);
-            setAvatar([...selectedImages, ...newImages]);
+        if (files && files.length > 0) {
+            const newImage: File = files[0];
+            setSelectedImage(newImage);
+            setAvatar(newImage);
+        } else {
+            setSelectedImage(null);
+            setAvatar(null);
         }
     };
 
-    const handleRemoveImage = (index: number) => {
-        const updatedImages = [...selectedImages];
-        updatedImages.splice(index, 1);
-        setSelectedImages(updatedImages);
-        setAvatar(updatedImages);
+    const handleRemoveImage = () => {
+        setSelectedImage(null);
+        setAvatar(null);
     };
 
     return (
-        <div className="image-uploader-container">
-            <div className="max-img">
-                <div className="input-image">
-                    <label className="custom-file-upload">
-                        <input className="agregar-img" type="file" accept="image/*" multiple onChange={handleAvatarChange} />
-                    </label>
-                </div>
-                <div className="uploader-images">
-                    {selectedImages.length >= 1 &&
-                        <div key={0} className="image-container">
-                            <img
-                                src={URL.createObjectURL(selectedImages[0])}
-                                alt={`Preview ${0}`}
-                                className={"first-image"}
-                            />
-                            <button className="delete-button" onClick={() => handleRemoveImage(0)}>
-                            </button>
+        <div className="image-uploader-avatar-container">
+            <div className="max-img-avatar">
+                <div className="input-image-avatars">
+                    {selectedImage ? (
+                        <div className="uploader-images">
+                            <div className="image-container">
+                                <img
+                                    src={URL.createObjectURL(selectedImage)}
+                                    alt={`Profile Preview`}
+                                    className="profile-image-avatar"
+                                />
+                                <button className="delete-button" onClick={handleRemoveImage}>
+                                </button>
+                            </div>
                         </div>
-                    }
+                    ) : (
+                        <label className="custom-file-avatar-upload">
+                            <input
+                                className="agregar-img-avatar-nuevo"
+                                type="file"
+                                accept="image/*"
+                                onChange={handleAvatarChange}
+                            />
+                        </label>
+                    )}
                 </div>
             </div>
         </div>
@@ -51,4 +58,3 @@ const ImageAvatarUploader: React.FC<AvatarUploaderProps> = ({ setAvatar }) => {
 };
 
 export default ImageAvatarUploader;
-

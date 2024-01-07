@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import avatar from "../assets/img/avatar.png"
+import avatar from "../assets/img/avatardefault.png"
 import { ReactNode } from "react";
 
 
@@ -12,7 +12,7 @@ interface ProfileCardProps {
   products: number;
   children: ReactNode;
   onProductsClick: () => void;
-  onFollowClick: () => void;
+  onFollowersClick: () => void;
   onFollowingClick: () => void;
 }
 
@@ -25,7 +25,7 @@ export default function ProfileCard({
   products,
   children,
   onProductsClick,
-  onFollowClick,
+  onFollowersClick,
   onFollowingClick
   
 }: ProfileCardProps) {
@@ -36,8 +36,8 @@ export default function ProfileCard({
     onProductsClick();
   };
 
-  const handlefollow = () => {
-    onFollowClick();
+  const handlefollowers = () => {
+    onFollowersClick();
   };
 
   const handlefollowing = () => {
@@ -83,7 +83,7 @@ export default function ProfileCard({
           <span>Productos</span>
           <big>{products}</big>
         </div>
-        <div className="tag"onClick={handlefollow}>
+        <div className="tag"onClick={handlefollowers}>
           <span>Siguiendo</span>
           <big>{following}</big>
         </div>

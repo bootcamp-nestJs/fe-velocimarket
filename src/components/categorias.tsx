@@ -10,17 +10,17 @@ export function Categorias() {
       <h1 className='titulo-categorias'>Categorías Destacadas</h1>
       <div className='contenedor-categorias'>
         <Overflowbox >
-          <Link to="/results-categories" style={{ textDecoration: "none" }}>
             <div className='categorias'>
               {category.map((categoria, index) => (
-                <Categoria
-                  categoria={categoria.categoria}
-                  imagen_cat={categoria.imagen}
-                  key={"cat" + index}
-                />
+/*                 <Link to={{pathname: "/results-categories", query:{thing: "hhhgf"}}} style={{ textDecoration: "none" }}>*/                  <Categoria
+                    categoria={categoria.categoria}
+                    imagen_cat={categoria.imagen}
+                    cat_numb={index}
+                    key={"cat" + index}
+                  />
+                // </Link>
               ))}
             </div>
-          </Link>
         </Overflowbox>
       </div >
     </div >

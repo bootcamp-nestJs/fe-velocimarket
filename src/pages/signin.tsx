@@ -77,7 +77,7 @@ export default function SignIn() {
                 access_token: token
             }))
 
-            navigate(-1);
+            navigate("/home");
         }).catch(error => {
             console.error(error);
             dispatch(logout())

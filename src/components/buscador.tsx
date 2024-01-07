@@ -21,17 +21,19 @@ export default function Buscador() {
 } */
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Buscador() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [searchText, setSearchText] = useState<string>('');
   
     const buscar = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
         alert(`Buscando: ${searchText}`);
         localStorage.setItem('searchText', searchText); // Guardar en localStorage
-        navigate('/results-categories');
+        if(location.pathname === "/results-categories") navigate(0)
+        else navigate('/results-categories');
         console.log(localStorage.getItem('searchText'));
       }
     };

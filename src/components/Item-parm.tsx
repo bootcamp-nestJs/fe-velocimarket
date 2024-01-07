@@ -38,7 +38,9 @@ export default function ItemParam({ icons = false, vistahome = false, nombreuser
   return (
     <div className="ItemParam">
       <div className="img">
+      <Link to={`/file-product/${idProductArg}`} style={{ textDecoration: "none" }}>
         <img src={imagen} alt="" />
+      </Link>
         {user.isAuth &&
           <div>
             {icons &&

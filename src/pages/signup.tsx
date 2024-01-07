@@ -132,7 +132,8 @@ function SignUp() {
             "calle": "edita tu calle",
             "numero": 111,
             "comuna": comId,
-            "region": regId
+            "region": regId,
+            "user_avatar": ""
         }
 
         fetch(`https://api2-velo.lemichi.cl/api/users/signup`, {

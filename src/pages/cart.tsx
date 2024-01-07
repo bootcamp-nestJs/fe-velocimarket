@@ -109,7 +109,7 @@ export default function Cart( /* {productInfo, checkoutInfo }: CartProps */) {
                                                 <div className="cart-second">
                                                     <div className="product_view_cart">
                                                         <div className="product_img_cart">
-                                                            <img src={imagen} alt="Producto_cart" />
+                                                            <img src={producto.imgProducto} alt="Producto_cart" />
                                                         </div>
                                                     </div>
                                                     <div className="product_information_cart">

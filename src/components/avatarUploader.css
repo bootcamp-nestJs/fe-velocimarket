@@ -1,0 +1,72 @@
+.image-uploader-avatar-container {
+    width: 112px;
+    height: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.max-img-avatar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.input-image-avatars {
+    width: 100%;
+    height: 100%;
+}
+
+.custom-file-avatar-upload {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background:url(/src/assets/img/avatardefault.png) #ffffff 100% / cover no-repeat;
+    background-size: 100%;
+    background-position: center;
+    border: 1px solid #989FAD;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #001F48;
+    overflow: hidden;
+}
+
+.custom-file-avatar-upload input {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.uploader-images {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+}
+
+.profile-image-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.delete-button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: #578fff;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
