@@ -12,8 +12,8 @@ Descripción:
 ## Orden de Archivos en src:
 
 - Las vistas del proyecto se encuentran en carpeta pages
-- Los componentes que se utilizan mas de una vez se enceuntran en la carpeta components
-- En la carpeta assets se enceuntran imagenes y iconos.
+- Los componentes que se utilizan mas de una vez se encuentran en la carpeta components
+- En la carpeta assets se encuentran imagenes y iconos.
 - Para los validadores de formularios que se utilizan en vistas de inicio y creación de usuario se encuentran en la carpeta validadores.
 - En la carpeta redux se encuentran los slice de user, carrito y favoritos.
 - En la carpeta json contiene json que se utilizaron de prueba antes de conectar a la api
