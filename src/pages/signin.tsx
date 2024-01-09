@@ -9,6 +9,21 @@ import { login, logout } from "../redux/userSlice";
 import { Md5 } from "ts-md5";
 import { jwtDecode } from 'jwt-decode' // import dependency
 
+interface UserEdit {
+    id: number;
+    nombre: string;
+    apellido: string;
+    user_name: string;
+    user_avatar: string;
+    mail: string;
+    telefono: string;
+    calle: string;
+    comuna: number;
+    numero: number;
+    region: number;
+    valoracion: number;
+}
+
 interface LoginRespose {
     id:number,
     isAuthenticated: boolean,
@@ -39,10 +54,8 @@ export default function SignIn() {
     const validarLogin = () => {
 
         // encriptación de contraseña
-        //DESCOMENTAR CUANDO BACKEND ARREGLE
         const passwordEncriptado = Md5.hashStr(form.contrasena)
-        // const passwordEncriptado = form.contrasena
-        /* agregar fetch */
+        // const passwordEncriptado =form.contrasena
 
         fetch(`https://api2-velo.lemichi.cl/api/signin`, {
             method: 'POST',
@@ -67,17 +80,27 @@ export default function SignIn() {
             const token = json.access_token 
             const user_data = jwtDecode(token) as LoginRespose
             console.log(user_data)
-            dispatch(login({  //preguntar si lo que se guarda aca es en realidad el token el profe envia una estructura json pero a mi me devuelven un token
-                id:user_data.id,
-                user_name: user_data.user_name,
-                email: user_data.mail,
-                isAuth: true,
-                role: user_data.role,
-                iat:user_data.iat,
-                access_token: token
-            }))
-
-            navigate("/home");
+            
+            fetch(`https://api2-velo.lemichi.cl/api/users/user?id=${user_data.id}`, {
+                method: 'GET',
+            }).then(response => {
+                return response.json() as Promise<UserEdit>;
+            }).then(json => {
+                console.log(json);
+                dispatch(login({  //preguntar si lo que se guarda aca es en realidad el token el profe envia una estructura json pero a mi me devuelven un token
+                    id:user_data.id,
+                    user_name: user_data.user_name,
+                    email: user_data.mail,
+                    isAuth: true,
+                    role: user_data.role,
+                    iat:user_data.iat,
+                    access_token: token,
+                    user_avatar:json.user_avatar
+                }))
+                navigate("/home");
+            }).catch(error => {
+                console.error(error);
+            });
         }).catch(error => {
             console.error(error);
             dispatch(logout())

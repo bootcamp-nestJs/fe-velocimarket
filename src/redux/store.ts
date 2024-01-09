@@ -1,6 +1,7 @@
 import { configureStore, Middleware} from "@reduxjs/toolkit";
 import userReducer from './userSlice';
 import carritoReducer from "./carritoSlice";
+import favoritesReducer from './favoriteSlice';
 
 
 const persisLocalStorage: Middleware = (store) => (next) => (action) => {
@@ -25,10 +26,14 @@ const persisLocalStorage: Middleware = (store) => (next) => (action) => {
 export const store = configureStore({
     reducer: {
         user: userReducer,
-        carrito: carritoReducer
+        carrito: carritoReducer,
+        favorites: favoritesReducer
     },
     middleware: [persisLocalStorage]
 });
 
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch; // revisar esto
+
+export default store;

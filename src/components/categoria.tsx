@@ -14,7 +14,7 @@ export function Categoria({
 ) {
     const navigate = useNavigate()
     const handleClickCategory =() =>{
-        if(cat_numb===0) navigate("/results-categories", {state:{key:2 , categoria}})
+        if(cat_numb===0) navigate("/results-categories", {state:{key:1 , categoria}})
     }
     return (
         <div className='categoria'  onClick={handleClickCategory}>

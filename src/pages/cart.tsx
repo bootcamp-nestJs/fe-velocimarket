@@ -48,6 +48,7 @@ export default function Cart( /* {productInfo, checkoutInfo }: CartProps */) {
         });
     }
     const handleEliminarProducto = (indexProducto: number) => {
+        // dispatch(deleteProducto(indexProducto)) //EN CASO DE EMERGENCIA
         fetch(`https://api2-velo.lemichi.cl/api/cart/removeProduct?productId=${carrito.productos[indexProducto].id}&cartId=${carrito.id}`, {
             method: 'DELETE',
             headers: {
@@ -101,7 +102,7 @@ export default function Cart( /* {productInfo, checkoutInfo }: CartProps */) {
                                 return (
                                     <>                        <div className="cont-profile">
                                         <div className="cont-profile-cart">
-                                            <ProfileCard name={"Nombre de vendedor"} location="Locación" rate={0} />
+                                            <ProfileCard name={"edgar_02"} location={"Viña del mar"} rate={0} />
                                         </div>
                                     </div>
                                         <div className="container-product-cart">

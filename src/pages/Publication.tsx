@@ -96,7 +96,7 @@ export default function Publicacion() {
     erroresFormulario.material = (inputForm.material.length === 0 || !/^[a-zA-ZÀ-ÿ\s]+$/.test(inputForm.material)) ? true : false;
     erroresFormulario.componentes = (inputForm.componentes.length > 200 || inputForm.componentes.length === 0) ? true : false;
 
-    erroresFormulario.imagen = (selectedImages.length===0)?true:false;
+    erroresFormulario.imagen = (selectedImages.length === 0) ? true : false;
     return erroresFormulario
 
   }
@@ -137,7 +137,7 @@ export default function Publicacion() {
       selectedImages.forEach((image, index) => {
         formData.append(`images`, image);
       });
-      
+
       /* console.log(formData) */
       console.log("formulario a enviar");
       console.log(form);
@@ -161,7 +161,7 @@ export default function Publicacion() {
         console.log("Producto creado" + json.id);
         createIdRef.current = json.id;
         console.log('formulario enviado con exito');
-        
+
         // subir imagen
         fetch(`https://api2-velo.lemichi.cl/api/products/${json.id}/upload`, {
           method: 'POST',
@@ -184,9 +184,9 @@ export default function Publicacion() {
       }).catch(error => {
         console.error(error);
       });
-      
 
-      setTimeout(() => navigate(`/file-product/${createIdRef.current}`),2000)
+
+      setTimeout(() => navigate(`/file-product/${createIdRef.current}`), 2000)
     } catch (error) {
       console.error(error)
     }
@@ -207,7 +207,14 @@ export default function Publicacion() {
       <section className="product">
         <h1 className="title">Ingresa los detalles y el precio de tu producto</h1>
         <div className="product_content">
-          <div className="product_peview"> {/* aqui va la imagen default */}
+          <div className="product_peview" style={{
+            backgroundImage:
+              selectedImages.length === 0
+                ? 'url(/src/assets/preview.png)' // Aquí va la imagen por defecto
+                : `url(${URL.createObjectURL(selectedImages[0])})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}> {/* aqui va la imagen default */}
             <div className="product_img">
               <ImageUploader setImages={handleImageChange} />
             </div>
@@ -304,7 +311,8 @@ export default function Publicacion() {
       <section className="products-publication">
         {shuffledtestProducts.map((producto, index) => (
           <ItemParam
-          imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
+            avatar={"algo"} //editarimgdinamica
+            imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
             icons={true}
             vistahome={true}
             nombreuser={"usuario" + index}

@@ -71,6 +71,7 @@ export default function Home() {
       <section className="products">
         {slicedProducts.map((producto, index) => (
           <ItemParam
+            avatar=""
             imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
             icons={true}
             vistahome={true}
@@ -89,6 +90,7 @@ export default function Home() {
         <section className="products">
           {slicedProducts.map((producto, index) => (
             <ItemParam
+              avatar=""
               imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
               icons={true}
               vistahome={true}
@@ -107,6 +109,7 @@ export default function Home() {
       <section className="products">
         {slicedProducts.map((producto, index) => (
           <ItemParam
+            avatar=""
             imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
             icons={true}
             vistahome={true}

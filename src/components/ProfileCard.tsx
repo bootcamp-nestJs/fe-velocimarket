@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import avatar from "../assets/img/avatardefault.png"
+import avatarDefault from "../assets/img/avatardefault.png" 
 import { ReactNode } from "react";
 
 
 interface ProfileCardProps {
+  avatar:string;
   name: string;
   location: string;
   rate?: number;
@@ -17,6 +18,7 @@ interface ProfileCardProps {
 }
 
 export default function ProfileCard({
+  avatar,
   name,
   location,
   rate = 5,
@@ -63,7 +65,7 @@ export default function ProfileCard({
   return (
     <div className="ProfileCard">
       <div className="ProfileCard_header">
-        <img src={avatar} alt="" />
+        <img src={avatar===""?avatarDefault:avatar} alt="" />
         <div className="details">
           <h1>{name}</h1>
           <span>{location}</span>
@@ -95,3 +97,4 @@ export default function ProfileCard({
     </div>
   )
 }
+ 

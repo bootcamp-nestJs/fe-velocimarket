@@ -50,13 +50,6 @@ function SignUp() {
         region: false
     });
 
-    //Al parecer no tiene un uso practico para un formulario, quizas es mejor para fecth data en la seccion de productos para actualizar las nuevas cards del feed.
-
-    // useEffect(() => {
-    //     // (Object.values(validarInputs(form)).includes(true)) ? console.log("existen errores, revise que completo correctamente todos los campos") : enviarFormulario(), [error]
-    //     Object.values(validarInputs(form)).includes(true)
-    // })
-
     const validarInputs = (inputForm: signUp) => {
 
         const erroresFormulario = {

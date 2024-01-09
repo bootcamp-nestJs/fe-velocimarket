@@ -49,7 +49,7 @@
   overflow: hidden;
   width: 100%;
   padding: 10px 10px 29px 10px;
-  background: url(/src/assets/preview.png), rgb(255, 255, 255) 50% / cover no-repeat;
+ /*  background: url(/src/assets/preview.png), rgb(255, 255, 255) 50% / cover no-repeat; */
   background-size: cover;
   background-position: center;
 }

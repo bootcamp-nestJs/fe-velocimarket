@@ -29,6 +29,10 @@ export default function Header() {
    navigate("/home")
   }
 
+  const handleFavs = () => {
+    navigate("/favoritos")
+   }
+
   const handleHistorial = () => {
    navigate("/historial")
   }
@@ -94,7 +98,7 @@ export default function Header() {
         {isMenuOpen && (
           <div className="dropdown-menu">
             {/* Aquí puedes colocar tus opciones de menú, como "Cerrar Sesión" */}
-              <button className="new-menu" /* onClick={handleLogout} */>
+              <button className="new-menu" onClick={handleFavs}>
                 Favoritos
               </button>
               <button className="new-menu" onClick={handleHistorial}>

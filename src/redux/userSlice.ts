@@ -6,8 +6,9 @@ interface UserState {
     email: string;
     isAuth: boolean;
     role: string;
-    iat:number
-    access_token:string
+    iat: number;
+    access_token: string;
+    user_avatar: string;
 }
 
 const defaultInitialState: UserState = { // estado inicial 
@@ -17,7 +18,8 @@ const defaultInitialState: UserState = { // estado inicial
     isAuth: false,
     role: "",
     iat: 0,
-    access_token:""
+    access_token:"",
+    user_avatar:""
 }
 const initialState =  () => { // estado inicial
     const estadoPersistente = localStorage.getItem("_redux_user");
@@ -31,14 +33,14 @@ export const userSlice = createSlice({
     reducers: {
         login: (state, action: PayloadAction<UserState>) => { // aqui servira para guardar el estado de la persona logueada
             const newState = { ...action.payload }
-            console.log("logout reducer", newState)
+            console.log("login reducer", newState)
             return newState
         },
         logout: () => { // se busca dejar como el estado inicial por lo tanto a diferencia de login este no le agregaremos un action
             console.log("logout reducer")
             return { ...initialState }
         }
-
+        
     }
 
 });

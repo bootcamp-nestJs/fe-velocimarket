@@ -13,6 +13,7 @@ import HeaderRegister from "../components/header-register";
 import itemImg from "../assets/img/product.png"
 import { useLocation, useNavigate } from "react-router-dom";
 import cross from "../assets/icon/Cerrar.svg"
+import empty from "../assets/empty state.svg"
 /* import { Navigate } from "react-router-dom"; */
 
 
@@ -28,15 +29,15 @@ export default function ResultsCategories() {
     const [filtros, setFiltros] = useState(
         {
             categoria: 0,
-            subcat: state.key ? state.key : "0",
+            subcat: state ? state.key : "0",
             pagina: 1,
             ordenar: "3"
         })
+    const [avatarUserProduct, setAvatarUserProduct] = useState<string[]>([]);
 
-    console.log(state.categoria)
 
+    console.log(state ? state.categoria : "No hay state")
 
-    // COPIAR ESTO DENTRO DEL BOTON DELETE
     const navigate = useNavigate()
 
     const handleDeleteResult = () => {
@@ -115,7 +116,7 @@ export default function ResultsCategories() {
             ...filtros,
             [event.target.name]: event.target.checked ? event.target.value : "0"
         });
-        state.key = state.key == 0 ? event.target.value : 0
+        if (state) state.key = state.key == 0 ? event.target.value : 0
         event.preventDefault()
 
     }
@@ -142,6 +143,23 @@ export default function ResultsCategories() {
         }).then(json => {
             console.log(json);
             setlistaProductos(json)
+            setAvatarUserProduct([]);
+            console.log("AVATARES", avatarUserProduct)
+            json.map((producto) => {
+                fetch(`https://api2-velo.lemichi.cl/api/users/user?id=${producto.userId}`, {
+                    method: 'GET',
+                }).then(response => {
+                    return response.json() as Promise<{ user_avatar: string }>;
+                }).then(json => {
+                    // console.log("Respuesta", json);
+                    // console.log("AVATARES", avatarUserProduct)
+                    // avatares_arr.push(json.user_avatar)
+                    console.log(json.user_avatar)
+                })
+            })
+            // setAvatarUserProduct(avatares_arr)
+            // console.log(avatares_arr)
+
         }).catch(error => {
             console.error(error);
         });
@@ -185,7 +203,7 @@ export default function ResultsCategories() {
             </div>
             <div className="content-container-result">
                 <aside className='container-selector'>
-                    <SelectorSection handleChange={handleCheckbox} chequeado={state.key} title="Tipo de bicicleta" options={[
+                    <SelectorSection handleChange={handleCheckbox} chequeado={state ? state.key : filtros.subcat} title="Tipo de bicicleta" options={[
                         { label: "Carretera", value: "1" },
                         { label: "Montaña", value: "2" },
                         { label: "Gravel", value: "3" },
@@ -243,19 +261,22 @@ export default function ResultsCategories() {
                         <div className="container-products">
 
                             {
-                                currentProducts.map((producto, index) => (
-                                    <ItemParam
-                                        imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
-                                        icons={true}
-                                        vistahome={true}
-                                        nombreuser={"usuario" + index}
-                                        precio={producto.precio}
-                                        nombreproduct={producto.nombre}
-                                        localizacion={"localización" + index}
-                                        key={`producto-interes-${index}`}
-                                        idProductArg={producto.id}
-                                    />
-                                ))
+                                currentProducts.map((producto, index) => {
+                                    return (
+                                        <ItemParam
+                                            avatar={avatarUserProduct[index]}
+                                            imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
+                                            icons={true}
+                                            vistahome={true}
+                                            nombreuser={"usuario" + index}
+                                            precio={producto.precio}
+                                            nombreproduct={producto.nombre}
+                                            localizacion={"localización" + index}
+                                            key={`producto-interes-${index}`}
+                                            idProductArg={producto.id}
+                                        />
+                                    )
+                                })
                             }
                         </div>
                         <div className="pagination">
@@ -270,7 +291,13 @@ export default function ResultsCategories() {
                 {
                     currentProducts.length === 0 &&
                     <>
-                        <h1>NO SE ENCONTRARON PRODUCTOS</h1>
+                        <div className="empty-container">
+                            <div className="empty-state-dino">
+                                <h1>Ups! nos se encontro el producto</h1>
+                                <img src={empty} className='ilustración-dino' />
+                                <h3>Intentalo de nuevo o prueba una nueva búsqueda</h3>
+                            </div>
+                        </div>
                     </>
                 }
             </div>

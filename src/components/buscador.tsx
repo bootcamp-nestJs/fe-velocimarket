@@ -32,7 +32,7 @@ export default function Buscador() {
       if (e.key === 'Enter') {
         alert(`Buscando: ${searchText}`);
         localStorage.setItem('searchText', searchText); // Guardar en localStorage
-        if(location.pathname === "/results-categories") navigate(0)
+        if(location.pathname === "/results-categories") navigate(0);
         else navigate('/results-categories');
         console.log(localStorage.getItem('searchText'));
       }

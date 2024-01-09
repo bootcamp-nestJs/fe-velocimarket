@@ -105,7 +105,7 @@ export default function FileProduct() {
             ubicacionVendedor: "La Serena",
             /* imgProducto: "aqui va una imagen", */
             imgProducto: Producto!.img[0].imagen,
-            descripcion: Producto!.nombre
+            descripcion: Producto!.descripcion
         }
         if (carrito.productos.length < 1) {
             // Creo el carrito
@@ -215,7 +215,7 @@ export default function FileProduct() {
                             <h4 className="section-information">{Producto?.cat}</h4>{/* esto debe ser dinamico */}
                             <h3 className="section-information">{Producto?.nombre}</h3>
                             <h3 className="information-value">{"$" + Producto?.precio}</h3>
-                            <ProfileCard name="Nombre vendedor" location="Locación" rate={4} />
+                            <ProfileCard name="Edgar_02" location="Viña del mar" rate={4} />
                             {user.isAuth &&
                                 <div className="buttons-file">
                                     <Link to="/Cart" style={{ textDecoration: "none" }}>
@@ -247,7 +247,7 @@ export default function FileProduct() {
                         <div className="description">
                             <h3 className="title-description">Descripción del producto</h3>
                             <div className="description-paragraph">
-                                <p className="text-description-file">Lorem ipsum dolor sit amet consectetur. Integer ornare sed imperdiet ullamcorper vel interdum quam lectus. Netus ut aenean aliquet posuere a eu. Sed netus aliquam viverra morbi viverra imperdiet augue. Pellentesque imperdiet tortor fusce dolor molestie aenean at libero. Vitae sit non diam eu. Diam facilisi.</p>
+                                <p className="text-description-file">{Producto?.descripcion}</p>
                             </div>
                         </div>
                         <div className="additional-Information-file">
@@ -290,6 +290,7 @@ export default function FileProduct() {
                         {shuffledtestProducts.map((producto, index) => (
                             // <Link to="/file-product" style={{ textDecoration: "none" }}>
                             <ItemParam
+                                avatar=""
                                 imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
                                 icons={true}
                                 vistahome={true}

@@ -1,246 +1,303 @@
 @font-face {
-    font-family: 'Circular Spotify Text';
-    src: url('../fonts/CircularSpotifyText-Medium.otf');
-    font-weight: 500;
-  }
-  @font-face {
-    font-family: 'Circular Spotify Text';
-    src: url('../fonts/CircularSpotifyText-Bold.otf');
-    font-weight: 700;
-  }
-  @font-face {
-    font-family: 'DM Sans';
-    src: url('../fonts/DMSans-VariableFont_opszwght.ttf');
-  }
-  
-  *{
-    margin: 0;
-  }
-  
-  header{
-    display: flex;  
-    align-items: center;
-    justify-content: center;
-    height: 64px;
-    padding: 0 60px;
-    padding-top: 20px;
-    gap: 40px;
-    background: #FFF;
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
-  }
-  header .logo{
-    padding: 0 2.28rem;
-  }
-  header .logo span{
-    color: var(--secundiario-azul-secundiario-azul-500, #002C66);
-    font-family: 'DM Sans';
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%; /* 30px */
-    letter-spacing: -0.57px;
-  }
-  
-  header .search{
-    border-radius: 2rem;
-    border: 1px solid #E6E7E8;
-    background: #F2F2F2;  
-    height: 34px;
-    width: 496px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    gap: 12px;
-  }
-  
-  header .search input{
-    border: none;
-    outline: none;
-    background-color: transparent;
-    flex-grow: 1;
-  }
-  
-  header .buttons{
-    display: flex;
-    gap: 2px;
-  }
-  
-  /* Profile Card */
-   .ProfileCard{
-    display: flex;
-    background-color: #FFF !important;
-    width: 736px;
-    padding: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-    flex-shrink: 0;
-    margin: 60px auto;
-  }
-  .ProfileCard .ProfileCard_header{
-    width: 100%;  
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding-right: 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-  }
-  .ProfileCard .ProfileCard_header img{
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  .ProfileCard .ProfileCard_header .details{
-    height: 100%;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .ProfileCard .ProfileCard_header .details .rate{
-    display: flex;
-    gap: 4px;
-  }
-  .ProfileCard .ProfileCard_header .buttons{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 8px;
-  }
-  .ProfileCard .ProfileCard_header .details h1{
-    color: #000;
-    font-family: 'DM Sans';
-    font-size: 1.625rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-  .ProfileCard .ProfileCard_header .details span{
-    color: #000;
+  font-family: 'Circular Spotify Text';
+  src: url('../fonts/CircularSpotifyText-Medium.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Circular Spotify Text';
+  src: url('../fonts/CircularSpotifyText-Bold.otf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../fonts/DMSans-VariableFont_opszwght.ttf');
+}
+
+* {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 60px;
+  padding-top: 20px;
+  gap: 40px;
+  background: #FFF;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+header .logo {
+  padding: 0 2.28rem;
+}
+
+header .logo span {
+  color: var(--secundiario-azul-secundiario-azul-500, #002C66);
+  font-family: 'DM Sans';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  /* 30px */
+  letter-spacing: -0.57px;
+}
+
+header .search {
+  border-radius: 2rem;
+  border: 1px solid #E6E7E8;
+  background: #F2F2F2;
+  height: 34px;
+  width: 496px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 12px;
+}
+
+header .search input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  flex-grow: 1;
+}
+
+header .buttons {
+  display: flex;
+  gap: 2px;
+}
+
+/* Profile Card */
+.ProfileCard {
+  display: flex;
+  background-color: #FFF !important;
+  width: 736px;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  flex-shrink: 0;
+  margin: 60px auto;
+}
+
+.ProfileCard .ProfileCard_header {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-right: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+
+.ProfileCard .ProfileCard_header img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.ProfileCard .ProfileCard_header .details {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ProfileCard .ProfileCard_header .details .rate {
+  display: flex;
+  gap: 4px;
+}
+
+.ProfileCard .ProfileCard_header .buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ProfileCard .ProfileCard_header .details h1 {
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.ProfileCard .ProfileCard_header .details span {
+  color: #000;
   font-family: 'DM Sans';
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  text-decoration:1px underline rgba(0, 0, 0, 0.715);
-  }
-  
-  .ProfileCard .mid_text{
-    color: #000;
-    font-family: 'DM Sans';
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
-  .ProfileCard .ProfileCard_footer{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  .ProfileCard .ProfileCard_footer .tag{
-    height: 74px;
-    width: 178px;
-    padding: 10px 0px;
-    display: flex;
-   
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-  
-    color: #000;
-    text-align: center;
-    font-family: 'DM Sans';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  
-    border-radius: 8px;
-    background: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-  .ProfileCard .ProfileCard_footer .tag big{
-    font-size: 20px;
-    font-weight: 500;
-  }
+  text-decoration: 1px underline rgba(0, 0, 0, 0.715);
+}
 
-  
-  
-  /* products */
-  .Profile .products{
-    max-width: 1116px;
-    margin: 60px auto;
-    margin-bottom: 147px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px 30px;  
-  }
-  
-  .Profile .products .Item{ 
-    display: flex;
-    width: 100%;
-    padding: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #FFF;
-    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
-    box-sizing: border-box;
-  }
-  .Profile .products .Item .img{
-    width: 100%;
-    height: 255px;
-    object-fit: cover;
-    position: relative;
-  }
-  .Profile .products .Item .img img{
-    width: 100%;
-  }
-  .Profile .products .Item .icons{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    gap: 4px;
-  }
-  
-  .Profile .products .Item .price{
-    color: #FFF;
-    font-family: 'DM Sans';
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: -0.342px;
-  
-    display: flex;
-    padding: 10px;
-    align-items: flex-start;
-    gap: 10px;
-  
-    margin: 16px 0;
-    border-radius: 10px;
-    background: rgba(89, 89, 89, 0.60);
-  }
-  
-  .Profile .products .Item .details{
-    color: #444;
-    font-family: 'DM Sans';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px;
-  
-    padding: 17px 6px;
-  }
+.ProfileCard .mid_text {
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ProfileCard .ProfileCard_footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ProfileCard .ProfileCard_footer .tag {
+  height: 74px;
+  width: 178px;
+  padding: 10px 0px;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  color: #000;
+  text-align: center;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.ProfileCard .ProfileCard_footer .tag big {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+
+/* products */
+.Profile .products {
+  max-width: 1116px;
+  margin: 60px auto;
+  margin-bottom: 147px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 30px;
+}
+
+.Profile .products .Item {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.Profile .products .Item .img {
+  width: 100%;
+  height: 255px;
+  object-fit: cover;
+  position: relative;
+}
+
+.Profile .products .Item .img img {
+  width: 100%;
+}
+
+.Profile .products .Item .icons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+}
+
+.Profile .products .Item .price {
+  color: #FFF;
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.342px;
+
+  display: flex;
+  padding: 10px;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin: 16px 0;
+  border-radius: 10px;
+  background: rgba(89, 89, 89, 0.60);
+}
+
+.Profile .products .Item .details {
+  color: #444;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 17px 6px;
+}
+
+.Profile .following {
+  max-width: 1116px;
+  margin: 60px auto;
+  margin-bottom: 147px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 30px;
+}
+
+.Profile .followers {
+  max-width: 1116px;
+  margin: 60px auto;
+  margin-bottom: 147px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 30px;
+}
+
+
+.empty-container-dino {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.button-empty{
+  display: flex;
+  width: 140px;
+  height: 48px;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 24px;
+  border: 1px solid var(--Azul-Profundo-sec-Azul-prof-700, #001F48);
+  background: #FFF;
+  text-wrap: nowrap;
+}
+

@@ -5,13 +5,28 @@ import itemImg from "../assets/img/product.png"
 import Footer from "../components/footer"
 import { BannerApp } from "../components/bannerApp"
 import ItemParam from "../components/Item-parm"
-import { useEffect, useId, useState } from "react"
+import { useEffect, useState } from "react"
 import { testProduct } from "../interfaces/testproduct"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
+import ItemFollowers from "../components/item-followers"
+import data from "../json/imagenesprueba.json";
+import "./profile.css"
 
-
+interface Follower {
+  nombre: string;
+  apellido: string;
+  mail: string;
+  user: string;
+  password: string;
+  telefono: string;
+  calle: string;
+  número: number;
+  comuna: string;
+  region: string;
+  avatar: string
+}
 
 export default function profile2() {
 
@@ -20,19 +35,27 @@ export default function profile2() {
   const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
   const newtestProducts = listaProductos
 
+  const [followers, setFollowers] = useState<Follower[]>([]);
+  const [showProducts, setShowProducts] = useState(true);
+  const [showFollowing, setShowFollowing] = useState(false);
+  const [showFollowers, setShowFollowers] = useState(false);
+
   const handleProductsClick = () => {
-    // Lógica para mostrar los productos
-    console.log("Mostrar productos");
+    setShowProducts(true);
+    setShowFollowing(false);
+    setShowFollowers(false);
   };
 
-  const handleFollowClick = () => {
-    // Lógica para mostrar a quién sigue el usuario
-    console.log("Mostrar a quién sigue el usuario");
+  const handleFollowersClick = () => {
+    setShowProducts(false);
+    setShowFollowing(false);
+    setShowFollowers(true);
   };
 
   const handleFollowingClick = () => {
-    // Lógica para mostrar los seguidores del usuario
-    console.log("Mostrar seguidores del usuario");
+    setShowProducts(false);
+    setShowFollowing(true);
+    setShowFollowers(false);
   };
 
   useEffect(() => {
@@ -51,19 +74,24 @@ export default function profile2() {
     });
   }, []);
 
+  useEffect(() => {
+    setFollowers(data.follower);
+  }, []);
+
 
   return (
     <div className="Profile">
       {user.isAuth && <Header />}
       <ProfileCard
-        name={useId.name}
-        location="Locación"
+        avatar={""}
+        name={"nombreusuario vendedor"}
+        location={"comuna usuario vendedor"}
         rate={5}
         followers={150}
         following={200}
         products={8}
         onProductsClick={handleProductsClick}
-        onFollowClick={handleFollowClick}
+        onFollowersClick={handleFollowersClick}
         onFollowingClick={handleFollowingClick}>
         <Button className="w-130">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,26 +108,69 @@ export default function profile2() {
           </Button>
         </Link>
       </ProfileCard>
-
+      {showProducts && (
       <section className="products">
         {
-          newtestProducts.slice(0, 8).map((producto, index) => {
+          newtestProducts.slice(0, 6).map((producto, index) => {
             return (
-
-              <ItemParam 
-              imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
-              nombreuser={"usuario" + index} 
-              precio={producto.precio} 
-              nombreproduct={producto.nombre} 
-              localizacion={"localización" + index}
-              key={`producto-interes-${index}`} 
-              icons={true} vistahome={false} 
-              idProductArg={producto.id} />
-
+              <ItemParam
+                avatar="algo"
+                imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
+                nombreuser={"usuario" + index}
+                precio={producto.precio}
+                nombreproduct={producto.nombre}
+                localizacion={"localización" + index}
+                key={`producto-interes-${index}`}
+                icons={true} vistahome={false}
+                vistaprofile2={true}
+                idProductArg={producto.id} />
             )
           })
         }
-      </section>
+      </section>)}
+
+      {showFollowing && (
+        <section className="following">
+          {followers.map((follower, index) => (
+            <ItemFollowers
+              key={`follower-${index}`}
+              user={follower.user}
+              comuna={follower.comuna}
+              tipo="following"
+              nombre={follower.nombre}
+              apellido={follower.apellido}
+              mail={follower.mail}
+              password={follower.password}
+              telefono={follower.telefono}
+              calle={follower.calle}
+              número={follower.número}
+              region={follower.region}
+              avatar={follower.avatar}
+            />
+          ))}
+        </section>
+      )}
+
+      {showFollowers && (
+        <section className="followers">
+          {followers.map((follower, index) => (
+            <ItemFollowers
+              key={`follower-${index}`}
+              user={follower.user}
+              comuna={follower.comuna}
+              tipo="following"
+              nombre={follower.nombre}
+              apellido={follower.apellido}
+              mail={follower.mail}
+              password={follower.password}
+              telefono={follower.telefono}
+              calle={follower.calle}
+              número={follower.número}
+              region={follower.region}
+              avatar={follower.avatar}
+            />
+          ))}
+        </section>)}
 
       <BannerApp></BannerApp>
 

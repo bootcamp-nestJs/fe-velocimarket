@@ -11,14 +11,13 @@ import FileProduct from "./pages/file-product";
 import Cart from "./pages/cart";
 import Inbox from "./pages/inbox";
 import { Checkout } from "./pages/checkout";
-
-//css
-import './App.css';
 import ResultsCategories from "./pages/results-categories";
 import Calification from "./pages/calification";
 import { ProtectedComponent } from "./components/ProtectedRoute";
 import Historial from "./pages/historialCompra";
 import Edition from "./pages/edition";
+import Favoritos from "./pages/Favoritos";
+import './App.css';
 
 function App() {  
 
@@ -39,6 +38,7 @@ function App() {
           <Route path='/calification' element={<ProtectedComponent><Calification /></ProtectedComponent>}/>
           <Route path='/checkout' element={<ProtectedComponent><Checkout /></ProtectedComponent>}/>
           <Route path='/historial' element={<ProtectedComponent><Historial/></ProtectedComponent>}/>
+          <Route path='/favoritos' element={<ProtectedComponent><Favoritos/></ProtectedComponent>}/>
           <Route path='/edition' element={<ProtectedComponent><Edition/></ProtectedComponent>}/>
           <Route path="/" element={<Navigate to="home" />} />
         </Routes>

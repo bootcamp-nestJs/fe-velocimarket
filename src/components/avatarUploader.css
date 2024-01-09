@@ -22,7 +22,6 @@
     position: absolute;
     width: 120px;
     height: 120px;
-    background:url(/src/assets/img/avatardefault.png) #ffffff 100% / cover no-repeat;
     background-size: 100%;
     background-position: center;
     border: 1px solid #989FAD;
@@ -61,12 +60,18 @@
     border-radius: 100%;
 }
 
-.delete-button {
+.delete-button-avatar {
     position: absolute;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(/src/assets/img/CERRAR.png) #578FFF 100% / cover no-repeat;
+    background-size: 100%;
     top: 4px;
     right: 4px;
     background-color: #578fff;
     border: none;
     cursor: pointer;
     padding: 4px;
+    border-radius: 8px;
 }

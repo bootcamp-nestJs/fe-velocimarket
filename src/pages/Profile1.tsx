@@ -10,14 +10,46 @@ import { useSelector } from "react-redux"
 import itemImg from "../assets/img/product.png"
 import { RootState } from "../redux/store"
 import ItemFollowers from "../components/item-followers"
+import data from "../json/imagenesprueba.json"
+import emptydino from "../assets/img/empty-dino-product.svg"
+import "./profile.css"
+interface UserState {
+  id: number;
+  user_name: string;
+  email: string;
+  isAuth: boolean;
+  role: string;
+  iat: number;
+  access_token: string;
+  user_avatar: string
+}
+
+interface Follower {
+  nombre: string;
+  apellido: string;
+  mail: string;
+  user: string;
+  password: string;
+  telefono: string;
+  calle: string;
+  número: number;
+  comuna: string;
+  region: string;
+  avatar: string;
+}
 
 
 export default function Profile1() {
 
-  const user = useSelector((state: RootState) => state.user)
+  /* const user = useSelector((state: RootState) => state.user) */
+  const user = useSelector((state: RootState) => state.user) as UserState;
 
   const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
   const newtestProducts = listaProductos
+  const [followers, setFollowers] = useState<Follower[]>([]);
+  const [showProducts, setShowProducts] = useState(true);
+  const [showFollowing, setShowFollowing] = useState(false);
+  const [showFollowers, setShowFollowers] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,23 +57,30 @@ export default function Profile1() {
     navigate("/edition")
   }
 
+  const handlePublicar = () => {
+    navigate("/publication")
+  }
+
   const handleProductsClick = () => {
-    // Lógica para mostrar los productos
-    console.log("Mostrar productos");
+    setShowProducts(true);
+    setShowFollowing(false);
+    setShowFollowers(false);
   };
 
   const handleFollowersClick = () => {
-    // Lógica para mostrar a quién sigue el usuario
-    console.log("Mostrar a quién sigue el usuario");
+    setShowProducts(false);
+    setShowFollowing(false);
+    setShowFollowers(true);
   };
 
   const handleFollowingClick = () => {
-    // Lógica para mostrar los seguidores del usuario
-    console.log("Mostrar seguidores del usuario");
+    setShowProducts(false);
+    setShowFollowing(true);
+    setShowFollowers(false);
   };
 
   useEffect(() => {
-    fetch(`https://api2-velo.lemichi.cl/api/products?pag=1`, {
+    fetch(`https://api2-velo.lemichi.cl/api/products/user?id=${user.id}&pag=1`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${user.access_token}`
@@ -56,17 +95,22 @@ export default function Profile1() {
     });
   }, []);
 
+  useEffect(() => {
+    setFollowers(data.follower);
+  }, []);
+
   const ubicacion = "Santiago"
 
   return (
     <div className="Profile">
       {user.isAuth && <Header />}
       <ProfileCard
+        avatar={user.user_avatar}
         name={user.user_name}
         location={ubicacion}
         rate={5}
-        followers={200}
-        following={100}
+        followers={6}
+        following={6}
         products={5}
         onProductsClick={handleProductsClick}
         onFollowersClick={handleFollowersClick}
@@ -79,24 +123,81 @@ export default function Profile1() {
         </Button>
       </ProfileCard>
 
-      <section className="products">
-        {
-          newtestProducts.slice(0, 5).map((producto, index) => {
-            return (
 
-              <ItemParam imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg} nombreuser={"usuario" + index} precio={producto.precio} nombreproduct={producto.nombre} localizacion={"localización" + index}
-                key={`producto-interes-${index}`} icons={false} vistahome={false} idProductArg={producto.id} />
+      {showProducts && (
+        <section className="products">
+          {listaProductos.length > 0 ? listaProductos.slice(0, 5).map((producto, index) => (
+            <ItemParam
+              avatar=""
+              imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
+              nombreuser={"usuario" + index}
+              precio={producto.precio}
+              nombreproduct={producto.nombre}
+              localizacion={"localización" + index}
+              key={`producto-interes-${index}`}
+              icons={false}
+              vistahome={false}
+              idProductArg={producto.id}
+            />
+          )) :
+            <>
+            <div></div>
+              <div className="empty-container-dino">
+                <div className="empty-state-dino">
+                  <h1>Aún no posees productos</h1>
+                  <img src={emptydino} className='ilustración-dino' />
+                  <button className="button-empty" onClick={handlePublicar}> Ir a publicar</button>
+                </div>
+              </div>
+              <div></div>
+            </>
+          }
+        </section>
+      )}
 
-            )
-          })
-        }
-      </section>
+      {showFollowing && (
         <section className="following">
-        <ItemFollowers user="Usuario2" comuna="Valparaíso" tipo="following" nombre={""} apellido={""} mail={""} password={""} telefono={""} calle={""} número={0} region={""} />
-      </section>
-      <section className="followers">
-        <ItemFollowers user="Usuario1" comuna="Santiago" tipo="follower" nombre={""} apellido={""} mail={""} password={""} telefono={""} calle={""} número={0} region={""} />
-      </section>
+          {followers.map((follower, index) => (
+            <ItemFollowers
+              key={`follower-${index}`}
+              user={follower.user}
+              comuna={follower.comuna}
+              tipo="following"
+              nombre={follower.nombre}
+              apellido={follower.apellido}
+              mail={follower.mail}
+              password={follower.password}
+              telefono={follower.telefono}
+              calle={follower.calle}
+              número={follower.número}
+              region={follower.region}
+              avatar={follower.avatar}
+            />
+          ))}
+        </section>
+      )}
+
+      {showFollowers && (
+        <section className="followers">
+          {followers.map((follower, index) => (
+            <ItemFollowers
+              key={`follower-${index}`}
+              user={follower.user}
+              comuna={follower.comuna}
+              tipo="follower"
+              nombre={follower.nombre}
+              apellido={follower.apellido}
+              mail={follower.mail}
+              password={follower.password}
+              telefono={follower.telefono}
+              calle={follower.calle}
+              número={follower.número}
+              region={follower.region}
+              avatar={follower.avatar}
+            />
+          ))}
+        </section>
+      )}
 
       <Footer />
     </div>
