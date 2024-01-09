@@ -80,9 +80,6 @@ export default function FileProduct() {
     useEffect(() => {
         fetch(`https://api2-velo.lemichi.cl/api/products?pag=1`, {
             method: 'GET',
-            // headers: {
-            //     Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
-            // },
         }).then(response => {
             return response.json() as Promise<testProduct[]>;
         }).then(json => {
@@ -103,7 +100,7 @@ export default function FileProduct() {
             precio: Producto!.precio,
             avatarVendedor: "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/ae4816cade1a5b7f29787d0b89610132c72c7747041481c6619b9cc3302c0101._RI_TTW_.jpg",
             ubicacionVendedor: "La Serena",
-            /* imgProducto: "aqui va una imagen", */
+            /* imgProducto: "aqui va una imagen", esto se comenta ya que debo crear el carrito primero y despues insertar la o las imagenes*/
             imgProducto: Producto!.img[0].imagen,
             descripcion: Producto!.descripcion
         }

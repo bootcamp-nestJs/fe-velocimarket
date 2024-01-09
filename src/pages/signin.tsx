@@ -148,10 +148,10 @@ export default function SignIn() {
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="name">Nombre de usuario</label>
                         <input type="text" name="nombreusuario" id="name" onChange={handleChange} />
-                        {error.nombreusuario && <span className='error'>Ingrese usuario</span>}
+                        {error.nombreusuario && <span className='error'>Verifica que el usuario sea el que usaste al crear tu cuenta</span>}
                         <label htmlFor="password">Contraseña</label>
                         <input type="text" name="contrasena" id="password" onChange={handleChange} />
-                        {error.contrasena && <span className='error'>Ingrese contraseña</span>}
+                        {error.contrasena && <span className='error'>Ingresa o verifica que la contraseña sea la correcta</span>}
                         <input type="submit" value={'\u2713 Entrar'} className="entrar-link" />
                     </form>
 

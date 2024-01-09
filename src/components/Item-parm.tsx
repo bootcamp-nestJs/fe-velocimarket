@@ -1,35 +1,30 @@
-import Button from "./Button"
+import Button from "./Button";
 import { Link } from "react-router-dom";
-/* import imagenesprueba from "../json/imagenesprueba.json"*/
-import configuracion2 from "../assets/icon/Configuración 2.svg"
-import avatarDefault from "../assets/img/avatardefault.png"
-import star from "../assets/icon/star.svg"
-import heart from "../assets/Like.svg"
-import heartcomplete from "../assets/icon/hearthcomplete.svg"
-import chat from "../assets/ChatTeardropDots.svg"
-import './item-param.css'
+import configuracion2 from "../assets/icon/Configuración 2.svg";
+import avatarDefault from "../assets/img/avatardefault.png";
+import star from "../assets/icon/star.svg";
+import heart from "../assets/Like.svg";
+import heartcomplete from "../assets/icon/hearthcomplete.svg";
+import chat from "../assets/ChatTeardropDots.svg";
+import './item-param.css';
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../redux/favoriteSlice';
-/* import Calification from "../pages/calification";
-import Profile1 from "../pages/Profile1"; */
 
 interface PropsItem {
-  avatar: string,
-  icons?: boolean,
-  vistahome?: boolean,
-  vistaprofile2?:boolean
-  nombreuser: string,
-  precio: number,
-  nombreproduct: string,
-  localizacion: string,
-  idProductArg: number,
-  imagen: string
+  avatar: string;
+  icons?: boolean;
+  vistahome?: boolean;
+  vistaprofile2?: boolean;
+  nombreuser: string;
+  precio: number;
+  nombreproduct: string;
+  localizacion: string;
+  idProductArg: number;
+  imagen: string;
 }
-
-
 
 export default function ItemParam({ icons = false, vistahome = false, vistaprofile2 = false, nombreuser, precio, nombreproduct, localizacion, idProductArg, imagen, avatar }: PropsItem) {
   /* const avatarImages = imagenesprueba.avatar; */

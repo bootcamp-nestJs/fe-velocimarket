@@ -3,7 +3,6 @@ import ProfileCard from "../components/Profilefile"
 import Footer from "../components/footer"
 import confirm from "../assets/confirm-white.svg"
 import eliminar from "../assets/icon/cerrar_red.svg"
-import imagen from "../assets/img/bicicleta1.png"
 import imagen_empty from "../assets/img/carrito_empty.svg"
 import './cart.css'
 import { Link, useNavigate } from "react-router-dom"
@@ -45,10 +44,10 @@ export default function Cart( /* {productInfo, checkoutInfo }: CartProps */) {
             dispatch(deleteCarrito())
         }).catch(error => {
             console.error(error);
+            dispatch(deleteCarrito())
         });
     }
     const handleEliminarProducto = (indexProducto: number) => {
-        // dispatch(deleteProducto(indexProducto)) //EN CASO DE EMERGENCIA
         fetch(`https://api2-velo.lemichi.cl/api/cart/removeProduct?productId=${carrito.productos[indexProducto].id}&cartId=${carrito.id}`, {
             method: 'DELETE',
             headers: {
@@ -73,6 +72,7 @@ export default function Cart( /* {productInfo, checkoutInfo }: CartProps */) {
             }
         }).catch(error => {
             console.error(error);
+            dispatch(deleteProducto(indexProducto)) //EN CASO DE EMERGENCIA
         });
     }
 

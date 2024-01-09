@@ -311,7 +311,7 @@ export default function Publicacion() {
       <section className="products-publication">
         {shuffledtestProducts.map((producto, index) => (
           <ItemParam
-            avatar={"algo"} //editarimgdinamica
+            avatar={""} //editarimgdinamica
             imagen={producto.img.length! > 0 ? producto.img[0].imagen : itemImg}
             icons={true}
             vistahome={true}

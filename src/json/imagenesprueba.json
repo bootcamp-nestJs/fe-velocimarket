@@ -222,5 +222,12 @@
           "comuna": "Quilicura",
           "region": "string",
           "avatar": "src/assets/img/avatares/avatar6.png"
-        }]
+        }],
+        "product": [
+          {
+            "precio": "$1300000",
+            "titulo": "Bicicleta Orbea",
+            "descripcion": "bicicleta rutera, 1 año de uso",
+            "img_product": "../src/assets/img/bicicleta1.png"
+          }]
 }

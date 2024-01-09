@@ -45,7 +45,7 @@ export default function Profile1() {
   const user = useSelector((state: RootState) => state.user) as UserState;
 
   const [listaProductos, setlistaProductos] = useState<testProduct[]>([]);
-  const newtestProducts = listaProductos
+  /* const newtestProducts = listaProductos */
   const [followers, setFollowers] = useState<Follower[]>([]);
   const [showProducts, setShowProducts] = useState(true);
   const [showFollowing, setShowFollowing] = useState(false);

@@ -16,7 +16,7 @@ import Calification from "./pages/calification";
 import { ProtectedComponent } from "./components/ProtectedRoute";
 import Historial from "./pages/historialCompra";
 import Edition from "./pages/edition";
-import Favoritos from "./pages/Favoritos";
+import Favoritos from "./pages/favoritos";
 import './App.css';
 
 function App() {  

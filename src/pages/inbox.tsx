@@ -2,13 +2,14 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import imgMessage from "../assets/img/imagen message.png";
 import paperplane from "../assets/paper-plane.svg";
-import bici from "../assets/img/product.png";
 import { useState } from "react";
 import mensajesprueba from '../json/mensajesprueba.json';
 import { Message } from "../interfaces/testmensajes";
 import "./inbox.css"
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import avatarData from "../json/imagenesprueba.json"
+
 
 interface InboxProps {
     messages: Message[];
@@ -24,6 +25,8 @@ export default function Inbox({ messages }: InboxProps) {
         setUserMessage('');
     };
 
+    const img_product = avatarData.product[0].img_product;
+
     return (
         <>
             <div className="inbox-page-cont">
@@ -35,10 +38,10 @@ export default function Inbox({ messages }: InboxProps) {
                     <div className="cont-messages">
                         {messages.map((message, index) => (
                             <div className="message" key={index}>
-                                <img className="avatar-inbox" src={message.avatar} alt="Avatar" />
+                                <img className="avatar-inbox" src= {avatarData.avatar[index].avatar} alt="Avatar" />
                                 <div className="user-message">
-                                    <h5 className="title-messUser">{message.userName}</h5>
-                                    <a className="location-message">{message.location}</a>
+                                    <h5 className="title-messUser">{avatarData.follower[index].user}</h5>
+                                    <a className="location-message">{avatarData.follower[index].comuna}</a>
                                 </div>
                             </div>
                         ))}
@@ -69,9 +72,9 @@ export default function Inbox({ messages }: InboxProps) {
                     </div>
 
                     <div className="message-product-view">
-                        <img className="img-product-message" src={bici} alt="Product" />
-                        <div className="precio-message">Precio</div>
-                        <div className="text-product-message">Título de producto para la venta del producto en mucho</div>
+                        <img className="img-product-message" src={img_product} alt="Product" />
+                        <div className="precio-message">{avatarData.product[0].precio}</div>
+                        <div className="text-product-message">{avatarData.product[0].titulo}</div>
                     </div>
                 </div>
                 <div className="footer-inbox">

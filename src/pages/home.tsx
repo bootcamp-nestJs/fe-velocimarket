@@ -30,9 +30,6 @@ export default function Home() {
   useEffect(() => {
     fetch(`https://api2-velo.lemichi.cl/api/products?pag=1`, {
       method: 'GET',
-      // headers: {
-      //   Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfbmFtZSI6InVzdWFyaW8yIiwibWFpbCI6ImFsaS5hbGUuZ2FsbGFyZG9AZ21haWwuY29tIiwiaWF0IjoxNzAxMjg4MzcwfQ.LY3pfKzR3eC3pRGtK0vtYl57PqLprNezLsnTP9YQbH4'
-      // },
     }).then(response => {
       return response.json() as Promise<testProduct[]>;
     }).then(json => {
@@ -45,7 +42,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Actualizar el índice cada 6 segundos
+    // Actualizo el índice cada 6 segundos
     const intervalId = setInterval(() => {
       if (currentIndex + 5 > listaProductos.length - 1) {
         setCurrentIndex(0);
@@ -53,11 +50,26 @@ export default function Home() {
       setCurrentIndex(prevIndex => (prevIndex + 1) % (listaProductos.length / 2));
     }, 6000);
 
-    return () => clearInterval(intervalId); // Limpiar el intervalo al desmontar el componente
+    return () => clearInterval(intervalId); // Limpia el intervalo al desmontar el componente
   }, [listaProductos.length]);
 
-  // Obtener los próximos 6 productos basados en el índice actual
+  // se obtienen los próximos 6 productos basados en el índice actual
   const slicedProducts = listaProductos.slice(currentIndex, currentIndex + 6);
+
+
+  // no logre extraer la imagen utilizando solo el userId entregado por el producto
+ /*  const getAvatarUrl = async (userId: number): Promise<string | null> => {
+    try {
+      const apiUrl = `https://api2-velo.lemichi.cl/api/users/${userId}`;
+      const response = await fetch(apiUrl);
+      const userData = await response.json();
+      return userData.user_avatar || null;
+    } catch (error) {
+      console.error('Error al obtener la URL del avatar:', error);
+      return null;
+    }
+  }; */
+
 
   return (
     <div className="Profile">
