@@ -24,6 +24,7 @@ Descripción:
 - window 11
 - visualStudio 
 - npm 9.5.1
+- node v18.16.0
 
 ## Proceso para levantar proyecto front:
 
@@ -36,6 +37,7 @@ Descripción:
 4. En el terminal abierto se lanza el comando `npm i` para instalar los paquetes npm del package.json.
 
 5. Se levanta el servidor local de pruebas con el comando `npm run dev`.
+
 
 
 
